@@ -1,0 +1,16 @@
+﻿@if (Request.IsAuthenticated) {
+    <text>
+    <div class="four columns offset-by-five omega" id="header_user">
+        <h5><a href="/@User.Identity.Name">@User.Identity.Name</a></h5>
+        <a href="javascript:document.getElementById('logoutForm').submit()">sign out</a>
+    </div>
+    @using (Html.BeginForm("LogOff", "account", FormMethod.Post, new { id = "logoutForm" })) {
+            @Html.AntiForgeryToken()
+        }
+    </text>
+} else {
+    <ul>
+        <li>@Html.ActionLink("Register", "register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+        <li>@Html.ActionLink("Log in", "login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+    </ul>
+}

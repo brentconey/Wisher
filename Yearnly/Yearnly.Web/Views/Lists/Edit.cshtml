@@ -1,0 +1,21 @@
+﻿@{
+    ViewBag.Title = "Edit";
+    @model Yearnly.Model.UserList
+}
+
+<h2>Edit</h2>
+@{
+if(Model != null)
+{
+
+        <form method="post" action="/lists/saveedit">
+            <input type="text" name="Name" value="@Model.Name" id="" />
+            <input type="hidden" name="Id" value="@Model.Id" />
+            <input type="submit" value="Save" />
+        </form>
+}
+else{
+    <p>There doesn't seem to be an item to edit....</p>   
+    <a href="/lists">Go Back to my List</a>
+}
+}

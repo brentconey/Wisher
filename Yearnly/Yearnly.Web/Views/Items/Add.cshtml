@@ -1,0 +1,12 @@
+﻿@{
+    ViewBag.Title = "Add an item";
+}
+
+<h2>Add an item</h2>
+
+<form action="/items/create" id="add_item_form" class="five columns alpha" method="post">
+    <input type="text" placeholder="Item title..." name="Title" id="" />
+    <input type="text" placeholder="Link to item..." name="Link" id="" />
+    <textarea placeholder="Description" name="Description" id=""></textarea>
+    <input type="submit" value="Submit" />
+</form>

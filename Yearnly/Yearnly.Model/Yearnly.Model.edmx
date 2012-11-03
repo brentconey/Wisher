@@ -1,0 +1,208 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Yearnly.Model.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="YearnlyModelStoreContainer">
+          <EntitySet Name="UserItem" EntityType="Yearnly.Model.Store.UserItem" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="UserList" EntityType="Yearnly.Model.Store.UserList" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="UserProfile" EntityType="Yearnly.Model.Store.UserProfile" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_ItemToUser" Association="Yearnly.Model.Store.FK_ItemToUser">
+            <End Role="UserProfile" EntitySet="UserProfile" />
+            <End Role="UserItem" EntitySet="UserItem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ListToUser" Association="Yearnly.Model.Store.FK_ListToUser">
+            <End Role="UserProfile" EntitySet="UserProfile" />
+            <End Role="UserList" EntitySet="UserList" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="UserItem">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" Nullable="false" MaxLength="250" />
+          <Property Name="Link" Type="nvarchar" MaxLength="250" />
+          <Property Name="Description" Type="nvarchar" MaxLength="250" />
+          <Property Name="DateCreated" Type="datetime" />
+          <Property Name="DateUpdated" Type="datetime" />
+        </EntityType>
+        <EntityType Name="UserList">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="150" />
+          <Property Name="DateCreated" Type="datetime" />
+          <Property Name="DateUpdated" Type="datetime" />
+        </EntityType>
+        <EntityType Name="UserProfile">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="nvarchar" Nullable="false" MaxLength="56" />
+        </EntityType>
+        <Association Name="FK_ItemToUser">
+          <End Role="UserProfile" Type="Yearnly.Model.Store.UserProfile" Multiplicity="1" />
+          <End Role="UserItem" Type="Yearnly.Model.Store.UserItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserProfile">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="UserItem">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ListToUser">
+          <End Role="UserProfile" Type="Yearnly.Model.Store.UserProfile" Multiplicity="1" />
+          <End Role="UserList" Type="Yearnly.Model.Store.UserList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserProfile">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="UserList">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Yearnly.Model" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="YearnlyEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="UserProfiles" EntityType="Yearnly.Model.UserProfile" />
+          <EntitySet Name="UserLists" EntityType="Yearnly.Model.UserList" />
+          <AssociationSet Name="FK_ListToUser" Association="Yearnly.Model.FK_ListToUser">
+            <End Role="UserProfile" EntitySet="UserProfiles" />
+            <End Role="UserList" EntitySet="UserLists" />
+          </AssociationSet>
+          <EntitySet Name="UserItems" EntityType="Yearnly.Model.UserItem" />
+          <AssociationSet Name="FK_ItemToUser" Association="Yearnly.Model.FK_ItemToUser">
+            <End Role="UserProfile" EntitySet="UserProfiles" />
+            <End Role="UserItem" EntitySet="UserItems" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="UserProfile">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="56" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="UserLists" Relationship="Yearnly.Model.FK_ListToUser" FromRole="UserProfile" ToRole="UserList" />
+          <NavigationProperty Name="UserItems" Relationship="Yearnly.Model.FK_ItemToUser" FromRole="UserProfile" ToRole="UserItem" />
+        </EntityType>
+        <EntityType Name="UserList">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="UserId" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="DateCreated" Precision="3" />
+          <NavigationProperty Name="UserProfile" Relationship="Yearnly.Model.FK_ListToUser" FromRole="UserList" ToRole="UserProfile" />
+          <Property Type="DateTime" Name="DateUpdated" Precision="3" />
+        </EntityType>
+        <Association Name="FK_ListToUser">
+          <End Type="Yearnly.Model.UserProfile" Role="UserProfile" Multiplicity="1" />
+          <End Type="Yearnly.Model.UserList" Role="UserList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserProfile">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="UserList">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="UserItem">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="UserId" Nullable="false" />
+          <Property Type="String" Name="Title" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Link" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Description" MaxLength="250" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="UserProfile" Relationship="Yearnly.Model.FK_ItemToUser" FromRole="UserItem" ToRole="UserProfile" />
+          <Property Type="DateTime" Name="DateCreated" Precision="3" />
+          <Property Type="DateTime" Name="DateUpdated" Precision="3" />
+        </EntityType>
+        <Association Name="FK_ItemToUser">
+          <End Type="Yearnly.Model.UserProfile" Role="UserProfile" Multiplicity="1" />
+          <End Type="Yearnly.Model.UserItem" Role="UserItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserProfile">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="UserItem">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="YearnlyModelStoreContainer" CdmEntityContainer="YearnlyEntities">
+          <EntitySetMapping Name="UserProfiles">
+            <EntityTypeMapping TypeName="Yearnly.Model.UserProfile">
+              <MappingFragment StoreEntitySet="UserProfile">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserLists">
+            <EntityTypeMapping TypeName="Yearnly.Model.UserList">
+              <MappingFragment StoreEntitySet="UserList">
+                <ScalarProperty Name="DateUpdated" ColumnName="DateUpdated" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserItems">
+            <EntityTypeMapping TypeName="Yearnly.Model.UserItem">
+              <MappingFragment StoreEntitySet="UserItem">
+                <ScalarProperty Name="DateUpdated" ColumnName="DateUpdated" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Link" ColumnName="Link" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

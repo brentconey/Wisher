@@ -1,0 +1,46 @@
+﻿@{
+    ViewBag.Title = "Home";
+    String welcomeName = String.Empty;
+    if(String.IsNullOrEmpty(WebSecurity.CurrentUserName))
+    {
+        welcomeName = "Stranger";
+    }
+    else
+    {
+        welcomeName = WebSecurity.CurrentUserName;
+           
+    }
+}
+	<div class="sixteen columns clearfix add-big-bottom" id="welcome_message">
+		<div class="nine columns alpha">
+			<h6>Welcome&hellip;</h6>
+			<h3>@welcomeName</h3>
+		</div>
+		<div class="five columns offset-by-two omega clearfix" id="quick_actions">
+			<a class="button two columns alpha" rel="" href="/lists/new">create a list</a>
+			<a class="button two columns omega" rel="#add_item_overlay" href="/items/new">add an item</a>
+		</div>
+	</div>
+	
+	<div class="sixteen columns clearfix" id="activity">
+		<div class="eleven columns alpha clearfix">
+			<h6 class="seven columns alpha">Recent Activity</h6>
+			<h6 class="three offset-by-one columns omega">Show <a href="">everything</a>.</h6>
+			<hr />
+			<ul class="full-width clearfix">
+				<li><a href="">Brent Coney</a> created a list called <a href="">Random Things I Want</a>.</li>
+				<li><a href="">Shooter McGavin</a> created a list called <a href="">Gardening Supplies</a>.</li>
+				<li><a href="">Billy Madison</a> added an item <a href="">35 SPF Sunscreen</a>.</li>
+				<li><a href="">Brent Coney</a> and <a href="">Dan Slather</a> are now friends.</li>
+				<li><a href="">Dan Slather</a> called dibs on <a href="">iPhone 5</a> by <a href="">Jim Gunther</a>.</li>
+				<li><a href="">Shelly Beach</a> created a list called <a href="">Kitchen Utensils</a>.</li>
+				<li><a href="">Tim Ting</a> added an item <a href="">Porsche Boxster S</a>.</li>
+				<li><a href="">Randy Melons</a> called dibs on <a href="">27" TV</a> by <a href="">Billy Madeit</a>.</li>
+				<li><a href="">Billy Madeit</a> added an item <a href="">Sewing Machine</a>.</li>
+			</ul>
+		</div>
+	</div>
+	
+	@Html.Partial("_AddItemOverlay")
+
+</div><!-- container -->

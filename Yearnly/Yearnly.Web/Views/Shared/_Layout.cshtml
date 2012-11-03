@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"><![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"><![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"><![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html lang="en"><!--<![endif]-->
+<head>
+
+	<!-- Basic Page Needs
+  ================================================== -->
+	<meta charset="utf-8">
+	<title>@ViewBag.Title</title>
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	@Styles.Render("~/Content/css")
+    <link href="http://fonts.googleapis.com/css?family=Bitter" rel="stylesheet" type="text/css">
+
+	<!--[if lt IE 9]>
+		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+
+	<link rel="shortcut icon" href="images/favicon.ico">
+	<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+
+    @Scripts.Render("~/bundles/modernizr")
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+</head>
+<body id="home">
+<div class="container">
+        <header id="site_header" class="sixteen columns clearfix">
+            <h1 class="three columns alpha"><a href="">Yearnly</a></h1>
+            <form class="four columns" method="" action="" id="global_search">
+                <input type="text" placeholder="search for lists, items, and friends" id="" />
+            </form>
+            @Html.Partial("_LoginPartial")
+        </header>
+
+        <nav id="global_nav" class="sixteen columns clearfix">
+	        <ul id="site_nav" class="ten columns alpha clearfix">
+		        <li>@Html.ActionLink("home", "Index", "home")</li>
+		        <li>@Html.ActionLink("lists", "Lists", "Users")</li>
+		        <li>@Html.ActionLink("items", "Items", "Users")</li>
+		        <li><a href="">dibs</a></li>
+	        </ul>
+	        <ul id="user_nav" class="six columns omega clearfix">
+		        <li><a href="">notifications</a><span>2</span></li>
+		        <li><a href="">messages</a><span>12</span></li>
+		        <li><a href="">friends</a></li>
+	        </ul>
+        </nav>
+
+		@RenderBody()
+
+</div><!-- container -->
+    <script src="http://cdn.jquerytools.org/1.2.7/full/jquery.tools.min.js"></script>
+    <script src="~/Scripts/yearnly.js"></script>
+</body>
+</html>

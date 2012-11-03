@@ -1,0 +1,18 @@
+﻿@{
+    ViewBag.Title = "Edit";
+    @model Yearnly.Model.UserItem
+}
+
+<h2>Edit</h2>
+@if(Model != null)
+{
+<form action="/items/saveedit" id="edit_item_form" class="five columns alpha" method="post">
+    <input type="hidden" name="Id" value="@Model.Id" />
+    <input type="text" value="@Model.Title" name="Title" id="" />
+    <input type="text" value="@Model.Link" name="Link" id="" />
+    <textarea placeholder="Description" name="Description" id="">@Model.Description</textarea>
+    <input type="submit" value="Submit" />
+</form>
+}else{
+    <p>No item to edit.</p>   
+}
