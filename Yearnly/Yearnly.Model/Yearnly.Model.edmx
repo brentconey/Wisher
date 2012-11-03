@@ -4,18 +4,30 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="Yearnly.Model.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="YearnlyModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityContainer Name="YearnlyModelStoreContainer">
-          <EntitySet Name="UserItem" EntityType="Yearnly.Model.Store.UserItem" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="UserList" EntityType="Yearnly.Model.Store.UserList" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="UserProfile" EntityType="Yearnly.Model.Store.UserProfile" store:Type="Tables" Schema="dbo" />
-          <AssociationSet Name="FK_ItemToUser" Association="Yearnly.Model.Store.FK_ItemToUser">
+          <EntitySet Name="UserItem" EntityType="YearnlyModel.Store.UserItem" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="UserList" EntityType="YearnlyModel.Store.UserList" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="UserProfile" EntityType="YearnlyModel.Store.UserProfile" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="webpages_Membership" EntityType="YearnlyModel.Store.webpages_Membership" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="webpages_OAuthMembership" EntityType="YearnlyModel.Store.webpages_OAuthMembership" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="webpages_Roles" EntityType="YearnlyModel.Store.webpages_Roles" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="webpages_UsersInRoles" EntityType="YearnlyModel.Store.webpages_UsersInRoles" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_ItemToUser" Association="YearnlyModel.Store.FK_ItemToUser">
             <End Role="UserProfile" EntitySet="UserProfile" />
             <End Role="UserItem" EntitySet="UserItem" />
           </AssociationSet>
-          <AssociationSet Name="FK_ListToUser" Association="Yearnly.Model.Store.FK_ListToUser">
+          <AssociationSet Name="FK_ListToUser" Association="YearnlyModel.Store.FK_ListToUser">
             <End Role="UserProfile" EntitySet="UserProfile" />
             <End Role="UserList" EntitySet="UserList" />
+          </AssociationSet>
+          <AssociationSet Name="fk_RoleId" Association="YearnlyModel.Store.fk_RoleId">
+            <End Role="webpages_Roles" EntitySet="webpages_Roles" />
+            <End Role="webpages_UsersInRoles" EntitySet="webpages_UsersInRoles" />
+          </AssociationSet>
+          <AssociationSet Name="fk_UserId" Association="YearnlyModel.Store.fk_UserId">
+            <End Role="UserProfile" EntitySet="UserProfile" />
+            <End Role="webpages_UsersInRoles" EntitySet="webpages_UsersInRoles" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="UserItem">
@@ -47,9 +59,49 @@
           <Property Name="UserId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="UserName" Type="nvarchar" Nullable="false" MaxLength="56" />
         </EntityType>
+        <EntityType Name="webpages_Membership">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="ConfirmationToken" Type="nvarchar" MaxLength="128" />
+          <Property Name="IsConfirmed" Type="bit" />
+          <Property Name="LastPasswordFailureDate" Type="datetime" />
+          <Property Name="PasswordFailuresSinceLastSuccess" Type="int" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="PasswordChangedDate" Type="datetime" />
+          <Property Name="PasswordSalt" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="PasswordVerificationToken" Type="nvarchar" MaxLength="128" />
+          <Property Name="PasswordVerificationTokenExpirationDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="webpages_OAuthMembership">
+          <Key>
+            <PropertyRef Name="Provider" />
+            <PropertyRef Name="ProviderUserId" />
+          </Key>
+          <Property Name="Provider" Type="nvarchar" Nullable="false" MaxLength="30" />
+          <Property Name="ProviderUserId" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="webpages_Roles">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="RoleId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="RoleName" Type="nvarchar" Nullable="false" MaxLength="256" />
+        </EntityType>
+        <EntityType Name="webpages_UsersInRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="RoleId" Type="int" Nullable="false" />
+        </EntityType>
         <Association Name="FK_ItemToUser">
-          <End Role="UserProfile" Type="Yearnly.Model.Store.UserProfile" Multiplicity="1" />
-          <End Role="UserItem" Type="Yearnly.Model.Store.UserItem" Multiplicity="*" />
+          <End Role="UserProfile" Type="YearnlyModel.Store.UserProfile" Multiplicity="1" />
+          <End Role="UserItem" Type="YearnlyModel.Store.UserItem" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="UserProfile">
               <PropertyRef Name="UserId" />
@@ -60,8 +112,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ListToUser">
-          <End Role="UserProfile" Type="Yearnly.Model.Store.UserProfile" Multiplicity="1" />
-          <End Role="UserList" Type="Yearnly.Model.Store.UserList" Multiplicity="*" />
+          <End Role="UserProfile" Type="YearnlyModel.Store.UserProfile" Multiplicity="1" />
+          <End Role="UserList" Type="YearnlyModel.Store.UserList" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="UserProfile">
               <PropertyRef Name="UserId" />
@@ -71,46 +123,137 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema></edmx:StorageModels>
+        <Association Name="fk_RoleId">
+          <End Role="webpages_Roles" Type="YearnlyModel.Store.webpages_Roles" Multiplicity="1" />
+          <End Role="webpages_UsersInRoles" Type="YearnlyModel.Store.webpages_UsersInRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="webpages_Roles">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="webpages_UsersInRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_UserId">
+          <End Role="UserProfile" Type="YearnlyModel.Store.UserProfile" Multiplicity="1" />
+          <End Role="webpages_UsersInRoles" Type="YearnlyModel.Store.webpages_UsersInRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserProfile">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="webpages_UsersInRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="Yearnly.Model" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="YearnlyModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="YearnlyEntities" p1:LazyLoadingEnabled="true">
-          <EntitySet Name="UserProfiles" EntityType="Yearnly.Model.UserProfile" />
-          <EntitySet Name="UserLists" EntityType="Yearnly.Model.UserList" />
-          <AssociationSet Name="FK_ListToUser" Association="Yearnly.Model.FK_ListToUser">
-            <End Role="UserProfile" EntitySet="UserProfiles" />
-            <End Role="UserList" EntitySet="UserLists" />
-          </AssociationSet>
-          <EntitySet Name="UserItems" EntityType="Yearnly.Model.UserItem" />
-          <AssociationSet Name="FK_ItemToUser" Association="Yearnly.Model.FK_ItemToUser">
+          <EntitySet Name="UserItems" EntityType="YearnlyModel.UserItem" />
+          <EntitySet Name="UserLists" EntityType="YearnlyModel.UserList" />
+          <EntitySet Name="UserProfiles" EntityType="YearnlyModel.UserProfile" />
+          <EntitySet Name="webpages_Membership" EntityType="YearnlyModel.webpages_Membership" />
+          <EntitySet Name="webpages_OAuthMembership" EntityType="YearnlyModel.webpages_OAuthMembership" />
+          <EntitySet Name="webpages_Roles" EntityType="YearnlyModel.webpages_Roles" />
+          <AssociationSet Name="FK_ItemToUser" Association="YearnlyModel.FK_ItemToUser">
             <End Role="UserProfile" EntitySet="UserProfiles" />
             <End Role="UserItem" EntitySet="UserItems" />
           </AssociationSet>
+          <AssociationSet Name="FK_ListToUser" Association="YearnlyModel.FK_ListToUser">
+            <End Role="UserProfile" EntitySet="UserProfiles" />
+            <End Role="UserList" EntitySet="UserLists" />
+          </AssociationSet>
+          <AssociationSet Name="webpages_UsersInRoles" Association="YearnlyModel.webpages_UsersInRoles">
+            <End Role="webpages_Roles" EntitySet="webpages_Roles" />
+            <End Role="UserProfile" EntitySet="UserProfiles" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="UserItem">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="250" Unicode="true" FixedLength="false" />
+          <Property Name="Link" Type="String" MaxLength="250" Unicode="true" FixedLength="false" />
+          <Property Name="Description" Type="String" MaxLength="250" Unicode="true" FixedLength="false" />
+          <Property Name="DateCreated" Type="DateTime" Precision="3" />
+          <Property Name="DateUpdated" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="UserProfile" Relationship="YearnlyModel.FK_ItemToUser" FromRole="UserItem" ToRole="UserProfile" />
+        </EntityType>
+        <EntityType Name="UserList">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="150" Unicode="true" FixedLength="false" />
+          <Property Name="DateCreated" Type="DateTime" Precision="3" />
+          <Property Name="DateUpdated" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="UserProfile" Relationship="YearnlyModel.FK_ListToUser" FromRole="UserList" ToRole="UserProfile" />
+        </EntityType>
         <EntityType Name="UserProfile">
           <Key>
             <PropertyRef Name="UserId" />
           </Key>
           <Property Name="UserId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
           <Property Name="UserName" Type="String" Nullable="false" MaxLength="56" Unicode="true" FixedLength="false" />
-          <NavigationProperty Name="UserLists" Relationship="Yearnly.Model.FK_ListToUser" FromRole="UserProfile" ToRole="UserList" />
-          <NavigationProperty Name="UserItems" Relationship="Yearnly.Model.FK_ItemToUser" FromRole="UserProfile" ToRole="UserItem" />
+          <NavigationProperty Name="UserItems" Relationship="YearnlyModel.FK_ItemToUser" FromRole="UserProfile" ToRole="UserItem" />
+          <NavigationProperty Name="UserLists" Relationship="YearnlyModel.FK_ListToUser" FromRole="UserProfile" ToRole="UserList" />
+          <NavigationProperty Name="webpages_Roles" Relationship="YearnlyModel.webpages_UsersInRoles" FromRole="UserProfile" ToRole="webpages_Roles" />
         </EntityType>
-        <EntityType Name="UserList">
+        <EntityType Name="webpages_Membership">
           <Key>
-            <PropertyRef Name="Id" />
+            <PropertyRef Name="UserId" />
           </Key>
-          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="Int32" Name="UserId" Nullable="false" />
-          <Property Type="String" Name="Name" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Type="DateTime" Name="DateCreated" Precision="3" />
-          <NavigationProperty Name="UserProfile" Relationship="Yearnly.Model.FK_ListToUser" FromRole="UserList" ToRole="UserProfile" />
-          <Property Type="DateTime" Name="DateUpdated" Precision="3" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="ConfirmationToken" Type="String" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="IsConfirmed" Type="Boolean" />
+          <Property Name="LastPasswordFailureDate" Type="DateTime" Precision="3" />
+          <Property Name="PasswordFailuresSinceLastSuccess" Type="Int32" Nullable="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="PasswordChangedDate" Type="DateTime" Precision="3" />
+          <Property Name="PasswordSalt" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="PasswordVerificationToken" Type="String" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="PasswordVerificationTokenExpirationDate" Type="DateTime" Precision="3" />
         </EntityType>
+        <EntityType Name="webpages_OAuthMembership">
+          <Key>
+            <PropertyRef Name="Provider" />
+            <PropertyRef Name="ProviderUserId" />
+          </Key>
+          <Property Name="Provider" Type="String" Nullable="false" MaxLength="30" Unicode="true" FixedLength="false" />
+          <Property Name="ProviderUserId" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="webpages_Roles">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="RoleId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleName" Type="String" Nullable="false" MaxLength="256" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="UserProfiles" Relationship="YearnlyModel.webpages_UsersInRoles" FromRole="webpages_Roles" ToRole="UserProfile" />
+        </EntityType>
+        <Association Name="FK_ItemToUser">
+          <End Role="UserProfile" Type="YearnlyModel.UserProfile" Multiplicity="1" />
+          <End Role="UserItem" Type="YearnlyModel.UserItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserProfile">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="UserItem">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_ListToUser">
-          <End Type="Yearnly.Model.UserProfile" Role="UserProfile" Multiplicity="1" />
-          <End Type="Yearnly.Model.UserList" Role="UserList" Multiplicity="*" />
+          <End Role="UserProfile" Type="YearnlyModel.UserProfile" Multiplicity="1" />
+          <End Role="UserList" Type="YearnlyModel.UserList" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="UserProfile">
               <PropertyRef Name="UserId" />
@@ -120,30 +263,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="UserItem">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="Int32" Name="UserId" Nullable="false" />
-          <Property Type="String" Name="Title" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Link" MaxLength="250" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Description" MaxLength="250" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="UserProfile" Relationship="Yearnly.Model.FK_ItemToUser" FromRole="UserItem" ToRole="UserProfile" />
-          <Property Type="DateTime" Name="DateCreated" Precision="3" />
-          <Property Type="DateTime" Name="DateUpdated" Precision="3" />
-        </EntityType>
-        <Association Name="FK_ItemToUser">
-          <End Type="Yearnly.Model.UserProfile" Role="UserProfile" Multiplicity="1" />
-          <End Type="Yearnly.Model.UserItem" Role="UserItem" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="UserProfile">
-              <PropertyRef Name="UserId" />
-            </Principal>
-            <Dependent Role="UserItem">
-              <PropertyRef Name="UserId" />
-            </Dependent>
-          </ReferentialConstraint>
+        <Association Name="webpages_UsersInRoles">
+          <End Role="webpages_Roles" Type="YearnlyModel.webpages_Roles" Multiplicity="*" />
+          <End Role="UserProfile" Type="YearnlyModel.UserProfile" Multiplicity="*" />
         </Association>
       </Schema>
     </edmx:ConceptualModels>
@@ -151,38 +273,80 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="YearnlyModelStoreContainer" CdmEntityContainer="YearnlyEntities">
+          <EntitySetMapping Name="UserItems">
+            <EntityTypeMapping TypeName="YearnlyModel.UserItem">
+              <MappingFragment StoreEntitySet="UserItem">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Link" ColumnName="Link" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="DateUpdated" ColumnName="DateUpdated" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserLists">
+            <EntityTypeMapping TypeName="YearnlyModel.UserList">
+              <MappingFragment StoreEntitySet="UserList">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="DateUpdated" ColumnName="DateUpdated" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="UserProfiles">
-            <EntityTypeMapping TypeName="Yearnly.Model.UserProfile">
+            <EntityTypeMapping TypeName="YearnlyModel.UserProfile">
               <MappingFragment StoreEntitySet="UserProfile">
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="UserLists">
-            <EntityTypeMapping TypeName="Yearnly.Model.UserList">
-              <MappingFragment StoreEntitySet="UserList">
-                <ScalarProperty Name="DateUpdated" ColumnName="DateUpdated" />
-                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
+          <EntitySetMapping Name="webpages_Membership">
+            <EntityTypeMapping TypeName="YearnlyModel.webpages_Membership">
+              <MappingFragment StoreEntitySet="webpages_Membership">
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="ConfirmationToken" ColumnName="ConfirmationToken" />
+                <ScalarProperty Name="IsConfirmed" ColumnName="IsConfirmed" />
+                <ScalarProperty Name="LastPasswordFailureDate" ColumnName="LastPasswordFailureDate" />
+                <ScalarProperty Name="PasswordFailuresSinceLastSuccess" ColumnName="PasswordFailuresSinceLastSuccess" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="PasswordChangedDate" ColumnName="PasswordChangedDate" />
+                <ScalarProperty Name="PasswordSalt" ColumnName="PasswordSalt" />
+                <ScalarProperty Name="PasswordVerificationToken" ColumnName="PasswordVerificationToken" />
+                <ScalarProperty Name="PasswordVerificationTokenExpirationDate" ColumnName="PasswordVerificationTokenExpirationDate" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="UserItems">
-            <EntityTypeMapping TypeName="Yearnly.Model.UserItem">
-              <MappingFragment StoreEntitySet="UserItem">
-                <ScalarProperty Name="DateUpdated" ColumnName="DateUpdated" />
-                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="Link" ColumnName="Link" />
-                <ScalarProperty Name="Title" ColumnName="Title" />
+          <EntitySetMapping Name="webpages_OAuthMembership">
+            <EntityTypeMapping TypeName="YearnlyModel.webpages_OAuthMembership">
+              <MappingFragment StoreEntitySet="webpages_OAuthMembership">
+                <ScalarProperty Name="Provider" ColumnName="Provider" />
+                <ScalarProperty Name="ProviderUserId" ColumnName="ProviderUserId" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="webpages_Roles">
+            <EntityTypeMapping TypeName="YearnlyModel.webpages_Roles">
+              <MappingFragment StoreEntitySet="webpages_Roles">
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="webpages_UsersInRoles" TypeName="YearnlyModel.webpages_UsersInRoles" StoreEntitySet="webpages_UsersInRoles">
+            <EndProperty Name="webpages_Roles">
+              <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+            </EndProperty>
+            <EndProperty Name="UserProfile">
+              <ScalarProperty Name="UserId" ColumnName="UserId" />
+            </EndProperty>
+          </AssociationSetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

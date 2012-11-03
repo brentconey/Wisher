@@ -12,20 +12,16 @@ namespace Yearnly.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class UserProfile
+    public partial class webpages_Roles
     {
-        public UserProfile()
+        public webpages_Roles()
         {
-            this.UserItems = new HashSet<UserItem>();
-            this.UserLists = new HashSet<UserList>();
-            this.webpages_Roles = new HashSet<webpages_Roles>();
+            this.UserProfiles = new HashSet<UserProfile>();
         }
     
-        public int UserId { get; set; }
-        public string UserName { get; set; }
+        public int RoleId { get; set; }
+        public string RoleName { get; set; }
     
-        public virtual ICollection<UserItem> UserItems { get; set; }
-        public virtual ICollection<UserList> UserLists { get; set; }
-        public virtual ICollection<webpages_Roles> webpages_Roles { get; set; }
+        public virtual ICollection<UserProfile> UserProfiles { get; set; }
     }
 }

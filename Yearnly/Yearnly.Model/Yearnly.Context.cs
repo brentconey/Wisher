@@ -25,8 +25,11 @@ namespace Yearnly.Model
             throw new UnintentionalCodeFirstException();
         }
     
-        public DbSet<UserProfile> UserProfiles { get; set; }
-        public DbSet<UserList> UserLists { get; set; }
         public DbSet<UserItem> UserItems { get; set; }
+        public DbSet<UserList> UserLists { get; set; }
+        public DbSet<UserProfile> UserProfiles { get; set; }
+        public DbSet<webpages_Membership> webpages_Membership { get; set; }
+        public DbSet<webpages_OAuthMembership> webpages_OAuthMembership { get; set; }
+        public DbSet<webpages_Roles> webpages_Roles { get; set; }
     }
 }
