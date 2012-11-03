@@ -11,15 +11,15 @@ namespace Yearnly.Web.Controllers
     [Authorize]
     public class UsersController : Controller
     {
-        private YearnlyEntities _db;
+        private YearnlyEntities db;
 
         public UsersController()
         {
-            this._db = new YearnlyEntities();
+            db = new YearnlyEntities();
         }
         public ActionResult Index(string username)
         {
-            if (UserProfile.DoesUserExists(username))
+            if (UserProfile.DoesUserExists(username, db))
             {
                 ViewBag.username = username;
                 return View();
@@ -37,9 +37,9 @@ namespace Yearnly.Web.Controllers
             {
                 username = WebSecurity.CurrentUserName;
             }
-            if (UserProfile.DoesUserExists(username))
+            if (UserProfile.DoesUserExists(username, db))
             {
-                var query = this._db.UserItems.Where(ul => ul.UserProfile.UserName == username);
+                var query = db.UserItems.Where(ul => ul.UserProfile.UserName == username);
                 ViewBag.username = username;
                 return View(query.ToList());
             }
@@ -55,9 +55,9 @@ namespace Yearnly.Web.Controllers
             {
                 username = WebSecurity.CurrentUserName;
             }
-            if (UserProfile.DoesUserExists(username))
+            if (UserProfile.DoesUserExists(username, db))
             {
-                var query = this._db.UserLists.Where(ul => ul.UserProfile.UserName == username);
+                var query = db.UserLists.Where(ul => ul.UserProfile.UserName == username);
 
                 ViewBag.username = username;
                 return View(query.ToList());

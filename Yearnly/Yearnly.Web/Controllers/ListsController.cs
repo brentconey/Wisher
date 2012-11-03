@@ -11,10 +11,10 @@ namespace Yearnly.Web.Controllers
     [Authorize]
     public class ListsController : Controller
     {
-        private YearnlyEntities _db;
+        private YearnlyEntities db;
         public ListsController()
         {
-            this._db = new YearnlyEntities();
+            db = new YearnlyEntities();
         }
 
         public ActionResult Add()
@@ -27,7 +27,7 @@ namespace Yearnly.Web.Controllers
             ActionResult returnView = null;
             if (id.HasValue)
             {
-                var query = this._db.UserLists.Where(ul => ul.Id == id && ul.UserId == WebSecurity.CurrentUserId);
+                var query = db.UserLists.Where(ul => ul.Id == id && ul.UserId == WebSecurity.CurrentUserId);
                 returnView = View(query.FirstOrDefault());
             }
             else
@@ -43,12 +43,12 @@ namespace Yearnly.Web.Controllers
         {
             //Pull the list from the db with the currently logged in user 
             //This makes sure the person trying to save the list is the owner.
-            UserList authenticatedList = this._db.UserLists.Where(ul => ul.Id == list.Id && ul.UserId == WebSecurity.CurrentUserId).FirstOrDefault();
+            UserList authenticatedList = db.UserLists.Where(ul => ul.Id == list.Id && ul.UserId == WebSecurity.CurrentUserId).FirstOrDefault();
             if (authenticatedList != null)
             {
                 authenticatedList.Name = list.Name;
                 authenticatedList.DateUpdated = DateTime.UtcNow;
-                this._db.SaveChanges();
+                db.SaveChanges();
             }
             return RedirectToAction("Lists", "Users");
         }

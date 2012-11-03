@@ -11,11 +11,11 @@ namespace Yearnly.Web.Controllers
     [Authorize]
     public class ItemsController : Controller
     {
-        private YearnlyEntities _db;
+        private YearnlyEntities db;
 
         public ItemsController()
         {
-            this._db = new YearnlyEntities();
+            this.db = new YearnlyEntities();
         }
         public ActionResult Add()
         {
@@ -27,7 +27,7 @@ namespace Yearnly.Web.Controllers
             ActionResult returnView = null;
             if (id.HasValue)
             {
-                var query = _db.UserItems.Where(ui => ui.Id == id && ui.UserId == WebSecurity.CurrentUserId);
+                var query = db.UserItems.Where(ui => ui.Id == id && ui.UserId == WebSecurity.CurrentUserId);
                 returnView = View(query.FirstOrDefault());
             }
             else
@@ -40,14 +40,14 @@ namespace Yearnly.Web.Controllers
         [HttpPost]
         public ActionResult SaveEdit(UserItem input)
         {
-            UserItem authenticatedItem = _db.UserItems.Where(ui => ui.Id == input.Id && ui.UserId == WebSecurity.CurrentUserId).FirstOrDefault();
+            UserItem authenticatedItem = db.UserItems.Where(ui => ui.Id == input.Id && ui.UserId == WebSecurity.CurrentUserId).FirstOrDefault();
             if (authenticatedItem != null)
             {
                 authenticatedItem.Title = input.Title;
                 authenticatedItem.Link = input.Link;
                 authenticatedItem.Description = input.Description;
                 authenticatedItem.DateUpdated = DateTime.UtcNow;
-                _db.SaveChanges();
+                db.SaveChanges();
             }
             return RedirectToAction("Items", "Users");
         }

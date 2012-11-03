@@ -14,12 +14,6 @@ namespace Yearnly.Web
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
-                name: "AddItemAjaxRoute",
-                url: "items/ajaxcreate",
-                defaults: new { controller = "Items", action = "AjaxCreate" }
-                );
-
-            routes.MapRoute(
                 name: "MyItemRoute",
                 url: "items/",
                 defaults: new { controller = "Users", action = "Items" }

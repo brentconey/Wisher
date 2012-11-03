@@ -8,16 +8,13 @@ namespace Yearnly.Model
 {
     public partial class UserProfile
     {
-        public static Boolean DoesUserExists(String userName)
+        public static Boolean DoesUserExists(String userName, YearnlyEntities db)
         {
             Boolean returnValue = false;
-            using (YearnlyEntities db = new YearnlyEntities())
+            UserProfile user = db.UserProfiles.Where(up => up.UserName == userName).FirstOrDefault();
+            if (user != null)
             {
-                UserProfile user = db.UserProfiles.Where(up => up.UserName == userName).FirstOrDefault();
-                if (user != null)
-                {
-                    returnValue = true;
-                }
+                returnValue = true;
             }
             return returnValue;
         }
