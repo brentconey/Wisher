@@ -29,34 +29,44 @@
     @Scripts.Render("~/bundles/modernizr")
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
 </head>
-<body id="home">
-<div class="container">
-        <header id="site_header" class="sixteen columns clearfix">
-            <h1 class="three columns alpha"><a href="">Yearnly</a></h1>
-            <form class="four columns" method="" action="" id="global_search">
-                <input type="text" placeholder="search for lists, items, and friends" id="" />
-            </form>
-            @Html.Partial("_LoginPartial")
-        </header>
 
-        <nav id="global_nav" class="sixteen columns clearfix">
-	        <ul id="site_nav" class="ten columns alpha clearfix">
-		        <li>@Html.ActionLink("home", "Index", "home")</li>
-		        <li>@Html.ActionLink("lists", "Lists", "Users")</li>
-		        <li>@Html.ActionLink("items", "Items", "Users")</li>
-		        <li><a href="">dibs</a></li>
-	        </ul>
-	        <ul id="user_nav" class="six columns omega clearfix">
-		        <li><a href="">notifications</a><span>2</span></li>
-		        <li><a href="">messages</a><span>12</span></li>
-		        <li><a href="">friends</a></li>
-	        </ul>
+
+<body>
+
+    <header class="full-width"><section class="wrap group">
+        <h1>Yearnly</h1>
+        <form method="post" action="" id="global_search">
+            <fieldset>
+                <input type="text" placeholder="search for lists, items, and friends" id="global_search_field" />
+                <input type="submit" value="search" />
+            </fieldset>
+        </form>
+        @Html.Partial("_LoginPartial")
+    </section></header>
+    <section class="wrap group" id="page">
+
+        <nav id="global_nav">
+            <ul id="quick_actions">
+                <li id="qa_list"><a href="">Create a list</a></li>
+                <li id="qa_item"><a href="">Add an item</a></li>
+            </ul>
+            <ul id="site_nav">
+                <li class="current"><a id="nav_home" href="/">Home</a></li>
+                <li><a id="nav_items" href="/items">Items</a></li>
+                <li><a id="nav_lists" href="/lists">Lists</a></li>
+                <li><a id="nav_dibs" href="/dibs">Dibs</a></li>
+                <li><a id="nav_friends" href="/friends">Friends</a></li>
+                <li><a id="nav_friends" href="/messages">Messages</a></li>
+                <li><a id="nav_settings" href="/settings">Settings</a></li>
+            </ul>
         </nav>
 
-		@RenderBody()
+        @RenderBody()
 
-</div><!-- container -->
+    </section><!-- /#page -->
+
     <script src="http://cdn.jquerytools.org/1.2.7/full/jquery.tools.min.js"></script>
     <script src="~/Scripts/yearnly.js"></script>
+
 </body>
 </html>

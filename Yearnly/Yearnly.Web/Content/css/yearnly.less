@@ -1,4 +1,4 @@
-﻿html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{border:0;font-size:100%;font:inherit;vertical-align:baseline;margin:0;padding:0}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:none}table{border-collapse:collapse;border-spacing:0}.group:before,.group:after{content:"";display:table}.group:after{clear:both}.group{zoom:1}strong{font-weight:700}em{font-style:italic}.left{float:left}.right{float:right}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section,html{display:block}
+﻿html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{box-sizing:border-box;border:0;font-size:100%;font:inherit;vertical-align:baseline;margin:0;padding:0}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:none}table{border-collapse:collapse;border-spacing:0}.group:before,.group:after{content:"";display:table}.group:after{clear:both}.group{zoom:1}strong{font-weight:700}em{font-style:italic}.left{float:left}.right{float:right}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section,html{display:block}
 
 /*
 -------------------------------
@@ -6,14 +6,73 @@ MASTHEAD - VARIABLE DECLARATIONS
 -------------------------------
 */
 @main-color:#dd785c;
+	@main-link-color:@main-color;
 @list-color:#79c2ae;
 @item-color:#d9c45b;
+@text:#444;
+	@text-lite:#aaa;
+@textbox-color:#333;
+@textbox-border-color:#ddd;
 
 @main-font: "Bitter","Georgia","Times",serif;
 
 @border-radius:5px;
     @border-radius-small:2px;
 
+@serif: "Bitter","Georgia","Times",serif;
+	@sans: "Lucida Grande","Lucida Sans Unicode","Lucida Sans",Lucida,sans-serif;
+
+
+.subtle-drop-shadow { text-shadow: 0 1px 0 rgba(0,0,0,.2); }
+
+html, body {width:100%;height:100%;}
+body {width:100%;height:100%;}
+
+/*
+	LAYOUT
+*/
+.full-width {width:100%;}
+.wrap {width:70%;margin:0 auto;}
+#page { padding: 20px 0; }
+
+
+/*
+	GENERAL STYLES
+*/
+a:link,
+a:visited { color:@main-link-color;text-decoration:none; }
+a:hover { color: darken(@main-link-color,20%);text-decoration:underline; }
+a:active { color: @text; }
+
+
+label { display: inline-block;padding:0 0 3px 0;color:@text;font-size:12px;font-weight:bold;font-family:@sans; }
+input[type="text"],
+textarea { color:@textbox-color;display:block;padding:6px;font-size:14px;outline:0;border:1px solid @textbox-border-color;width:100%;box-sizing:border-box; }
+
+/*
+	HEADER	
+*/
+header {background: @main-color;color:#fff;height:120px;font-family:@serif;}
+    header a:link,
+    header a:visited { color: #fff;.subtle-drop-shadow; }
+	#sign_out_link { font-size:13px;font-family:@sans; }
+    header .wrap {position:relative;}
+    header h1 { position: absolute; font-size:42px; top: 36px; left: 0; .subtle-drop-shadow;}
+	header h2 { font-size:20px;font-weight:bold;text-transform:capitalize; }
+    #global_search { position:absolute;top:45px;left:180px; }
+        #global_search input[type="submit"] { visibility:hidden; }
+        #global_search input[type="text"] { border-radius:15px;border:none;padding-left:10px;font-weight:bold;width:300px;opacity:.6; }
+        #global_search input[type="text"]:focus,
+		#global_search input[type="text"]:hover { opacity:1.0;-webkit-transition:all .25s ease-in-out; }
+#user_header { position: absolute; top: 45px; right: 0; width:300px;text-align:right;}
+    #user_header img { float:right;margin-left:20px;position:relative; }
+
+#global_nav { width: 20%;float:left;border-right:1px solid #eee; }
+	#quick_actions { padding-bottom: 30px; }
+	#global_nav li a:link,
+	#global_nav li a:visited { color: @text-lite;font-weight:bold;display:block;width:100%;padding:6px 0 6px 6px;border:1px solid transparent;border-right:none; }
+	#global_nav li a:hover { color: @text;border-color:#eee; }
+	#global_nav li.current a { border-color:#eee;color:@text; }
 
 
 /*
@@ -45,8 +104,4 @@ only screen and (-moz-min-device-pixel-ratio: 1.5),
 only screen and (-o-min-device-pixel-ratio: 3/2),
 only screen and (min-device-pixel-ratio: 1.5) {
 
-}
-
-body{
-	background-color: @main-color;
 }
