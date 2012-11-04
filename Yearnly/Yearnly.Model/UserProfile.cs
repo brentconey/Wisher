@@ -18,7 +18,6 @@ namespace Yearnly.Model
         {
             this.UserItems = new HashSet<UserItem>();
             this.UserLists = new HashSet<UserList>();
-            this.webpages_Roles = new HashSet<webpages_Roles>();
         }
     
         public int UserId { get; set; }
@@ -26,6 +25,5 @@ namespace Yearnly.Model
     
         public virtual ICollection<UserItem> UserItems { get; set; }
         public virtual ICollection<UserList> UserLists { get; set; }
-        public virtual ICollection<webpages_Roles> webpages_Roles { get; set; }
     }
 }

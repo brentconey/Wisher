@@ -14,7 +14,7 @@ namespace Yearnly.Web.Controllers
         public ActionResult Index()
         {
             ViewBag.Message = "Get Yearnin'";
-            ViewBag.UserId = WebSecurity.CurrentUserId;
+            //ViewBag.UserId = WebSecurity.CurrentUserId;
             ViewBag.Test = "This is some testing of git hub";
             return View();
         }
