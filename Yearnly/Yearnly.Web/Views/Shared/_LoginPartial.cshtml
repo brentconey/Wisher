@@ -10,8 +10,8 @@
         }
     </text>
 } else {
-    <ul>
-        <li>@Html.ActionLink("Register", "register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
-        <li>@Html.ActionLink("Log in", "login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
-    </ul>
+    <div class="group" id="user_header">
+        <h2>@Html.ActionLink("Register", "register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</h2>
+        <a id="login_link">@Html.ActionLink("Log in", "login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</a>
+    </div>
 }

@@ -3,17 +3,16 @@
     @model List<Yearnly.Model.UserItem>
 }
 
-<h2>Items</h2>
-<p>All your items will be here. If you'd like, you can <a href="/items/add">add one</a>.</p>
+<p>All your items will be here. If you'd like, you can <a class="button" href="/items/add">add one</a>.</p>
 
 <div class="items">
 @foreach (var row in Model)
 {
-    <div class="item four columns">
+    <div class="item group">
         <h3>@row.Title</h3>
         <p>@row.Description</p>
         <p><a href="@row.Link">@row.Link</a></p>
-        <a href="/items/edit/@row.Id">edit</a>
+        <a class="button" href="/items/edit/@row.Id">edit</a>
     </div>
 }
 </div>

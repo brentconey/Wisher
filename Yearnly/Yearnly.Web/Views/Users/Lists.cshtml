@@ -3,15 +3,14 @@
     @model IEnumerable<Yearnly.Model.UserList>
 }
 
-<h2>Lists</h2>
-<p>@ViewBag.username's lists!</p>
+<p>All your lists will be here. If you'd like, you can <a class="button" href="/lists/add">create one</a>.</p>
 
-<ul>
+<div class="lists">
 @foreach (var row in Model)
 {
-    <li>
-            <h3><a href="/lists/edit/@row.Id">@row.Name</a></h3>
-            <h4><span>created by </span><a href="">@row.UserProfile.UserName</a></h4>
-    </li>
+    <div class="list">
+        <h3><a href="/lists/edit/@row.Id">@row.Name</a></h3>
+        <h4><span>created by </span><a href="">@row.UserProfile.UserName</a></h4>
+    </div>
 }
-</ul>
+</div>

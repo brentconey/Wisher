@@ -16,43 +16,41 @@
             <div class="header-with-tools group">
                 <h2>What you've missed&hellip;</h2>
                 <div class="header-tools group">
-                    <label class="tool-label" for="">show me <a href="#">everything</a></label>
-                    <ul class="tool-select">
-                        <li><a href="">items</a></li>
-                        <li><a href="">lists</a></li>
-                        <li><a href="">dibs</a></li>
-                        <li><a href="">friendships</a></li>
+                    <label class="tool-label" for="">showing <a class="tool-select-trigger" href="#">everything</a></label>
+                    <ul class="tool-select hidden">
+                        <li><a class="all-activity-types" href="#">everything</a></li>
+                        <li><a class="activity-type-item" href="#">items</a></li>
+                        <li><a class="activity-type-list" href="#">lists</a></li>
+                        <li><a class="activity-type-dib" href="#">dibs</a></li>
+                        <li><a class="activity-type-friend" href="#">friendships</a></li>
                     </ul>
                 </div>
             </div>
-
+            <ul id="the_feed" class="group">
+                <li class="group activity activity-type-item" id="#_1">
+                    <a href="/brent"><img src="~/Content/css/i/demo_profile_pic.jpg" alt="" /> <span class="feed-name">Brent Coney</span></a> added <a class="item-link" href="#TO_ITEM">iPhone 5</a> to <a class="list-link" href="#TO_LIST">Christmas 2012</a>
+                </li>
+                <li class="group activity activity-type-dib" id="#_1">
+                    <a href="/brent"><img src="~/Content/css/i/demo_profile_pic.jpg" alt="" /> <span class="feed-name">Jordan Little</span></a> called dibs on <a class="item-link" href="#TO_ITEM">Toy Car</a>
+                </li>
+                <li class="group activity activity-type-list" id="#_1">
+                    <a href="/brent"><img src="~/Content/css/i/demo_profile_pic.jpg" alt="" /> <span class="feed-name">Reuben Canada</span></a> created the list <a class="item-link" href="#TO_ITEM">Office Party 2012</a>
+                </li>
+                <li class="group activity activity-type-item" id="#_1">
+                    <a href="/brent"><img src="~/Content/css/i/demo_profile_pic.jpg" alt="" /> <span class="feed-name">Rachel Coney</span></a> added <a class="item-link" href="#TO_ITEM">Sewing Machine</a> to <a class="list-link" href="#TO_LIST">Christmas 2012</a>
+                </li>
+                <li class="group activity activity-type-friend" id="#_1">
+                    <a href="/brent"><img src="~/Content/css/i/demo_profile_pic.jpg" alt="" /> <span class="feed-name">Jordan Little</span></a> is now friends with <a class="item-link" href="#TO_ITEM">Brent Coney</a>
+                </li>
+            </ul>
         </div>        
     </div><!-- /.main -->
 
-	<div class="sixteen columns clearfix add-big-bottom" id="welcome_message">
-		<div class="nine columns alpha">
-			<h6>Welcome&hellip;</h6>
-			<h3>@welcomeName</h3>
-            <p>@ViewBag.Test</p>
-		</div>
-		<div class="five columns offset-by-two omega clearfix" id="quick_actions">
-			<a class="button two columns alpha" rel="" href="/lists/new">create a list</a>
-			<a class="button two columns omega" rel="#add_item_overlay" href="/items/new">add an item</a>
-		</div>
-	</div>
-	
-	<div class="sixteen columns clearfix" id="activity">
-		<div class="eleven columns alpha clearfix">
-			<h6 class="seven columns alpha">Recent Activity</h6>
-			<h6 class="three offset-by-one columns omega">Show <a href="">everything</a>.</h6>
-			<hr />
-			<ul class="full-width clearfix">
-				<li><a href="">Changing</a> this text <a href="">to something else</a>.</li>
-
-			</ul>
-		</div>
-	</div>
-	
-	@Html.Partial("_AddItemOverlay")
-
-</div><!-- container -->
+    <div class="secondary group">
+        <div class="node" id="dash_stats">
+            <hgroup class="stat">
+                <h2>27</h2>
+                <h4>items added</h4>
+            </hgroup>
+        </div><!-- /#dash_stats -->
+    </div><!-- /.secondary -->
