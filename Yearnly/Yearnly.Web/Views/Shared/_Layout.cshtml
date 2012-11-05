@@ -51,13 +51,13 @@
                 <li id="qa_item"><a href="#">Add an item</a></li>
             </ul>
             <ul id="site_nav">
-                <li><a id="nav_home" href="/">Home</a></li>
-                <li><a id="nav_items" href="/items">Items</a></li>
-                <li class="current"><a id="nav_lists" href="/lists">Lists</a></li>
-                <li><a id="nav_dibs" href="/dibs">Dibs</a></li>
-                <li><a id="nav_friends" href="/friends">Friends</a></li>
-                <li><a id="nav_messages" href="/messages">Messages</a></li>
-                <li><a id="nav_settings" href="/settings">Settings</a></li>
+                <li class="@(ViewBag.Title == "Home" ? "current" : "")"><a id="nav_home" href="/">Home</a></li>
+                <li class="@(ViewBag.Title == "Items" ? "current" : "")"><a id="nav_items" href="/items">Items</a></li>
+                <li class="@(ViewBag.Title == "Lists" ? "current" : "")"><a id="nav_lists" href="/lists">Lists</a></li>
+                <li class="@(ViewBag.Title == "Dibs" ? "current" : "")"><a id="nav_dibs" href="/dibs">Dibs</a></li>
+                <li class="@(ViewBag.Title == "Friends" ? "current" : "")"><a id="nav_friends" href="/friends">Friends</a></li>
+                <li class="@(ViewBag.Title == "Messages" ? "current" : "")"><a id="nav_messages" href="/messages">Messages</a></li>
+                <li class="@(ViewBag.Title == "Settings" ? "current" : "")"><a id="nav_settings" href="/settings">Settings</a></li>
             </ul>
         </nav>
 

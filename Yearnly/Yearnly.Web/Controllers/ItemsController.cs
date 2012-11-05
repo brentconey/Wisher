@@ -57,11 +57,9 @@ namespace Yearnly.Web.Controllers
         {
             input.UserId = WebSecurity.CurrentUserId;
             input.DateCreated = DateTime.UtcNow;
-            using (YearnlyEntities context = new YearnlyEntities())
-            {
-                context.UserItems.Add(input);
-                context.SaveChanges();
-            }
+            db.UserItems.Add(input);
+            db.SaveChanges();
+
             return RedirectToAction("index", "items");
         }
 

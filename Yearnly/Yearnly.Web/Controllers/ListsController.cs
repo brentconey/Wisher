@@ -60,11 +60,8 @@ namespace Yearnly.Web.Controllers
             newList.Name = listname;
             newList.UserId = WebSecurity.CurrentUserId;
             newList.DateCreated = DateTime.UtcNow;
-            using (YearnlyEntities context = new YearnlyEntities())
-            {
-                context.UserLists.Add(newList);
-                context.SaveChanges();
-            }
+            db.UserLists.Add(newList);
+            db.SaveChanges();
             return RedirectToAction("Lists", "Users");
         }
     }
