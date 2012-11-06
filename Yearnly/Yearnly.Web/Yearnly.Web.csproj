@@ -194,7 +194,7 @@
     <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\User\Lists.cshtml" />
     <Content Include="Views\User\Items.cshtml" />
-    <Content Include="Views\User\UserNotFound.cshtml" />
+    <Content Include="Views\Shared\UserNotFound.cshtml" />
     <Content Include="Views\Shared\_AddItemOverlay.cshtml" />
     <None Include="Properties\PublishProfiles\Profile.pubxml" />
     <None Include="Properties\PublishProfiles\yearnly - FTP.pubxml" />
