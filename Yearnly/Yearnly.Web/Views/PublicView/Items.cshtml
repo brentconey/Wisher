@@ -1,0 +1,15 @@
+﻿@{
+    ViewBag.Title = "Items";
+    @model List<Yearnly.Model.UserItem>
+}
+
+<div class="items">
+@foreach (var row in Model)
+{
+    <div class="item group">
+        <h3>@row.Title</h3>
+        <p>@row.Description</p>
+        <p><a href="@row.Link">@row.Link</a></p>
+    </div>
+}
+</div>

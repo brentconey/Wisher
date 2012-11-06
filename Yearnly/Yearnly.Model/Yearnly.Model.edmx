@@ -6,6 +6,7 @@
     <edmx:StorageModels>
     <Schema Namespace="YearnlyModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityContainer Name="YearnlyModelStoreContainer">
+          <EntitySet Name="Friend" EntityType="YearnlyModel.Store.Friend" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="UserItem" EntityType="YearnlyModel.Store.UserItem" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="UserList" EntityType="YearnlyModel.Store.UserList" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="UserProfile" EntityType="YearnlyModel.Store.UserProfile" store:Type="Tables" Schema="dbo" />
@@ -18,6 +19,14 @@
             <End Role="UserList" EntitySet="UserList" />
           </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Friend">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="FriendId" Type="int" Nullable="false" />
+          <Property Name="DateAdded" Type="datetime" Nullable="false" />
+        </EntityType>
         <EntityType Name="UserItem">
           <Key>
             <PropertyRef Name="Id" />
@@ -87,7 +96,8 @@
             <End Role="UserProfile" EntitySet="UserProfiles" />
             <End Role="UserList" EntitySet="UserLists" />
           </AssociationSet>
-        </EntityContainer>
+          <EntitySet Name="Friends" EntityType="YearnlyModel.Friend" />
+          </EntityContainer>
         <EntityType Name="UserItem">
           <Key>
             <PropertyRef Name="Id" />
@@ -120,7 +130,7 @@
           <Property Name="UserName" Type="String" Nullable="false" MaxLength="56" Unicode="true" FixedLength="false" />
           <NavigationProperty Name="UserItems" Relationship="YearnlyModel.FK_ItemToUser" FromRole="UserProfile" ToRole="UserItem" />
           <NavigationProperty Name="UserLists" Relationship="YearnlyModel.FK_ListToUser" FromRole="UserProfile" ToRole="UserList" />
-        </EntityType>
+          </EntityType>
         <Association Name="FK_ItemToUser">
           <End Role="UserProfile" Type="YearnlyModel.UserProfile" Multiplicity="1" />
           <End Role="UserItem" Type="YearnlyModel.UserItem" Multiplicity="*" />
@@ -145,7 +155,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        <EntityType Name="Friend">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Type="Int32" Name="UserId" Nullable="false" />
+          <Property Type="Int32" Name="FriendId" Nullable="false" />
+          <Property Type="DateTime" Name="DateAdded" Nullable="false" Precision="3" />
+        </EntityType>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -180,6 +198,15 @@
               <MappingFragment StoreEntitySet="UserProfile">
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Friends">
+            <EntityTypeMapping TypeName="YearnlyModel.Friend">
+              <MappingFragment StoreEntitySet="Friend">
+                <ScalarProperty Name="DateAdded" ColumnName="DateAdded" />
+                <ScalarProperty Name="FriendId" ColumnName="FriendId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

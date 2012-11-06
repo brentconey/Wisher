@@ -4,13 +4,14 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="6f8d5a3f8ff7418a8e8b9274145228ed" Name="Diagram1">
+      <Diagram DiagramId="6f8d5a3f8ff7418a8e8b9274145228ed" Name="Diagram1" ZoomLevel="110">
         <EntityTypeShape EntityType="YearnlyModel.UserItem" Width="1.5" PointX="6.75" PointY="0.625" IsExpanded="true" />
         <EntityTypeShape EntityType="YearnlyModel.UserList" Width="1.5" PointX="10" PointY="2.25" IsExpanded="true" />
         <EntityTypeShape EntityType="YearnlyModel.UserProfile" Width="1.5" PointX="3" PointY="2.875" IsExpanded="true" />
         <AssociationConnector Association="YearnlyModel.FK_ItemToUser" ManuallyRouted="false" />
         <AssociationConnector Association="YearnlyModel.FK_ListToUser" ManuallyRouted="false" />
-      </Diagram>
+        <EntityTypeShape EntityType="YearnlyModel.Friend" Width="1.5" PointX="12.5" PointY="2.5" />
+        </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

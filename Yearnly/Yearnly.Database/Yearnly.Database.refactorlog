@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="6fed0f54-79a4-4c43-a927-cf6628dcbd08" ChangeDateTime="11/06/2012 02:23:15">
+    <Property Name="ElementName" Value="[dbo].[Friend].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Friend]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="UserId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="2e0f641d-fc21-47af-bb9e-01b2d506e455" ChangeDateTime="11/06/2012 02:24:22">
+    <Property Name="ElementName" Value="[dbo].[FK_Friend_ToTable]" />
+    <Property Name="ElementType" Value="SqlForeignKeyConstraint" />
+    <Property Name="ParentElementName" Value="[dbo].[Friend]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[FK_Friend_UserProfile]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="6a4db222-1ee1-4a15-86fa-626d58e4ccdd" ChangeDateTime="11/06/2012 03:43:16">
+    <Property Name="ElementName" Value="[dbo].[Friend].[UserId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Friend]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="FriendId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="31213803-4522-4209-9a28-b50ba2f9e494" ChangeDateTime="11/06/2012 03:43:20">
+    <Property Name="ElementName" Value="[dbo].[Friend].[FriendId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Friend]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="UserId" />
+  </Operation>
+</Operations>

@@ -28,5 +28,6 @@ namespace Yearnly.Model
         public DbSet<UserItem> UserItems { get; set; }
         public DbSet<UserList> UserLists { get; set; }
         public DbSet<UserProfile> UserProfiles { get; set; }
+        public DbSet<Friend> Friends { get; set; }
     }
 }

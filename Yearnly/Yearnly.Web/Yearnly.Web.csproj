@@ -171,7 +171,8 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ItemsController.cs" />
     <Compile Include="Controllers\ListsController.cs" />
-    <Compile Include="Controllers\UsersController.cs" />
+    <Compile Include="Controllers\PublicViewController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -190,14 +191,18 @@
     <Content Include="Views\Lists\Edit.cshtml" />
     <Content Include="Views\Lists\Add.cshtml" />
     <Content Include="Views\Items\Edit.cshtml" />
-    <Content Include="Views\Users\Index.cshtml" />
-    <Content Include="Views\Users\Lists.cshtml" />
-    <Content Include="Views\Users\Items.cshtml" />
-    <Content Include="Views\Users\UserNotFound.cshtml" />
+    <Content Include="Views\User\Index.cshtml" />
+    <Content Include="Views\User\Lists.cshtml" />
+    <Content Include="Views\User\Items.cshtml" />
+    <Content Include="Views\User\UserNotFound.cshtml" />
     <Content Include="Views\Shared\_AddItemOverlay.cshtml" />
     <None Include="Properties\PublishProfiles\Profile.pubxml" />
     <None Include="Properties\PublishProfiles\yearnly - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\yearnly - Web Deploy.pubxml" />
+    <Content Include="Views\User\Friends.cshtml" />
+    <Content Include="Views\PublicView\Index.cshtml" />
+    <Content Include="Views\PublicView\Lists.cshtml" />
+    <Content Include="Views\PublicView\Items.cshtml" />
     <None Include="_AppStart.cshtml" />
   </ItemGroup>
   <ItemGroup>
