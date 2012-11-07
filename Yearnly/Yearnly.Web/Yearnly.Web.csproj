@@ -184,6 +184,7 @@
     <Content Include="Content\css\i\apple-touch-icon.png" />
     <Content Include="Content\css\i\demo_profile_pic.jpg" />
     <Content Include="Content\css\i\favicon.ico" />
+    <Content Include="Content\css\i\site_nav_sprite.png" />
     <Content Include="Content\css\yearnly.less" />
     <Content Include="Scripts\Items\AddItem.js" />
     <Content Include="Scripts\yearnly.js" />
