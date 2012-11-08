@@ -1,18 +1,27 @@
 ﻿@{
     ViewBag.Title = "Items";
+    ViewBag.Section = "Items";
     @model List<Yearnly.Model.UserItem>
 }
 
 <p>All your items will be here. If you'd like, you can <a class="button" href="/items/add">add one</a>.</p>
 
 <div class="items">
-@foreach (var row in Model)
-{
-    <div class="item group">
-        <h3>@row.Title</h3>
-        <p>@row.Description</p>
-        <p><a href="@row.Link">@row.Link</a></p>
-        <a class="button" href="/items/edit/@row.Id">edit</a>
-    </div>
-}
+    @foreach (var row in Model)
+    {
+        <div class="item group">
+            <div class="item-guts">
+                <h3 class="item-title">@row.Title</h3>
+                <a class="item-link" href="@row.Link">@row.Link</a>
+                <p class="item-description">@row.Description</p>
+                <a class="button item-edit-link" href="/items/edit/@row.Id">edit</a>
+            </div>
+            <div class="item-meta group">
+                <ul>
+                    <li><a href="#" class="call-dibs">call dibs</a></li>
+                    <li><a href="#" class="open-comments">comment</a></li>
+                </ul>
+            </div>
+        </div>
+    }
 </div>

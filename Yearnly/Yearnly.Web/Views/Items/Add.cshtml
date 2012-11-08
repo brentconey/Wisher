@@ -1,5 +1,6 @@
 ﻿@{
     ViewBag.Title = "Add an item";
+    ViewBag.Section = "Items";
 }
 <h2>Add an item</h2>
 
@@ -10,7 +11,7 @@
     <input type="submit" value="Submit" />
 </form>
 
-<h3>Live updating stuff from knockout:</h3>
+<h3>Item preview:</h3>
 <p data-bind="text: itemBuilder"></p>
 
 <script src="~/Scripts/Items/AddItem.js"></script>

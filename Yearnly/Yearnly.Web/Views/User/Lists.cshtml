@@ -1,17 +1,25 @@
 ﻿@{
     ViewBag.Title = "Lists";
+    ViewBag.Section = "Lists";
     @model IEnumerable<Yearnly.Model.UserList>
 }
 
 <p>All your lists will be here. If you'd like, you can <a class="button" href="/lists/add">create one</a>.</p>
-<h2>Testing</h2>
 
-<div class="lists">
-@foreach (var row in Model)
-{
-    <div class="list">
-        <h3><a href="/lists/edit/@row.Id">@row.Name</a></h3>
-        <h4><span>created by </span><a href="">@row.UserProfile.UserName</a></h4>
-    </div>
-}
+
+<h2>Lists you've created&hellip;</h2>
+
+<div class="lists group">
+    @foreach (var row in Model)
+    {
+        <div class="list">
+            <div class="list-guts">
+                <h3 class="list-title">@row.Name</h3>
+                
+                <a class="list-edit-link button" href="/lists/edit@row.Id">edit</a>
+            </div>
+        </div>
+    }
 </div>
+
+<h2>Lists you're subscribed to&hellip;</h2>
