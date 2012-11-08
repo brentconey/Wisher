@@ -10,7 +10,9 @@
         <EntityTypeShape EntityType="YearnlyModel.UserProfile" Width="1.5" PointX="3" PointY="2.875" IsExpanded="true" />
         <AssociationConnector Association="YearnlyModel.FK_ItemToUser" ManuallyRouted="false" />
         <AssociationConnector Association="YearnlyModel.FK_ListToUser" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="YearnlyModel.Friend" Width="1.5" PointX="12.5" PointY="2.5" />
+        <EntityTypeShape EntityType="YearnlyModel.Friend" Width="1.5" PointX="5.5" PointY="4.75" IsExpanded="true" />
+        <AssociationConnector Association="YearnlyModel.FK_Friend_ToUserProfile" />
+        <AssociationConnector Association="YearnlyModel.FK_User_ToUserProfile" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

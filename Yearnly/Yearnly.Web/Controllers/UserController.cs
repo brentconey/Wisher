@@ -52,7 +52,7 @@ namespace Yearnly.Web.Controllers
 
         public ActionResult Friends()
         {
-            return View(loggedInUser.GetFriends(db));
+            return View(loggedInUser.Friends.ToList());
         }
 
     }

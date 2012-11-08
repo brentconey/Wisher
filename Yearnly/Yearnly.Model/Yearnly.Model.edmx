@@ -10,6 +10,10 @@
           <EntitySet Name="UserItem" EntityType="YearnlyModel.Store.UserItem" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="UserList" EntityType="YearnlyModel.Store.UserList" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="UserProfile" EntityType="YearnlyModel.Store.UserProfile" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_Friend_ToUserProfile" Association="YearnlyModel.Store.FK_Friend_ToUserProfile">
+            <End Role="UserProfile" EntitySet="UserProfile" />
+            <End Role="Friend" EntitySet="Friend" />
+          </AssociationSet>
           <AssociationSet Name="FK_ItemToUser" Association="YearnlyModel.Store.FK_ItemToUser">
             <End Role="UserProfile" EntitySet="UserProfile" />
             <End Role="UserItem" EntitySet="UserItem" />
@@ -18,10 +22,15 @@
             <End Role="UserProfile" EntitySet="UserProfile" />
             <End Role="UserList" EntitySet="UserList" />
           </AssociationSet>
+          <AssociationSet Name="FK_User_ToUserProfile" Association="YearnlyModel.Store.FK_User_ToUserProfile">
+            <End Role="UserProfile" EntitySet="UserProfile" />
+            <End Role="Friend" EntitySet="Friend" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Friend">
           <Key>
             <PropertyRef Name="UserId" />
+            <PropertyRef Name="FriendId" />
           </Key>
           <Property Name="UserId" Type="int" Nullable="false" />
           <Property Name="FriendId" Type="int" Nullable="false" />
@@ -56,6 +65,18 @@
           <Property Name="UserId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="UserName" Type="nvarchar" Nullable="false" MaxLength="56" />
         </EntityType>
+        <Association Name="FK_Friend_ToUserProfile">
+          <End Role="UserProfile" Type="YearnlyModel.Store.UserProfile" Multiplicity="1" />
+          <End Role="Friend" Type="YearnlyModel.Store.Friend" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserProfile">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Friend">
+              <PropertyRef Name="FriendId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_ItemToUser">
           <End Role="UserProfile" Type="YearnlyModel.Store.UserProfile" Multiplicity="1" />
           <End Role="UserItem" Type="YearnlyModel.Store.UserItem" Multiplicity="*" />
@@ -80,6 +101,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_User_ToUserProfile">
+          <End Role="UserProfile" Type="YearnlyModel.Store.UserProfile" Multiplicity="1" />
+          <End Role="Friend" Type="YearnlyModel.Store.Friend" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserProfile">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Friend">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
@@ -97,6 +130,14 @@
             <End Role="UserList" EntitySet="UserLists" />
           </AssociationSet>
           <EntitySet Name="Friends" EntityType="YearnlyModel.Friend" />
+          <AssociationSet Name="FK_Friend_ToUserProfile" Association="YearnlyModel.FK_Friend_ToUserProfile">
+            <End Role="UserProfile" EntitySet="UserProfiles" />
+            <End Role="Friend" EntitySet="Friends" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_ToUserProfile" Association="YearnlyModel.FK_User_ToUserProfile">
+            <End Role="UserProfile" EntitySet="UserProfiles" />
+            <End Role="Friend" EntitySet="Friends" />
+          </AssociationSet>
           </EntityContainer>
         <EntityType Name="UserItem">
           <Key>
@@ -130,6 +171,7 @@
           <Property Name="UserName" Type="String" Nullable="false" MaxLength="56" Unicode="true" FixedLength="false" />
           <NavigationProperty Name="UserItems" Relationship="YearnlyModel.FK_ItemToUser" FromRole="UserProfile" ToRole="UserItem" />
           <NavigationProperty Name="UserLists" Relationship="YearnlyModel.FK_ListToUser" FromRole="UserProfile" ToRole="UserList" />
+          <NavigationProperty Name="Friends" Relationship="YearnlyModel.FK_User_ToUserProfile" FromRole="UserProfile" ToRole="Friend" />
           </EntityType>
         <Association Name="FK_ItemToUser">
           <End Role="UserProfile" Type="YearnlyModel.UserProfile" Multiplicity="1" />
@@ -158,11 +200,37 @@
         <EntityType Name="Friend">
           <Key>
             <PropertyRef Name="UserId" />
+            <PropertyRef Name="FriendId" />
           </Key>
           <Property Type="Int32" Name="UserId" Nullable="false" />
           <Property Type="Int32" Name="FriendId" Nullable="false" />
           <Property Type="DateTime" Name="DateAdded" Nullable="false" Precision="3" />
+          <NavigationProperty Name="FriendProfile" Relationship="YearnlyModel.FK_Friend_ToUserProfile" FromRole="Friend" ToRole="UserProfile" />
         </EntityType>
+        <Association Name="FK_Friend_ToUserProfile">
+          <End Type="YearnlyModel.UserProfile" Role="UserProfile" Multiplicity="1" />
+          <End Type="YearnlyModel.Friend" Role="Friend" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserProfile">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Friend">
+              <PropertyRef Name="FriendId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_ToUserProfile">
+          <End Type="YearnlyModel.UserProfile" Role="UserProfile" Multiplicity="1" />
+          <End Type="YearnlyModel.Friend" Role="Friend" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserProfile">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Friend">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->

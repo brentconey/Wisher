@@ -17,5 +17,7 @@ namespace Yearnly.Model
         public int UserId { get; set; }
         public int FriendId { get; set; }
         public System.DateTime DateAdded { get; set; }
+    
+        public virtual UserProfile FriendProfile { get; set; }
     }
 }

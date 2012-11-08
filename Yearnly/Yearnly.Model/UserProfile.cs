@@ -18,6 +18,7 @@ namespace Yearnly.Model
         {
             this.UserItems = new HashSet<UserItem>();
             this.UserLists = new HashSet<UserList>();
+            this.Friends = new HashSet<Friend>();
         }
     
         public int UserId { get; set; }
@@ -25,5 +26,6 @@ namespace Yearnly.Model
     
         public virtual ICollection<UserItem> UserItems { get; set; }
         public virtual ICollection<UserList> UserLists { get; set; }
+        public virtual ICollection<Friend> Friends { get; set; }
     }
 }

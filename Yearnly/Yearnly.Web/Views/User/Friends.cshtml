@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Yearnly.Model.UserProfile>
+﻿@model IEnumerable<Yearnly.Model.Friend>
 
 @{
     ViewBag.Title = "Friends";
@@ -11,7 +11,7 @@
     <ul>
 @foreach (var row in Model)
 {
-    <li><a href="/@row.UserName">@row.UserName</a></li>
+    <li>The Friend Profile is: @row.FriendProfile.UserName</li>
 }
         </ul>
 </div>
