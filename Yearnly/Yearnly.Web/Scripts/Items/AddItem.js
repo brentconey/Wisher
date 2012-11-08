@@ -1,30 +1,37 @@
-﻿$(function () {
-    $("#AddItem").click(function (e) {
-        e.preventDefault();
-        var title = $("#itemTitle").val();
-        var link = $("#itemLink").val();
-        var desc = $("#itemDesc").val();
+﻿function ItemModel() {
+    var self = this;
+    self.itemTitle = ko.observable('');
+    self.itemLink = ko.observable('');
+    self.itemDescription = ko.observable('');
 
+    self.itemBuilder = ko.computed(function () {
+        return "Title: " + self.itemTitle() + " Link: " + self.itemLink() + " Description: " + self.itemDescription();
+    }, this);
+
+    self.addItem = function () {
         $.ajax({
             type: "POST",
-            url: "items/ajaxcreate",
+            url: "ajaxcreate",
             data: {
-                Title: title,
-                Link: link,
-                Description: desc
+                Title: self.itemTitle(),
+                Link: self.itemLink(),
+                Description: self.itemDescription()
             },
             success: function (result) {
                 if (result == "True") {
                     alert("Item created");
-                    $(document).trigger("click");
+                    self.itemTitle('');
+                    self.itemLink('');
+                    self.itemDescription('');
                 } else {
                     alert("ERROR");
-                    $(document).trigger("click");
                 }
             },
             error: function (result) {
                 alert("Error ocurred");
             }
         });
-    });
-});
+    };
+}
+
+ko.applyBindings(new ItemModel());

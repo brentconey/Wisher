@@ -11,7 +11,7 @@
     <ul>
 @foreach (var row in Model)
 {
-    <li>The Friend Profile is: @row.FriendProfile.UserName</li>
+    <li>The Friend Profile is: <a href="/@row.FriendProfile.UserName">@row.FriendProfile.UserName</a></li>
 }
-        </ul>
+    </ul>
 </div>

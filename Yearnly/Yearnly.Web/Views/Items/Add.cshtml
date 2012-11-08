@@ -1,12 +1,16 @@
 ﻿@{
     ViewBag.Title = "Add an item";
 }
-
 <h2>Add an item</h2>
 
-<form action="/items/create" id="add_item_form" class="five columns alpha" method="post">
-    <input type="text" placeholder="Item title..." name="Title" id="" />
-    <input type="text" placeholder="Link to item..." name="Link" id="" />
-    <textarea placeholder="Description" name="Description" id=""></textarea>
+<form data-bind="submit: addItem" id="add_item_form">
+    <input type="text" placeholder="Item title..." name="Title" data-bind="value: itemTitle, valueUpdate: 'keyup'" id="" />
+    <input type="text" placeholder="Link to item..." name="Link" data-bind="value: itemLink, valueUpdate: 'keyup'" id="" />
+    <textarea placeholder="Description" name="Description" id="" data-bind="value: itemDescription, valueUpdate: 'keyup'"></textarea>
     <input type="submit" value="Submit" />
 </form>
+
+<h3>Live updating stuff from knockout:</h3>
+<p data-bind="text: itemBuilder"></p>
+
+<script src="~/Scripts/Items/AddItem.js"></script>

@@ -168,6 +168,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\FriendsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ItemsController.cs" />
     <Compile Include="Controllers\ListsController.cs" />
@@ -187,6 +188,8 @@
     <Content Include="Content\css\i\site_nav_sprite.png" />
     <Content Include="Content\css\yearnly.less" />
     <Content Include="Scripts\Items\AddItem.js" />
+    <Content Include="Scripts\knockout-2.2.0.debug.js" />
+    <Content Include="Scripts\knockout-2.2.0.js" />
     <Content Include="Scripts\yearnly.js" />
     <Content Include="Views\Items\Add.cshtml" />
     <Content Include="Views\Lists\Edit.cshtml" />
