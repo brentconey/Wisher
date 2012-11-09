@@ -9,10 +9,12 @@
 
 
 <div class="friends">
-    <ul>
-@foreach (var row in Model)
-{
-    <li>The Friend Profile is: <a href="/@row.FriendProfile.UserName">@row.FriendProfile.UserName</a></li>
-}
-    </ul>
+    @foreach (var row in Model)
+    {
+        <div class="friend">
+            <div class="friend-guts">
+                <h2><a href="/@row.FriendProfile.UserName">@row.FriendProfile.UserName</a></h2>
+            </div>
+        </div>
+    }
 </div>

@@ -8,6 +8,7 @@ using System.Web.Security;
 
 namespace Yearnly.Web.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
 

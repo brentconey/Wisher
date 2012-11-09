@@ -212,6 +212,9 @@
     <Content Include="Views\Shared\_HtmlHead.cshtml" />
     <Content Include="Views\Shared\_PrivateNav.cshtml" />
     <Content Include="Views\Shared\_Footer.cshtml" />
+    <Content Include="Views\Shared\_SiteHeader.cshtml" />
+    <Content Include="Views\Shared\_LoginLayout.cshtml" />
+    <Content Include="Views\Shared\_RegistrationLayout.cshtml" />
     <None Include="_AppStart.cshtml" />
   </ItemGroup>
   <ItemGroup>

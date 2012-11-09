@@ -62,7 +62,7 @@ namespace Yearnly.Web.Controllers
             newList.DateCreated = DateTime.UtcNow;
             db.UserLists.Add(newList);
             db.SaveChanges();
-            return RedirectToAction("Lists", "Users");
+            return RedirectToAction("Index", "Lists");
         }
     }
 }
