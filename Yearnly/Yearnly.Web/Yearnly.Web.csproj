@@ -173,6 +173,7 @@
     <Compile Include="Controllers\ItemsController.cs" />
     <Compile Include="Controllers\ListsController.cs" />
     <Compile Include="Controllers\PublicViewController.cs" />
+    <Compile Include="Controllers\SiteController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
@@ -215,6 +216,10 @@
     <Content Include="Views\Shared\_SiteHeader.cshtml" />
     <Content Include="Views\Shared\_LoginLayout.cshtml" />
     <Content Include="Views\Shared\_RegistrationLayout.cshtml" />
+    <Content Include="Views\PublicView\Friends.cshtml" />
+    <Content Include="Views\Site\About.cshtml" />
+    <Content Include="Views\Site\Features.cshtml" />
+    <Content Include="Views\Site\Support.cshtml" />
     <None Include="_AppStart.cshtml" />
   </ItemGroup>
   <ItemGroup>

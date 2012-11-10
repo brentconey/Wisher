@@ -14,6 +14,30 @@ namespace Yearnly.Web
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                name: "RegisterRoute",
+                url: "register/",
+                defaults: new { controller = "Account", action = "Register" }
+                );
+
+            routes.MapRoute(
+                name: "AboutSiteRoute",
+                url: "about/",
+                defaults: new { controller = "Site", action = "About" }
+                );
+
+            routes.MapRoute(
+                name: "SiteFeaturesRoute",
+                url: "about/features",
+                defaults: new { controller = "Site", action = "Features" }
+                );
+
+            routes.MapRoute(
+                name: "SiteSupportRoute",
+                url: "about/support",
+                defaults: new { controller = "Site", action = "Support" }
+                );
+
+            routes.MapRoute(
                 name: "MyFriendsRoute",
                 url: "friends/",
                 defaults: new { controller = "User", action = "Friends" }
@@ -38,9 +62,21 @@ namespace Yearnly.Web
                 );
 
             routes.MapRoute(
+                name: "FriendSpecificListRoute",
+                url: "{username}/lists/{listParseString}",
+                defaults: new { controller = "PublicView", action = "Lists" }
+                );
+
+            routes.MapRoute(
                 name: "FriendItemRoute",
                 url: "{username}/items",
                 defaults: new { controller = "PublicView", action = "Items" }
+                );
+
+            routes.MapRoute(
+                name: "FriendFriendsRoute",
+                url: "{username}/friends",
+                defaults: new { controller = "PublicView", action = "Friends" }
                 );
 
             routes.MapRoute(

@@ -19,7 +19,7 @@ namespace Yearnly.Web.Controllers
         public ActionResult Index(string username)
         {
             UserProfile user = UserProfile.LoadUserByUserName(username, db);
-            if (user.UserName != null)
+            if (!String.IsNullOrEmpty(user.UserName))
             {
                 ViewBag.UserName = user.UserName;
                 return View();
@@ -27,10 +27,10 @@ namespace Yearnly.Web.Controllers
             return View("UserNotFound");
         }
 
-        public ActionResult Lists(string username)
+        public ActionResult Lists(string username, string listParseString)
         {
             UserProfile user = UserProfile.LoadUserByUserName(username, db);
-            if (user.UserName != null)
+            if (!String.IsNullOrEmpty(user.UserName))
             {
                 return View(user.UserLists.ToList());
             }
@@ -41,9 +41,21 @@ namespace Yearnly.Web.Controllers
         public ActionResult Items(string username)
         {
             UserProfile user = UserProfile.LoadUserByUserName(username, db);
-            if (user.UserName != null)
+            if (!String.IsNullOrEmpty(user.UserName))
             {
                 return View(user.UserItems.ToList());
+            }
+
+            return View("UserNotFound");
+        }
+
+        public ActionResult Friends(string username)
+        {
+            UserProfile user = UserProfile.LoadUserByUserName(username, db);
+            if (!String.IsNullOrEmpty(user.UserName))
+            {
+                ViewBag.UserName = user.UserName;
+                return View(user.Friends.ToList());
             }
 
             return View("UserNotFound");
