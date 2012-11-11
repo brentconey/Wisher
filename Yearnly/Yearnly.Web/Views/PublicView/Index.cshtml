@@ -2,5 +2,33 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
-<p>This is the public profile for @ViewBag.UserName!</p>
+<div class="profile group">
+    <div class="profile-head group">
+        <h1 class="left">@ViewBag.UserName</h1>
+        <a class="button right" href="">add friend</a>
+    </div>
+
+    <div class="profile-nav">
+        <ul>
+            <li><a href="">profile</a></li>
+            <li><a href="">12 items</a></li>
+            <li><a href="">2 lists</a></li>
+        </ul>
+    </div>
+
+    <div class="profile-info">
+        <div class="profile-info-item group">
+            <h3 class="profile-info-item-heading">address:</h3>
+            <div class="profile-info-item-content">
+                <p>920 Scott St, C<br />Little Rock, AR 72202</p>
+            </div>
+        </div>
+        <div class="profile-info-item group">
+            <h3 class="profile-info-item-heading">interests:</h3>
+            <div class="profile-info-item-content">
+                <p>computers, electronics, scuba diving, cars, driving, soccer</p>
+            </div>
+        </div>
+    </div>
+
+</div>

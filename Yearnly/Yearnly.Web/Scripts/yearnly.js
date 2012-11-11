@@ -1,4 +1,5 @@
-$(function(){
+$(function () {
+
 	
     $('.tool-select-trigger').click(function (e) {
         $(this).parents('.header-tools').find('.tool-select').toggle();
@@ -21,5 +22,14 @@ $(function(){
         $(this).parents('.tool-select').toggle();
         e.preventDefault();
     });
+
+    // TEMPORARY JS FOR COMMENTS
+    $('.open-comments').click(function () {
+        $(this).parents('.item-meta').find('.comments-container').fadeToggle(200);
+        $(this).toggleClass('toggled');
+        preventDefault();
+    });
+
+
 	
 });

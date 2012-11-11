@@ -4,16 +4,23 @@
     @model Yearnly.Model.UserItem
 }
 
-<h2>Edit</h2>
-@if(Model != null)
+<h1>Editing @Model.Title</h1>
+
+@if (Model != null)
 {
-<form action="/items/saveedit" id="edit_item_form" class="five columns alpha" method="post">
-    <input type="hidden" name="Id" value="@Model.Id" />
-    <input type="text" value="@Model.Title" name="Title" id="" />
-    <input type="text" value="@Model.Link" name="Link" id="" />
-    <textarea placeholder="Description" name="Description" id="">@Model.Description</textarea>
-    <input type="submit" value="Submit" />
-</form>
-}else{
+    <form action="/items/saveedit" id="edit_item_form" class="five columns alpha" method="post">
+        <input type="hidden" name="Id" value="@Model.Id" />
+        <input type="text" value="@Model.Title" name="Title" id="" />
+        <input type="text" value="@Model.Link" name="Link" id="" />
+        <textarea placeholder="Description" name="Description" id="">@Model.Description</textarea>
+        <fieldset class="group">
+            <label class="left" for="make_item_private">
+                <input type="checkbox" name="make_item_private" id="make_item_private" />Hide this item from everyone but me</label>
+            <input type="submit" class="button right" value="Submit" />
+        </fieldset>
+    </form>
+}
+else
+{
     <p>No item to edit.</p>   
 }

@@ -1,10 +1,16 @@
 ﻿@{
-    ViewBag.Title = "Add";
-    ViewBag.Title = "Lists";
+    ViewBag.Title = "Create a new list...";
+    ViewBag.Section = "AddList";
 }
 
-<h2>Add new List</h2>
+<h1>Create a list</h1>
+
 <form action="/lists/create/" method="post">
-    <input placeholder="name" name="listname" />
-    <input type="submit" value="Add List" />
+    <fieldset class="group">
+        <label for="listname">List Title</label>
+        <input placeholder="ex: Christmas List 2012" type="text" name="listname" />
+    </fieldset>
+    <fieldset class="group">
+        <input type="submit" class="button" value="Add List" />
+    </fieldset>
 </form>
