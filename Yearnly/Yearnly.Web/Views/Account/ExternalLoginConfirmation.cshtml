@@ -1,6 +1,7 @@
 ﻿@model Yearnly.Web.Models.RegisterExternalLoginModel
 @{
     ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_RegistrationLayout.cshtml";
 }
 
 <hgroup class="title">
@@ -29,8 +30,4 @@
         @Html.HiddenFor(m => m.ExternalLoginData)
         <input type="submit" value="Register" />
     </fieldset>
-}
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
 }
