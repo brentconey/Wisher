@@ -5,8 +5,11 @@
     ViewBag.Section = "Friends";
 }
 
-<input type="text" id="friend_search" placeholder="search for friends..." data-bind="value: searchText, submit: searchFriends" />
-<div id="search_results" data-bind="html: searchResults"></div>
+<div class="friends-search-container">
+    <input type="text" class="friends-search" placeholder="search for friends..." data-bind="value: searchText, submit: searchFriends" />
+    <ul class="friends-search-list" data-bind="html: searchResults">
+    </ul>
+</div>
 
 <div class="friends">
     @foreach (var row in Model)

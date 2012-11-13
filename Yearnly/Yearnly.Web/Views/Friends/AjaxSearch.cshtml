@@ -5,5 +5,9 @@
 
 @foreach (var row in Model)
 {
-    <p>@row.UserName</p>
+    <li class="group friend">
+        <span class="friend-name">@row.FirstName @row.LastName</span>
+        <span class="friend-username">@row.UserName</span>
+        <a class="add-friend button right" href="#">send friend request</a>
+    </li>
 }

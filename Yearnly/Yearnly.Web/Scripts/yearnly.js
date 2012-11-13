@@ -25,7 +25,7 @@ $(function () {
 
     // TEMPORARY JS FOR COMMENTS
     $('.open-comments').click(function () {
-        $(this).parents('.item-meta').find('.comments-container').fadeToggle(200);
+        $(this).parents('.item-meta').find('.comments-container').toggle();
         $(this).toggleClass('toggled');
         preventDefault();
     });

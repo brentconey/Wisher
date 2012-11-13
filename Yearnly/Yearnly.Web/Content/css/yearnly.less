@@ -10,7 +10,7 @@ MASTHEAD - VARIABLE DECLARATIONS
 @list-color				:		#79c2ae;
 @item-color				:		#d9c45b;
 @whisper				:		#ebf5fb;
-@text					:		#444;
+@text					:		#222;
 	@text-lite			:		#aaa;
 @textbox-color			:		#333;
 @textbox-border-color	:		#ddd;
@@ -125,8 +125,6 @@ header {background:#fff;color:@main-color;font-family:@serif;}
 	.tool-select {position:absolute;top:-10px;right:0;z-index:99;background:#fff;box-shadow:0 0 10px rgba(0,0,0,.25);}
 		.tool-select a {display:block;padding:9px;width:100%;height:100%;font-size:14px;color:@text;font-family:@sans;font-weight:bold;}
 
-
-
 .activity {position:relative;margin-bottom:20px;}
 	.activity img {vertical-align:middle;margin-right:15px;}
 
@@ -137,7 +135,8 @@ header {background:#fff;color:@main-color;font-family:@serif;}
 
 
 .items {padding-top:20px;margin:0 0 30px 0;}
-.item {float:left;width:45%;padding:0;background:#fff;border:1px solid #ccc;box-shadow:0 1px 1px rgba(0,0,0,.1);margin:0 20px 20px 0;height:180px;position:relative;}
+.item {float:left;width:45%;padding:0;background:#fff;border:1px solid #ccc;box-shadow:0 1px 1px rgba(0,0,0,.1);margin:0 0 50px 0;height:180px;position:relative;}
+	.item:nth-child(even) {float:right;}
 	.item-guts {padding:18px 20px;}
 	.item-edit-link {position:absolute;top:-10px;left:-10px;font-size:11px;opacity:.05;-webkit-transition:opacity .4s ease-in-out;}
 		.item:hover .item-edit-link {opacity:1;}
@@ -152,13 +151,14 @@ header {background:#fff;color:@main-color;font-family:@serif;}
 				.item-meta > ul > li > a.toggled:hover {background:#fff;border-color:#999;}
 
 .comments-container {position:absolute;border-radius:5px;top:169px;width:110%;left:-16px;background:#fff;border:1px solid #999;z-index:9;display:none;padding:10px;box-shadow:0 3px 7px rgba(0,0,0,.2);}
-	.comments-guts {padding:10px;height:240px;overflow-y:scroll;}
-		.comment {padding:0 0 10px 0;margin:0 0 10px 0;border-bottom:1px solid #f2f2f2;}
+	.comments-guts {padding:10px;}
+		.comments-list {padding:10px;height:240px;overflow-y:scroll;}
+		.comment {padding:0 0 10px 0;margin:0 0 10px 0;}
 			.comment:last-child {margin:0;}
 			.comment-author {font-size:12px;font-weight:bold;}
 			.comment-method {font-size:12px;font-style:italic;color:#999;}
 			.comment-body * {padding:5px 0 0 0;margin:0;font-family:@sans;font-size:11px;color:@text;}
-		.whisper {background:@whisper;}
+		.whisper {border-color:@whisper;}
 	.add-comment {border-top:3px solid #ddd;padding:10px 0 0 0;}
 		.add-comment textarea {font-size:12px;color:@text;font-family:@sans;height:65px;}
 		.add-whisper-button {background:@whisper;color:darken(@whisper,50%);}
@@ -174,6 +174,16 @@ header {background:#fff;color:@main-color;font-family:@serif;}
 .friends {padding-top:20px;margin:0 0 30px 0;}
 .friend {float:left;width:25%;border:1px solid #ddd;margin-right:5%;position:relative;}
 	.friend-guts {padding:18px 20px;}
+
+.friends-search-container {position:relative;width:100%;}
+	.friends-search {font-size:16px;}
+	.friends-search-list {width:100%;position:absolute;top:25px;left:0;background:#fff;z-index:9999;}
+		.friends-search-container .friend {width:100%;border:1px solid #ddd;border-bottom:none;padding:10px;background:#fff;}
+			.friends-search-container .friend:first-child {border-top:none;}
+			.friends-search-container .friend:last-child {border-bottom:1px solid #ddd;}
+			.friend-name {font-size:16px;font-weight:bold;color:@text;font-family:@serif;}
+			.friend-username {color:@text-lite;font-size:13px;font-family:@sans;}
+			.add-friend {font-size:11px;}
 	
 .profile {}
 	.profile-nav {margin:0 0 20px 0;}
