@@ -175,7 +175,6 @@
     <Compile Include="Controllers\PublicViewController.cs" />
     <Compile Include="Controllers\SiteController.cs" />
     <Compile Include="Controllers\UserController.cs" />
-    <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -188,6 +187,7 @@
     <Content Include="Content\css\i\favicon.ico" />
     <Content Include="Content\css\i\site_nav_sprite.png" />
     <Content Include="Content\css\yearnly.less" />
+    <Content Include="Scripts\Friends\SearchFriends.js" />
     <Content Include="Scripts\Items\AddItem.js" />
     <Content Include="Scripts\knockout-2.2.0.debug.js" />
     <Content Include="Scripts\knockout-2.2.0.js" />
@@ -220,6 +220,7 @@
     <Content Include="Views\Site\About.cshtml" />
     <Content Include="Views\Site\Features.cshtml" />
     <Content Include="Views\Site\Support.cshtml" />
+    <Content Include="Views\Friends\AjaxSearch.cshtml" />
     <None Include="_AppStart.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -266,6 +267,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Filters\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

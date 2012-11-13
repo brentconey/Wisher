@@ -27,9 +27,8 @@ namespace Yearnly.Model
             return returnedUser;
         }
 
-
         //This is a quick checker to see if a user exists
-        public static Boolean DoesUserExists(String userName, YearnlyEntities db)
+        public static Boolean DoesUserExist(String userName, YearnlyEntities db)
         {
             Boolean returnValue = false;
             UserProfile user = db.UserProfiles.Where(up => up.UserName == userName).FirstOrDefault();
@@ -40,15 +39,9 @@ namespace Yearnly.Model
             return returnValue;
         }
 
-        public IEnumerable<UserProfile> GetFriends(YearnlyEntities db)
+        public static IEnumerable<UserProfile> SearchUsers(string searchText, YearnlyEntities db)
         {
-            List<UserProfile> usersFriends = new List<UserProfile>();
-            List<int> friendIds = db.Friends.Where(frnds => frnds.UserId == this.UserId).Select(fr => fr.FriendId).ToList();
-            foreach (int friendId in friendIds)
-            {
-                usersFriends.Add(UserProfile.LoadUserByUserId(friendId, db));
-            }
-            return usersFriends;
+            return db.UserProfiles.Where(up => up.UserName.Contains(searchText)).ToList();
         }
     }
 }

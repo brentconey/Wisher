@@ -64,6 +64,9 @@
           </Key>
           <Property Name="UserId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="UserName" Type="nvarchar" Nullable="false" MaxLength="56" />
+          <Property Name="Email" Type="nvarchar" MaxLength="250" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="150" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="250" />
         </EntityType>
         <Association Name="FK_Friend_ToUserProfile">
           <End Role="UserProfile" Type="YearnlyModel.Store.UserProfile" Multiplicity="1" />
@@ -172,6 +175,9 @@
           <NavigationProperty Name="UserItems" Relationship="YearnlyModel.FK_ItemToUser" FromRole="UserProfile" ToRole="UserItem" />
           <NavigationProperty Name="UserLists" Relationship="YearnlyModel.FK_ListToUser" FromRole="UserProfile" ToRole="UserList" />
           <NavigationProperty Name="Friends" Relationship="YearnlyModel.FK_User_ToUserProfile" FromRole="UserProfile" ToRole="Friend" />
+          <Property Type="String" Name="Email" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="FirstName" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="LastName" MaxLength="250" FixedLength="false" Unicode="true" />
           </EntityType>
         <Association Name="FK_ItemToUser">
           <End Role="UserProfile" Type="YearnlyModel.UserProfile" Multiplicity="1" />
@@ -264,6 +270,9 @@
           <EntitySetMapping Name="UserProfiles">
             <EntityTypeMapping TypeName="YearnlyModel.UserProfile">
               <MappingFragment StoreEntitySet="UserProfile">
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
               </MappingFragment>

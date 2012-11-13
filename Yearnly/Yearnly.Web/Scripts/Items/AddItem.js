@@ -12,7 +12,7 @@ function ItemModel() {
     self.addItem = function () {
         $.ajax({
             type: "POST",
-            url: "ajaxcreate",
+            url: "/items/ajaxcreate",
             data: {
                 Title: self.itemTitle(),
                 Link: self.itemLink(),

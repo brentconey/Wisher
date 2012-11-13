@@ -1,0 +1,9 @@
+﻿@model IEnumerable<Yearnly.Model.UserProfile>
+@{
+    Layout = null;
+}
+
+@foreach (var row in Model)
+{
+    <p>@row.UserName</p>
+}

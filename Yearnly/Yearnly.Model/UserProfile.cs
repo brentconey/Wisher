@@ -23,6 +23,9 @@ namespace Yearnly.Model
     
         public int UserId { get; set; }
         public string UserName { get; set; }
+        public string Email { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
     
         public virtual ICollection<UserItem> UserItems { get; set; }
         public virtual ICollection<UserList> UserLists { get; set; }

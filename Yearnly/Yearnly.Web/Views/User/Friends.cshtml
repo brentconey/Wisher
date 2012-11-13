@@ -5,8 +5,8 @@
     ViewBag.Section = "Friends";
 }
 
-<p>All your friends will be here. If you'd like, you can <a class="button" href="/friends/add">find one</a>.</p>
-
+<input type="text" id="friend_search" placeholder="search for friends..." data-bind="value: searchText, submit: searchFriends" />
+<div id="search_results" data-bind="html: searchResults"></div>
 
 <div class="friends">
     @foreach (var row in Model)
@@ -18,3 +18,4 @@
         </div>
     }
 </div>
+<script src="~/Scripts/Friends/SearchFriends.js"></script>

@@ -18,7 +18,7 @@ namespace Yearnly.Web
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
-            // HAD TO PUT THIS HERE INSTEAD OF _APPSTART.CS.HTML
+
             WebSecurity.InitializeDatabaseConnection("DefaultConnection", "UserProfile", "UserId", "UserName", true);   
             WebApiConfig.Register(GlobalConfiguration.Configuration);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
