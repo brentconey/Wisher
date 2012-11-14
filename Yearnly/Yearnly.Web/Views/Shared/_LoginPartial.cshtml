@@ -3,7 +3,7 @@
     <div class="group" id="user_header">
         <a href="/@User.Identity.Name"><img src="~/Content/css/i/demo_profile_pic.jpg" alt="profile pic" /></a>
         <h2><a href="/@User.Identity.Name">@User.Identity.Name</a></h2>
-        @Html.ActionLink("My Account", "manage", "account", routeValues: null, htmlAttributes: null)
+        @Html.ActionLink("My Account", "manage", "account", routeValues: null, htmlAttributes: new { id = "account_link" })
         <a id="sign_out_link" href="javascript:document.getElementById('logoutForm').submit()">sign out</a>
     </div>
     @using (Html.BeginForm("LogOff", "account", FormMethod.Post, new { id = "logoutForm" })) {
@@ -12,7 +12,7 @@
     </text>
 } else {
     <div class="group" id="user_header">
-        <h2>@Html.ActionLink("Register", "register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</h2>
-        <a id="login_link">@Html.ActionLink("Log in", "login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</a>
+        @Html.ActionLink("Register", "register", "Account", routeValues: null, htmlAttributes: new { id = "register_link" })
+        @Html.ActionLink("Log in", "login", "Account", routeValues: null, htmlAttributes: new { id = "login_link" })
     </div>
 }

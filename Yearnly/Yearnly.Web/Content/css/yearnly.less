@@ -52,7 +52,7 @@ a:visited { color:@main-link-color;text-decoration:none; }
 a:hover { color: darken(@main-link-color,20%);text-decoration:underline; }
 a:active { color: @text; }
 
-h1,h2,h3,h4,h5,h6 {font-weight:bold;font-family:@serif;}
+h1,h2,h3,h4,h5,h6 {font-weight:bold;font-family:@serif;text-shadow: 0 0 1px rgba(51,51,51,0.2);}
 h1 {font-size:32px;margin:0 0 30px 0;}
 h2 {font-size:22px;}
 h3 {font-size:14px;}
@@ -77,11 +77,12 @@ textarea { color:@textbox-color;display:block;padding:6px;font-size:14px;outline
 header {background:#fff;color:@main-color;font-family:@serif;}
     header a:link,
     header a:visited {.subtle-drop-shadow; }
+	#account_link,
 	#sign_out_link,
-	#login_link { font-size:13px;font-family:@sans; }
+	#login_link { font-size:13px;font-family:@sans;text-transform:capitalize;padding-left:5px; }
     header .wrap {position:relative;height:120px;}
     header #logo { position: absolute; font-size:40px; top: 36px; left: 0; .subtle-drop-shadow;font-weight:bold;letter-spacing:-2px;}
-	header h2 { font-size:20px;font-weight:bold;text-transform:capitalize; }
+	header h2 { font-size:20px;font-weight:bold;text-transform:capitalize;padding:0 0 5px 0; }
     #global_search { position:absolute;top:45px;left:22%; }
 		#global_search legend {display:none;}
         #global_search input[type="submit"] { visibility:hidden; }
