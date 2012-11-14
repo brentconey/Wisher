@@ -2,6 +2,7 @@
 function SearchModel() {
     var self = this;
     self.searchText = ko.observable('');
+    self.searchResults = ko.observable('');
 
     self.searchFriends = ko.computed(function () {
         if (self.searchText() != "") {
@@ -13,9 +14,11 @@ function SearchModel() {
                     self.searchResults(result);
                 }
             });
+        } else {
+            self.searchResults('');
         }
     }, this);
 
-    self.searchResults = ko.observable('');
+    
 }
 ko.applyBindings(new SearchModel());
