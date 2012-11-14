@@ -50,9 +50,21 @@ namespace Yearnly.Web
                 );
 
             routes.MapRoute(
+                name: "AddItemRoute",
+                url: "items/add",
+                defaults: new { controller = "Items", action = "Add" }
+                );
+
+            routes.MapRoute(
                 name: "MyListRoute",
                 url: "lists/",
                 defaults: new { controller = "User", action = "Lists" }
+                );
+
+            routes.MapRoute(
+                name: "AddListRoute",
+                url: "lists/add",
+                defaults: new { controller = "Lists", action = "Add" }
                 );
 
             routes.MapRoute(
