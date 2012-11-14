@@ -22,7 +22,7 @@ namespace Yearnly.Web.Controllers
 
         public ActionResult AjaxSearch(string searchText)
         {
-            return View(db.UserProfiles.Where(up => up.UserName.Contains(searchText)).ToList());
+            return View(UserProfile.SearchUsers(searchText, db));
         }
 
     }
