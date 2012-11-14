@@ -6,32 +6,31 @@
 }
 
 
-<div class="group">
+<div class="group pd">
     <h1 class="group">@Model.Name</h1>
     <a href="/@Model.UserProfile.UserName/lists/@Model.ListUrl" class="button right">public view</a>
-    <div class="group pd">
-        <h2 class="left">@Model.DateCreated.GetValueOrDefault().ToShortDateString()</h2>
-        <a class="button right" href="#EXPAND_EDIT">edit</a>
+</div>
+<div class="group pd">
+    <h2 class="left">@Model.DateCreated.GetValueOrDefault().ToShortDateString()</h2>
+    <a class="button right" href="#EXPAND_EDIT">edit</a>
+</div>
+
+<form method="post" action="" class="group pd" id="edit_list_form">
+    <fieldset class="group">
+        <label for="listtitle">List Title</label>
+        <input type="text" name="Name" value="@Model.Name" id="listtitle" />
+        <input type="hidden" name="Id" value="@Model.Id" />
+    </fieldset>
+    <fieldset class="group">
+        <input type="submit" class="button left" value="Save" />
+    </fieldset>
+</form>
+
+<div class="group full-width">
+    <div class="half left">
+        <h2>Manage people</h2>
     </div>
-
-    <form method="post" action="" class="group" id="edit_list_form">
-        <fieldset class="group">
-            <label for="listtitle">List Title</label>
-            <input type="text" name="Name" value="@Model.Name" id="listtitle" />
-            <input type="hidden" name="Id" value="@Model.Id" />
-        </fieldset>
-        <fieldset class="group">
-            <input type="submit" class="button left" value="Save" />
-        </fieldset>
-    </form>
-
-
-
-    <div class="group full-width">
-        <div class="half left">
-            <h2>Manage people</h2>
-        </div>
-        <div class="half right">
-            <h2>Invite people</h2>
-        </div>
+    <div class="half right">
+        <h2>Invite people</h2>
     </div>
+</div>
