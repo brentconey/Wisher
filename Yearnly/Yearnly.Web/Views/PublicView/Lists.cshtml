@@ -6,8 +6,8 @@
 <div class="lists">
 @foreach (var row in Model)
 {
-    <h3>@row.Name</h3>
-    <h4><span>created by </span><a href="">@row.UserProfile.UserName</a></h4>
+    <h3><a href="/@row.UserProfile.UserName/lists/@row.ListUrl">@row.Name</a></h3>
+    <h4><span>created by </span><a href="/@row.UserProfile.UserName">@row.UserProfile.UserName</a></h4>
 
 }
 </div>

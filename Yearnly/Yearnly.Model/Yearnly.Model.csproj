@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Custom\Friend.cs" />
+    <Compile Include="Custom\UserList.cs" />
     <Compile Include="Custom\UserProfile.cs" />
     <Compile Include="Friend.cs">
       <DependentUpon>Yearnly.tt</DependentUpon>

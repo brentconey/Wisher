@@ -56,6 +56,12 @@ namespace Yearnly.Web
                 );
 
             routes.MapRoute(
+                name: "MySpecificListRoute",
+                url: "lists/{listParseString}",
+                defaults: new { controller = "User", action = "SpecificList" }
+                );
+
+            routes.MapRoute(
                 name: "FriendListRoute",
                 url: "{username}/lists",
                 defaults: new { controller = "PublicView", action = "Lists" }
@@ -64,7 +70,7 @@ namespace Yearnly.Web
             routes.MapRoute(
                 name: "FriendSpecificListRoute",
                 url: "{username}/lists/{listParseString}",
-                defaults: new { controller = "PublicView", action = "Lists" }
+                defaults: new { controller = "PublicView", action = "UsersList" }
                 );
 
             routes.MapRoute(
