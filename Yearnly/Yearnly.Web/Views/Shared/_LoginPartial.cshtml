@@ -12,7 +12,7 @@
     </text>
 } else {
     <div class="group" id="user_header">
-        @Html.ActionLink("Register", "register", "Account", routeValues: null, htmlAttributes: new { id = "register_link" })
-        @Html.ActionLink("Log in", "login", "Account", routeValues: null, htmlAttributes: new { id = "login_link" })
+        @Html.ActionLink("Register", "register", "Account", routeValues: null, htmlAttributes: new { id = "register_link", @class = "button" })
+        @Html.ActionLink("Log in", "login", "Account", routeValues: null, htmlAttributes: new { id = "login_link", @class = "button" })
     </div>
 }
