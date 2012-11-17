@@ -3,11 +3,14 @@
     @model IEnumerable<Yearnly.Model.UserList>
 }
 
-<div class="lists">
-@foreach (var row in Model)
-{
-    <h3><a href="/@row.UserProfile.UserName/lists/@row.ListUrl">@row.Name</a></h3>
-    <h4><span>created by </span><a href="/@row.UserProfile.UserName">@row.UserProfile.UserName</a></h4>
+<div class="profile group">
+    @Html.Partial("_PublicProfileHeader")
 
-}
+    <div class="lists">
+        @foreach (var row in Model)
+        {
+            <h3><a href="/@row.UserProfile.UserName/lists/@row.ListUrl">@row.Name</a></h3>
+            <h4><span>created by </span><a href="/@row.UserProfile.UserName">@row.UserProfile.UserName</a></h4>
+        }
+    </div>
 </div>
