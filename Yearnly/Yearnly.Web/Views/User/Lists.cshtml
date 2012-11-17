@@ -9,14 +9,24 @@
 
 <h2>Lists you've created&hellip;</h2>
 
-<div class="lists group">
+<div class="lists">
     @foreach (var row in Model)
     {
         <div class="list">
             <div class="list-guts">
                 <h3 class="list-title"><a href="/lists/@row.ListUrl">@row.Name</a></h3>
-                
-                <a class="list-edit-link button" href="/lists/edit/@row.Id">edit</a>
+                <hgroup class="stat">
+                    <h2>27</h2>
+                    <h4>total items</h4>
+                </hgroup>
+                <hgroup class="stat">
+                    <h2>16</h2>
+                    <h4>wishers</h4>
+                </hgroup>
+                <hgroup class="stat">
+                    <h2>3</h2>
+                    <h4>dibs called</h4>
+                </hgroup>
             </div>
         </div>
     }
