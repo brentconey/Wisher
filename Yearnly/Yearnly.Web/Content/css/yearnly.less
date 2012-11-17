@@ -75,9 +75,9 @@ textarea { color:@textbox-color;display:block;padding:6px;font-size:14px;outline
 /*
 	HEADER	
 */
-header {background:#fff;color:@main-color;font-family:@serif;}
+header {background:#fff;font-family:@serif;}
     header a:link,
-    header a:visited {.subtle-drop-shadow; }
+    header a:visited {.subtle-drop-shadow;}
 	#account_link,
 	#sign_out_link,
 	#login_link,
@@ -85,14 +85,19 @@ header {background:#fff;color:@main-color;font-family:@serif;}
     header .wrap {position:relative;height:120px;}
     header #logo { position: absolute; font-size:40px; top: 36px; left: 0; .subtle-drop-shadow;font-weight:bold;letter-spacing:-2px;}
 	header h2 { font-size:20px;font-weight:bold;text-transform:capitalize;padding:0 0 5px 0; }
-    #global_search { position:absolute;top:45px;left:22%; }
+    #global_search { position:absolute;top:45px;left:265px; }
 		#global_search legend {display:none;}
         #global_search input[type="submit"] { visibility:hidden; }
         #global_search input[type="text"] { border-radius:15px;padding-left:10px;font-weight:bold;width:300px;opacity:.6; }
         #global_search input[type="text"]:focus,
 		#global_search input[type="text"]:hover { opacity:1.0;-webkit-transition:all .25s ease-in-out; }
-#user_header { position: absolute; top: 45px; right: 0; width:300px;text-align:right;}
-    #user_header img { float:right;margin-left:20px;position:relative; }
+	#user_header { position: absolute; top: 45px; right: 0; width:300px;text-align:right;}
+		#user_header img { float:right;margin-left:20px;position:relative; }
+	.notifications-container {position:absolute;top:49px;left:230px;}
+		.notifications-link {width:24px;height:24px;display:block;background:@main-color;color:#fff !important;font-size:15px;font-weight:bold;text-align:center;line-height:24px;}
+		.notifications {display:none;background:#fff;position:absolute;top:24px;left:0;border:1px solid @main-color;width:320px;z-index:9999;padding:10px;box-shadow:0 1px 2px rgba(0,0,0,.24);}
+			.notification {font-size:12px;font-family:@sans;line-height:1.2em;padding-bottom:8px;margin-bottom:8px;border-bottom:1px solid #ddd;}
+				.notification:last-child {padding-bottom:0;margin-bottom:0;border-bottom:none;}
 
 #global_nav { border-right:1px solid #eee;font-family:@sans; }
 	#quick_actions { padding-bottom: 30px; }

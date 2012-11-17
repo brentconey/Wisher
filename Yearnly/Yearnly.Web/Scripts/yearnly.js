@@ -1,5 +1,9 @@
 $(function () {
 
+    $('.notifications-link').click(function (e) {
+        $(this).siblings('.notifications').toggle();
+        e.preventDefault();
+    });
 	
     $('.tool-select-trigger').click(function (e) {
         $(this).parents('.header-tools').find('.tool-select').toggle();
