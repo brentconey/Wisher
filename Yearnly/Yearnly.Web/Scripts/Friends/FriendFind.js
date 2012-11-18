@@ -7,6 +7,7 @@ function SearchResult(userId, userName, firstName, lastName, requestSent) {
     self.lastName = lastName;
     self.requestSent = ko.observable(requestSent);
 }
+
 function FriendModel() {
     var self = this;
     self.searchText = ko.observable('');
@@ -30,23 +31,36 @@ function FriendModel() {
             });
         }
     }, this);
-
-    self.sendFriendRequest = function () {
-        var friendObject = this;
-        $.ajax({
-            type: "POST",
-            url: "/friends/ajaxsendfriendrequest",
-            data: { toUserId: this.userId},
-            success: function (data) {
-                alert("sent it");
-                friendObject.requestSent(true);
-            },
-            error: function () {
-                alert("ERROR");
-            }
-        });
-    }
-
     
 }
+
+ko.bindingHandlers.fadeVisible = {
+    init: function (element, valueAccessor) {
+        var value = valueAccessor();
+        $(element).toggle(ko.utils.unwrapObservable(value));
+    },
+    update: function (element, valueAccessor) {
+        var value = valueAccessor();
+        ko.utils.unwrapObservable(value) ? $(element).fadeIn() : $(element).fadeOut();
+    }
+};
 ko.applyBindings(new FriendModel());
+//Binding for the send friend request link
+$(document).on("click", "a.add-friend", function () {
+    var friendObject = ko.dataFor(this);
+    $.ajax({
+        type: "POST",
+        url: "/friends/ajaxsendfriendrequest",
+        data: { toUserId: friendObject.userId },
+        success: function (sentRequest) {
+            if (sentRequest) {
+                friendObject.requestSent(true);
+            } else {
+                alert("something happened; you could try again?");
+            }      
+        },
+        error: function () {
+            alert("ERROR IN THE CODEZ! (It ain't jscript.)");
+        }
+    });
+});

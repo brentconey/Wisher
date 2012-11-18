@@ -188,7 +188,7 @@
     <Content Include="Content\css\i\site_nav_sprite.png" />
     <Content Include="Content\css\i\winter_wonderland.jpg" />
     <Content Include="Content\css\yearnly.less" />
-    <Content Include="Scripts\Friends\SearchFriends.js" />
+    <Content Include="Scripts\Friends\FriendFind.js" />
     <Content Include="Scripts\Items\AddItem.js" />
     <Content Include="Scripts\knockout-2.2.0.debug.js" />
     <Content Include="Scripts\knockout-2.2.0.js" />

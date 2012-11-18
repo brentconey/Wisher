@@ -44,6 +44,18 @@ namespace Yearnly.Web
                 );
 
             routes.MapRoute(
+                name: "AjaxFriendSearch",
+                url: "friends/ajaxsearch/",
+                defaults: new { controller = "Friends", action = "AjaxSearch" }
+                );
+
+            routes.MapRoute(
+                name: "AjaxSendFriendRequest",
+                url: "friends/ajaxsendfriendrequest",
+                defaults: new { controller = "Friends", action = "AjaxSendFriendRequest" }
+                );
+
+            routes.MapRoute(
                 name: "MyItemRoute",
                 url: "items/",
                 defaults: new { controller = "User", action = "Items" }
