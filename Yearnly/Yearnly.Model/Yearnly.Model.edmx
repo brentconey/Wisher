@@ -7,12 +7,17 @@
     <Schema Namespace="YearnlyModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityContainer Name="YearnlyModelStoreContainer">
           <EntitySet Name="Friend" EntityType="YearnlyModel.Store.Friend" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="FriendRequest" EntityType="YearnlyModel.Store.FriendRequest" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="UserItem" EntityType="YearnlyModel.Store.UserItem" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="UserList" EntityType="YearnlyModel.Store.UserList" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="UserProfile" EntityType="YearnlyModel.Store.UserProfile" store:Type="Tables" Schema="dbo" />
           <AssociationSet Name="FK_Friend_ToUserProfile" Association="YearnlyModel.Store.FK_Friend_ToUserProfile">
             <End Role="UserProfile" EntitySet="UserProfile" />
             <End Role="Friend" EntitySet="Friend" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FromFriendRequest_User" Association="YearnlyModel.Store.FK_FromFriendRequest_User">
+            <End Role="UserProfile" EntitySet="UserProfile" />
+            <End Role="FriendRequest" EntitySet="FriendRequest" />
           </AssociationSet>
           <AssociationSet Name="FK_ItemToUser" Association="YearnlyModel.Store.FK_ItemToUser">
             <End Role="UserProfile" EntitySet="UserProfile" />
@@ -21,6 +26,10 @@
           <AssociationSet Name="FK_ListToUser" Association="YearnlyModel.Store.FK_ListToUser">
             <End Role="UserProfile" EntitySet="UserProfile" />
             <End Role="UserList" EntitySet="UserList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ToFriendRequest_User" Association="YearnlyModel.Store.FK_ToFriendRequest_User">
+            <End Role="UserProfile" EntitySet="UserProfile" />
+            <End Role="FriendRequest" EntitySet="FriendRequest" />
           </AssociationSet>
           <AssociationSet Name="FK_User_ToUserProfile" Association="YearnlyModel.Store.FK_User_ToUserProfile">
             <End Role="UserProfile" EntitySet="UserProfile" />
@@ -34,6 +43,15 @@
           </Key>
           <Property Name="UserId" Type="int" Nullable="false" />
           <Property Name="FriendId" Type="int" Nullable="false" />
+          <Property Name="DateAdded" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FriendRequest">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="FromUserId" Type="int" Nullable="false" />
+          <Property Name="ToUserId" Type="int" Nullable="false" />
           <Property Name="DateAdded" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="UserItem">
@@ -80,6 +98,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_FromFriendRequest_User">
+          <End Role="UserProfile" Type="YearnlyModel.Store.UserProfile" Multiplicity="1" />
+          <End Role="FriendRequest" Type="YearnlyModel.Store.FriendRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserProfile">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="FriendRequest">
+              <PropertyRef Name="FromUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_ItemToUser">
           <End Role="UserProfile" Type="YearnlyModel.Store.UserProfile" Multiplicity="1" />
           <End Role="UserItem" Type="YearnlyModel.Store.UserItem" Multiplicity="*" />
@@ -101,6 +131,18 @@
             </Principal>
             <Dependent Role="UserList">
               <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ToFriendRequest_User">
+          <End Role="UserProfile" Type="YearnlyModel.Store.UserProfile" Multiplicity="1" />
+          <End Role="FriendRequest" Type="YearnlyModel.Store.FriendRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserProfile">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="FriendRequest">
+              <PropertyRef Name="ToUserId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -141,6 +183,15 @@
             <End Role="UserProfile" EntitySet="UserProfiles" />
             <End Role="Friend" EntitySet="Friends" />
           </AssociationSet>
+          <EntitySet Name="FriendRequests" EntityType="YearnlyModel.FriendRequest" />
+          <AssociationSet Name="FK_FromFriendRequest_User" Association="YearnlyModel.FK_FromFriendRequest_User">
+            <End Role="UserProfile" EntitySet="UserProfiles" />
+            <End Role="FriendRequest" EntitySet="FriendRequests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ToFriendRequest_User" Association="YearnlyModel.FK_ToFriendRequest_User">
+            <End Role="UserProfile" EntitySet="UserProfiles" />
+            <End Role="FriendRequest" EntitySet="FriendRequests" />
+          </AssociationSet>
           </EntityContainer>
         <EntityType Name="UserItem">
           <Key>
@@ -178,6 +229,7 @@
           <Property Type="String" Name="Email" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="FirstName" MaxLength="150" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="LastName" MaxLength="250" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="FriendRequests" Relationship="YearnlyModel.FK_FromFriendRequest_User" FromRole="UserProfile" ToRole="FriendRequest" />
           </EntityType>
         <Association Name="FK_ItemToUser">
           <End Role="UserProfile" Type="YearnlyModel.UserProfile" Multiplicity="1" />
@@ -237,6 +289,40 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="FriendRequest">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="Int32" Name="FromUserId" Nullable="false" />
+          <Property Type="Int32" Name="ToUserId" Nullable="false" />
+          <Property Type="DateTime" Name="DateAdded" Nullable="false" Precision="3" />
+          <NavigationProperty Name="ToFriendProfile" Relationship="YearnlyModel.FK_ToFriendRequest_User" FromRole="FriendRequest" ToRole="UserProfile" />
+        </EntityType>
+        <Association Name="FK_FromFriendRequest_User">
+          <End Type="YearnlyModel.UserProfile" Role="UserProfile" Multiplicity="1" />
+          <End Type="YearnlyModel.FriendRequest" Role="FriendRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserProfile">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="FriendRequest">
+              <PropertyRef Name="FromUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ToFriendRequest_User">
+          <End Type="YearnlyModel.UserProfile" Role="UserProfile" Multiplicity="1" />
+          <End Type="YearnlyModel.FriendRequest" Role="FriendRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserProfile">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="FriendRequest">
+              <PropertyRef Name="ToUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -284,6 +370,16 @@
                 <ScalarProperty Name="DateAdded" ColumnName="DateAdded" />
                 <ScalarProperty Name="FriendId" ColumnName="FriendId" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FriendRequests">
+            <EntityTypeMapping TypeName="YearnlyModel.FriendRequest">
+              <MappingFragment StoreEntitySet="FriendRequest">
+                <ScalarProperty Name="DateAdded" ColumnName="DateAdded" />
+                <ScalarProperty Name="ToUserId" ColumnName="ToUserId" />
+                <ScalarProperty Name="FromUserId" ColumnName="FromUserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

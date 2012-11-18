@@ -221,7 +221,6 @@
     <Content Include="Views\Site\About.cshtml" />
     <Content Include="Views\Site\Features.cshtml" />
     <Content Include="Views\Site\Support.cshtml" />
-    <Content Include="Views\Friends\AjaxSearch.cshtml" />
     <Content Include="Views\PublicView\UsersList.cshtml" />
     <Content Include="Views\Shared\ListNotFound.cshtml" />
     <Content Include="Views\User\SpecificList.cshtml" />
@@ -272,6 +271,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Filters\" />
+    <Folder Include="Views\Friends\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

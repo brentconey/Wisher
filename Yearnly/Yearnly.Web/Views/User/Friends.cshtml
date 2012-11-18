@@ -7,7 +7,13 @@
 
 <div class="friends-search-container">
     <input type="text" class="friends-search" placeholder="search for friends..." data-bind="value: searchText, submit: searchFriends" />
-    <ul class="friends-search-list" data-bind="html: searchResults">
+    <ul class="friends-search-list" data-bind="foreach: searchResults">
+        <li class="group friend">
+                <span class="friend-name" data-bind="text: userName"></span>
+                <span class="friend-username" data-bind="text: userName"></span>
+                <h4 data-bind="ifnot: requestSent"><a class="add-friend button right" data-bind="click: $parent.sendFriendRequest">send friend request</a></h4>
+                <p data-bind="if: requestSent">You already sent a request!</p>
+        </li>
     </ul>
 </div>
 

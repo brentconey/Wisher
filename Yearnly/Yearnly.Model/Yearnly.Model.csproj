@@ -55,6 +55,9 @@
     <Compile Include="Friend.cs">
       <DependentUpon>Yearnly.tt</DependentUpon>
     </Compile>
+    <Compile Include="FriendRequest.cs">
+      <DependentUpon>Yearnly.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserItem.cs">
       <DependentUpon>Yearnly.tt</DependentUpon>

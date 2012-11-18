@@ -5,14 +5,17 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="6f8d5a3f8ff7418a8e8b9274145228ed" Name="Diagram1" ZoomLevel="110">
-        <EntityTypeShape EntityType="YearnlyModel.UserItem" Width="1.5" PointX="6.75" PointY="0.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="YearnlyModel.UserList" Width="1.5" PointX="10" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="YearnlyModel.UserItem" Width="1.5" PointX="5.875" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="YearnlyModel.UserList" Width="1.5" PointX="9.125" PointY="1.625" IsExpanded="true" />
         <EntityTypeShape EntityType="YearnlyModel.UserProfile" Width="1.5" PointX="3" PointY="2.875" IsExpanded="true" />
         <AssociationConnector Association="YearnlyModel.FK_ItemToUser" ManuallyRouted="false" />
         <AssociationConnector Association="YearnlyModel.FK_ListToUser" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="YearnlyModel.Friend" Width="1.5" PointX="8.125" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="YearnlyModel.Friend" Width="1.5" PointX="5.75" PointY="4.625" IsExpanded="true" />
         <AssociationConnector Association="YearnlyModel.FK_Friend_ToUserProfile" />
         <AssociationConnector Association="YearnlyModel.FK_User_ToUserProfile" />
+        <EntityTypeShape EntityType="YearnlyModel.FriendRequest" Width="1.5" PointX="8.375" PointY="4.625" />
+        <AssociationConnector Association="YearnlyModel.FK_FromFriendRequest_User" />
+        <AssociationConnector Association="YearnlyModel.FK_ToFriendRequest_User" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
