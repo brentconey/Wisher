@@ -72,7 +72,7 @@ namespace Yearnly.Web.Controllers
         public ActionResult AjaxGetFriendNotifications()
         {
             
-            return Json("test", JsonRequestBehavior.AllowGet);
+            return Json(loggedInUser.FriendRequests.ToList(), JsonRequestBehavior.AllowGet);
         }
 
     }
