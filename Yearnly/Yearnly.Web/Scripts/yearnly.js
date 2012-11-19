@@ -1,5 +1,19 @@
 $(function () {
 
+    $('.tabs .tab').hide();
+    $('.tabs .tab:first').show();
+    $('.tabs ol li:first').addClass('active');
+
+    $('.tabs h3 a').click(function () {
+        $('.tabs ol li').removeClass('active');
+        $(this).parents('li').addClass('active');
+        var currentTab = $(this).attr('href');
+        $('.tabs .tab').hide();
+        $(currentTab).show();
+        return false;
+    });
+
+
     $('.thing').click(function () {
         var thing_url = $(this).find('.thing-link').attr('href');
         window.location.href = thing_url;

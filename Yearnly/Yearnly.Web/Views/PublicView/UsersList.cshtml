@@ -10,23 +10,28 @@
     <a class="public-list-header-edit button right" href="/lists/">edit</a>
 </header>
 
-<div class="public-list group">
+<div class="public-list group tabs">
     <div class="secondary">
         <ol class="public-list-people">
-            <li class="active">
-                <img src="" alt="" /><h3><a href="#items_123374">Jordan Little</a></h3>
+            <li class="group">
+                <img src="~/Content/css/i/big_profile_pic.jpg" alt="" class="profile-pic left" />
+                <h3><a href="#items_123374">Jordan Little</a></h3>
             </li>
-            <li>
-                <img src="" alt="" /><h3><a href="#items_1568459">Brent Coney</a></h3>
+            <li class="group">
+                <img src="~/Content/css/i/big_profile_pic.jpg" alt="" class="profile-pic left" />
+                <h3><a href="#items_1568459">Brent Coney</a></h3>
             </li>
-            <li>
-                <img src="" alt="" /><h3><a href="#items_1568459">Jonathan Langley</a></h3>
+            <li class="group">
+                <img src="~/Content/css/i/big_profile_pic.jpg" alt="" class="profile-pic left" />
+                <h3><a href="#items_1568459">Jonathan Langley</a></h3>
             </li>
-            <li>
-                <img src="" alt="" /><h3><a href="#items_1568459">Eli Murray</a></h3>
+            <li class="group">
+                <img src="~/Content/css/i/big_profile_pic.jpg" alt="" class="profile-pic left" />
+                <h3><a href="#items_1568459">Eli Murray</a></h3>
             </li>
-            <li>
-                <img src="" alt="" /><h3><a href="#items_1568459">Deanna Davis</a></h3>
+            <li class="group">
+                <img src="~/Content/css/i/big_profile_pic.jpg" alt="" class="profile-pic left" />
+                <h3><a href="#items_1568459">Deanna Davis</a></h3>
             </li>
         </ol>
     </div>
@@ -42,54 +47,63 @@
                 </ul>
             </div>
         </div>
-        <div class="items" id="items_123374">
 
-
-            <div class="item group">
-                <div class="item-guts">
-                    <h3 class="item-title">iPhone 5</h3>
-                    <a class="item-link" href="#">http://.com</a>
-                    <p class="item-description">asdfasdf</p>
-                    <a class="button item-edit-link" href="/items/edit/1">edit</a>
-                </div>
-                <div class="item-meta group">
-                    <ul>
-                        <li><a href="#" class="call-dibs">call dibs</a></li>
-                        <li><a href="#" class="open-comments">7 comments</a></li>
-                    </ul>
-                    <div class="comments-container">
-                        <div class="comments-guts">
-                            <ol class="comments-list">
-                                <li class="comment group">
-                                    <span class="comment-author"><a href="/system">Brent Coney</a></span> <span class="comment-method">said:</span>
-                                    <span class="comment-body">
-                                        <p>This is a comment. Can you see it?</p>
-                                    </span>
-                                </li>
-                                <li class="comment whisper group">
-                                    <span class="comment-author"><a href="/system">Jordan Little</a></span> <span class="comment-method">whispered:</span>
-                                    <span class="comment-body">
-                                        <p>This is a whispered comment. Can you see it? It's going to be a long one, too, so watch your heights and widths.</p>
-                                    </span>
-                                </li>
-                            </ol>
-                            <div class="add-comment">
-                                <form id="" method="" action="">
-                                    <fieldset>
-                                        <textarea class="add-comment-body" rows="" cols="" id="" name="" placeholder="add your comment&hellip;"></textarea>
-                                    </fieldset>
-                                    <fieldset class="group">
-                                        <input type="submit" class="left button add-whisper-button" value="whisper" />
-                                        <input type="submit" class="right button add-comment-button" value="post" />
-                                    </fieldset>
-                                </form>
-                            </div>
-                        </div>
+        <div class="tab" id="items_123374">
+            <div class="items">
+                <div class="item group">
+                    <div class="item-guts">
+                        <h3 class="item-title">iPhone 5</h3>
+                        <a class="item-link" href="#">http://.com</a>
+                        <p class="item-description">asdfasdf</p>
+                        <a class="button item-edit-link" href="/items/edit/1">edit</a>
                     </div>
+                    <div class="item-meta group">
+                        <ul>
+                            <li><a href="#" class="call-dibs">call dibs</a></li>
+                            <li><a href="#" class="open-comments">7 comments</a></li>
+                        </ul>
+                        <div class="comments-container">
+                            <div class="comments-guts">
+                                <ol class="comments-list">
+                                    <li class="comment group">
+                                        <span class="comment-author"><a href="/system">Brent Coney</a></span> <span class="comment-method">said:</span>
+                                        <span class="comment-body">
+                                            <p>This is a comment. Can you see it?</p>
+                                        </span>
+                                    </li>
+                                    <li class="comment whisper group">
+                                        <span class="comment-author"><a href="/system">Jordan Little</a></span> <span class="comment-method">whispered:</span>
+                                        <span class="comment-body">
+                                            <p>This is a whispered comment. Can you see it? It's going to be a long one, too, so watch your heights and widths.</p>
+                                        </span>
+                                    </li>
+                                </ol>
+                                <div class="add-comment">
+                                    <form id="" method="" action="">
+                                        <fieldset>
+                                            <textarea class="add-comment-body" rows="" cols="" id="" name="" placeholder="add your comment&hellip;"></textarea>
+                                        </fieldset>
+                                        <fieldset class="group">
+                                            <input type="submit" class="left button add-whisper-button" value="whisper" />
+                                            <input type="submit" class="right button add-comment-button" value="post" />
+                                        </fieldset>
+                                    </form>
+                                </div>
+                                <!-- /.add-comment -->
+                            </div>
+                            <!-- /.comments-guts -->
+                        </div>
+                        <!-- /.comments-container -->
+                    </div>
+                    <!-- /.item-meta -->
                 </div>
+                <!-- /.item -->
             </div>
-
+            <!-- /.items -->
+        </div>
+        <!-- /.tab -->
+        <div class="tab" id="items_1568459">
+            <p>Testing</p>
         </div>
     </div>
-</div>
-
+    <!-- /.main -->
