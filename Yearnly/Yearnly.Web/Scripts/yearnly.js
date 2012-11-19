@@ -1,5 +1,10 @@
 $(function () {
 
+    $('.thing').click(function () {
+        var thing_url = $(this).find('.thing-link').attr('href');
+        window.location.href = thing_url;
+    });
+
     $('.notifications-link').click(function (e) {
         $(this).siblings('.notifications').toggle();
         e.preventDefault();

@@ -64,6 +64,9 @@ label { display: inline-block;padding:0 0 3px 0;color:@text;font-size:12px;font-
 input[type="text"],
 input[type="password"],
 textarea { color:@textbox-color;display:block;padding:6px;font-size:14px;outline:0;border:1px solid @textbox-border-color;width:100%;box-sizing:border-box;font-family:@serif;margin:0 0 10px 0; }
+	input[type="text"]:focus,
+	input[type="password"]:focus,
+	textarea:focus {border-color:#aaa;}
 
 .button,
 .button:link,
@@ -71,6 +74,8 @@ textarea { color:@textbox-color;display:block;padding:6px;font-size:14px;outline
 	.button:hover,
 	.button:focus {text-decoration:none;background:lighten(@main-link-color,7%);}
 	.button:active {background:@text;}
+
+.hidden {display:none;}
 
 /*
 	HEADER	
@@ -92,7 +97,7 @@ header {background:#fff;font-family:@serif;}
         #global_search input[type="text"]:focus,
 		#global_search input[type="text"]:hover { opacity:1.0;-webkit-transition:all .25s ease-in-out; }
 	#user_header { position: absolute; top: 45px; right: 0; width:300px;text-align:right;}
-		#user_header img { float:right;margin-left:20px;position:relative; }
+		#user_header img { float:right;margin-left:20px;position:relative;width:40px;height:40px;border:none; }
 	.notifications-container {position:absolute;top:49px;left:230px;}
 		.notifications-link {width:24px;height:24px;display:block;background:@main-color;color:#fff !important;font-size:15px;font-weight:bold;text-align:center;line-height:24px;}
 		.notifications {display:none;background:#fff;position:absolute;top:24px;left:0;border:1px solid @main-color;width:320px;z-index:9999;padding:10px;box-shadow:0 1px 2px rgba(0,0,0,.24);}
@@ -134,13 +139,15 @@ header {background:#fff;font-family:@serif;}
 		.tool-select a {display:block;padding:9px;width:100%;height:100%;font-size:14px;color:@text;font-family:@sans;font-weight:bold;}
 
 .activity {position:relative;margin-bottom:20px;}
-	.activity img {vertical-align:middle;margin-right:15px;}
+	.activity img {vertical-align:middle;margin-right:15px;width:40px;height:40px;}
 
 .stat {padding:0 0 20px 0;margin:0 0 20px 0;}
 	.stat:last-child {padding-bottom:0;margin:0;}
 	.stat h2 {font-size:32px;}
 	.stat h4 {font-size:14px;color:lighten(@text,20%);}
 
+.thing {cursor:pointer;}
+.profile-pic {border:2px solid #555;border-radius:100px;box-shadow:inset 0 3px 0 rgba(255,255,255,.9);}
 
 .items {padding-top:20px;margin:0 0 30px 0;}
 .item {float:left;width:45%;padding:0;background:#fff;border:1px solid #aaa;border-left:1px solid #ccc;border-top:1px solid #ccc;box-shadow:0 1px 1px rgba(0,0,0,.1);margin:0 0 50px 0;position:relative;}
@@ -181,19 +188,25 @@ header {background:#fff;font-family:@serif;}
 	.list-edit-link {position:absolute;top:10px;right:10px;font-size:11px;}
 
 .friends {padding-top:20px;margin:0 0 30px 0;}
-.friend {float:left;width:25%;border:1px solid #ddd;margin-right:5%;position:relative;}
-	.friend-guts {padding:18px 20px;}
+.friend {float:left;width:25%;border:1px solid #ddd;margin-right:5%;position:relative;border-radius:8px;-webkit-transition:all ease-in-out .2s;cursor:pointer;padding:10px 0;}
+	.friend:hover {box-shadow:0 2px 6px rgba(0,0,0,.3);border-color:#aaa;position:relative;top:-2px;}
+	.friend:active {position:relative;top:0;border-color:#999;box-shadow:none;-webkit-transition:none;}
+	.friend-guts {padding:18px 20px;text-align:center;}
+	.friend img {display:block;margin:0 auto 20px;width:120px;height:120px;}
+	.friend h2 a {color:@text;text-decoration:none;font-size:14px;}
 
 .friends-search-container {position:relative;width:100%;}
 	.friends-search {font-size:16px;}
-	.friends-search-list {width:100%;position:absolute;top:25px;left:0;background:#fff;z-index:9999;}
-		.friends-search-container .friend {width:100%;border:1px solid #ddd;border-bottom:none;padding:10px;background:#fff;}
-			.friends-search-container .friend p {padding:0;margin:0;font-weight:bold;font-family:@sans;color:@text;}
-			.friends-search-container .friend:first-child {border-top:none;}
-			.friends-search-container .friend:last-child {border-bottom:1px solid #ddd;}
-			.friend-name {font-size:16px;font-weight:bold;color:@text;font-family:@serif;}
-			.friend-username {color:@text-lite;font-size:13px;font-family:@sans;}
-			.add-friend {font-size:11px;}
+	.friends-search-list {width:100%;position:absolute;top:32px;left:0;background:#fff;z-index:9999;border:1px solid #aaa;border-top:none;}
+		.mini-friend {width:100%;padding:15px 10px 0;background:#fff;border-top:1px solid #ddd;}
+			.mini-friend p {padding:0;margin:0;font-weight:bold;font-family:@sans;color:@text;float:right;color:#999;font-style:italic;position:relative;top:-25px;}
+			.mini-friend:first-child {border-top:none;}
+			.mini-friend:last-child {border-bottom:1px solid #ddd;}
+			.mini-friend img {margin-right:10px;width:40px;height:40px;}
+			.mini-friend .profile-link {display:inline;}
+				.mini-friend .friend-name {font-size:18px;font-weight:bold;color:@text;font-family:@serif;text-transform:capitalize;position:relative;top:4px;}
+			.mini-friend .friend-username {color:@text-lite;font-size:13px;font-family:@sans;display:block;padding-top:5px;}
+			.mini-friend .add-friend {font-size:11px;position:relative;top:-24px;}
 	
 .profile {}
 	.profile-nav {margin:0 0 20px 0;}

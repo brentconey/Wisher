@@ -8,13 +8,14 @@
 <div class="friends-search-container">
     <input type="text" class="friends-search" placeholder="search for friends..." data-bind="value: searchText, submit: searchFriends" />
     <ul class="friends-search-list" data-bind="foreach: searchResults">
-        <li class="group friend">
-            <span class="friend-name" data-bind="text: userName"></span>
+        <li class="group mini-friend">
+            <a href="#" data-bind="attr: { href: userName }"><img class="left profile-pic" src="~/Content/css/i/big_profile_pic.jpg" alt="" /></a>
+            <a href="#" data-bind="attr: { href: userName }" class="profile-link"><span class="friend-name" data-bind="text: userName"></span></a>
             <span class="friend-username" data-bind="text: userName"></span>
             <span data-bind="ifnot: requestSent">
-                <a class="add-friend button right">send friend request</a>
+                <a class="add-friend button right" href="#">send friend request</a>
             </span>
-            <p data-bind="fadeVisible: requestSent">Friend request has been sent!</p>
+            <p data-bind="fadeVisible: requestSent">Friend request sent&hellip;</p>
         </li>
     </ul>
 </div>
@@ -22,9 +23,10 @@
 <div class="friends">
     @foreach (var row in Model)
     {
-        <div class="friend">
+        <div class="friend thing">
             <div class="friend-guts">
-                <h2><a href="/@row.FriendProfile.UserName">@row.FriendProfile.UserName</a></h2>
+                <img class="profile-pic" src="~/Content/css/i/big_profile_pic.jpg" alt="" />
+                <h2><a class="thing-link" href="/@row.FriendProfile.UserName">@row.FriendProfile.UserName</a></h2>
             </div>
         </div>
     }
