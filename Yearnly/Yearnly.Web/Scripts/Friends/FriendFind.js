@@ -1,10 +1,11 @@
-﻿function SearchResult(userId, userName, firstName, lastName, requestSent) {
+﻿function SearchResult(data) {
     var self = this;
-    self.userId = userId;
-    self.userName = userName;
-    self.firstName = firstName;
-    self.lastName = lastName;
-    self.requestSent = ko.observable(requestSent);
+    self.userId = data.UserId;
+    self.userName = data.UserName;
+    self.firstName = data.FirstName;
+    self.lastName = data.LastName;
+    self.requestSent = ko.observable(data.RequestHasBeenSent);
+    self.areFriends = ko.observable(data.AreFriends);
 }
 
 function FriendModel() {
@@ -20,12 +21,8 @@ function FriendModel() {
                 url: "/friends/ajaxsearch",
                 data: { searchText: self.searchText() },
                 success: function (data) {
-                    $.each(data, function () {
-                        if (this.UserId != null) {
-                            self.searchResults.push(new SearchResult(this.UserId, this.UserName, this.FirstName, this.LastName, this.RequestHasBeenSent));
-                        }
-                    });
-
+                    var mappedResults = $.map(data, function (searchResult) { return new SearchResult(searchResult) });
+                    self.searchResults(mappedResults);
                 }
             });
         }
@@ -43,7 +40,7 @@ ko.bindingHandlers.fadeVisible = {
         ko.utils.unwrapObservable(value) ? $(element).fadeIn() : $(element).fadeOut();
     }
 };
-ko.applyBindings(new FriendModel());
+ko.applyBindings(new FriendModel(), $(".friends-search-container")[0]);
 //Binding for the send friend request link
 $(document).on("click", "a.add-friend", function () {
     var friendObject = ko.dataFor(this);

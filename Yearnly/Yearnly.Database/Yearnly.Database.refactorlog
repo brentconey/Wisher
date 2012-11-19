@@ -28,4 +28,18 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="UserId" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="87b0b958-1a40-49c1-a790-40f15c523218" ChangeDateTime="11/19/2012 02:16:38">
+    <Property Name="ElementName" Value="[dbo].[FriendRequest].[FromUserId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[FriendRequest]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="UserId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="1f7e6f10-841c-4337-97b9-e57c7e5c0751" ChangeDateTime="11/19/2012 04:53:11">
+    <Property Name="ElementName" Value="[dbo].[FriendRequest].[UserId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[FriendRequest]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="FromUserId" />
+  </Operation>
 </Operations>

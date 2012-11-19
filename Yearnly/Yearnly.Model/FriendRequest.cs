@@ -19,6 +19,6 @@ namespace Yearnly.Model
         public int ToUserId { get; set; }
         public System.DateTime DateAdded { get; set; }
     
-        public virtual UserProfile ToFriendProfile { get; set; }
+        public virtual UserProfile FromUserProfile { get; set; }
     }
 }

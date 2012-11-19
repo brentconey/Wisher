@@ -56,6 +56,24 @@ namespace Yearnly.Web
                 );
 
             routes.MapRoute(
+                name: "AjaxDeclineFriendRequest",
+                url: "friends/ajaxdeclinefriendrequest",
+                defaults: new { controller = "Friends", action = "AjaxDeclineFriendRequest" }
+                );
+
+            routes.MapRoute(
+                name: "AjaxAcceptFriendRequest",
+                url: "friends/ajaxaccpetfriendrequest",
+                defaults: new { controller = "Friends", action = "AjaxAcceptFriendRequest" }
+                );
+
+            routes.MapRoute(
+                name: "AjaxGetFriendNotifications",
+                url: "friends/AjaxGetFriendNotifications",
+                defaults: new { controller = "Friends", action = "AjaxGetFriendNotifications" }
+                );
+
+            routes.MapRoute(
                 name: "MyItemRoute",
                 url: "items/",
                 defaults: new { controller = "User", action = "Items" }

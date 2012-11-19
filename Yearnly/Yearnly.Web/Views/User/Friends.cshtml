@@ -12,9 +12,10 @@
             <a href="#" data-bind="attr: { href: userName }"><img class="left profile-pic" src="~/Content/css/i/big_profile_pic.jpg" alt="" /></a>
             <a href="#" data-bind="attr: { href: userName }" class="profile-link"><span class="friend-name" data-bind="text: userName"></span></a>
             <span class="friend-username" data-bind="text: userName"></span>
-            <span data-bind="ifnot: requestSent">
+            <span data-bind="ifnot: requestSent() || areFriends()">
                 <a class="add-friend button right" href="#">send friend request</a>
             </span>
+            <p data-bind="visible: areFriends">Friends with this person&hellip;</p>
             <p data-bind="fadeVisible: requestSent">Friend request sent&hellip;</p>
         </li>
     </ul>
