@@ -20,4 +20,4 @@ function FriendNotificationModel() {
 }
 
 
-ko.applyBindings(new FriendNotificationModel());
+//ko.applyBindings(new FriendNotificationModel());
