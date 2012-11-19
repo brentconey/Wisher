@@ -18,7 +18,7 @@ namespace Yearnly.Web.Controllers
             public string LastName { get; set; }
             public bool RequestHasBeenSent { get; set; }
         }
-
+        
         private YearnlyEntities db;
         private UserProfile loggedInUser;
         public FriendsController()
@@ -67,6 +67,12 @@ namespace Yearnly.Web.Controllers
             }
 
             return didSendFriendRequest;
+        }
+        
+        public ActionResult AjaxGetFriendNotifications()
+        {
+            
+            return Json("test", JsonRequestBehavior.AllowGet);
         }
 
     }

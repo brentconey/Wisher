@@ -1,10 +1,9 @@
-﻿/// <reference path="../knockout-2.2.0.js" />
-function ItemModel() {
+﻿function ItemModel() {
     var self = this;
     self.itemTitle = ko.observable('');
     self.itemLink = ko.observable('');
     self.itemDescription = ko.observable('');
-
+    
     self.itemBuilder = ko.computed(function () {
         return "Title: " + self.itemTitle() + " Link: " + self.itemLink() + " Description: " + self.itemDescription();
     }, this);

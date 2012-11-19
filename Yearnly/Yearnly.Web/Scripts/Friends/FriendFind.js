@@ -1,5 +1,4 @@
-﻿/// <reference path="../knockout-2.2.0.js" />
-function SearchResult(userId, userName, firstName, lastName, requestSent) {
+﻿function SearchResult(userId, userName, firstName, lastName, requestSent) {
     var self = this;
     self.userId = userId;
     self.userName = userName;

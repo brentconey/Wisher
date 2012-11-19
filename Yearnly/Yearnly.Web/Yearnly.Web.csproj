@@ -168,6 +168,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\DibsController.cs" />
     <Compile Include="Controllers\FriendsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ItemsController.cs" />
@@ -189,10 +190,14 @@
     <Content Include="Content\css\i\winter_wonderland.jpg" />
     <Content Include="Content\css\yearnly.less" />
     <Content Include="Scripts\Friends\FriendFind.js" />
+    <Content Include="Scripts\Friends\FriendNotification.js" />
     <Content Include="Scripts\Items\AddItem.js" />
+    <None Include="Scripts\jquery-1.8.2.intellisense.js" />
+    <Content Include="Scripts\jquery-1.8.2.min.js" />
     <Content Include="Scripts\knockout-2.2.0.debug.js" />
     <Content Include="Scripts\knockout-2.2.0.js" />
     <Content Include="Scripts\yearnly.js" />
+    <Content Include="Scripts\_references.js" />
     <Content Include="Views\Items\Add.cshtml" />
     <Content Include="Views\Lists\Edit.cshtml" />
     <Content Include="Views\Lists\Add.cshtml" />
@@ -224,6 +229,7 @@
     <Content Include="Views\PublicView\UsersList.cshtml" />
     <Content Include="Views\Shared\ListNotFound.cshtml" />
     <Content Include="Views\User\SpecificList.cshtml" />
+    <Content Include="Views\Shared\_PublicProfileHeader.cshtml" />
     <None Include="_AppStart.cshtml" />
   </ItemGroup>
   <ItemGroup>
