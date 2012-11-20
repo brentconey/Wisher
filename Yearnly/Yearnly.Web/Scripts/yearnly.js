@@ -1,5 +1,32 @@
 $(function () {
 
+    $('.activate-panel').click(function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var panelToOpen = $(this).attr('href');
+        $('.activate-panel').removeClass('toggled');
+        if ($(panelToOpen).is(':visible')) {
+            $(panelToOpen).hide();
+        } else {
+            $('.panel').fadeOut(150);
+            $(panelToOpen).fadeIn(200);
+            $(this).addClass('toggled');
+        }
+    });
+
+    $('.panel').click(function (e) {
+        e.stopPropagation();
+    });
+
+    $(document).on("click", "html", function (e) {
+        $.each($('.panel'), function () {
+            if ($(this).is(':visible')) {
+                $(this).hide();
+                $('.activate-panel').removeClass('toggled');
+            }
+        });
+    });
+
     $('.tabs .tab').hide();
     $('.tabs .tab:first').show();
     $('.tabs ol li:first').addClass('active');
@@ -17,11 +44,6 @@ $(function () {
     $('.thing').click(function () {
         var thing_url = $(this).find('.thing-link').attr('href');
         window.location.href = thing_url;
-    });
-
-    $('.notifications-link').click(function (e) {
-        $(this).siblings('.notifications').toggle();
-        e.preventDefault();
     });
 	
     $('.tool-select-trigger').click(function (e) {

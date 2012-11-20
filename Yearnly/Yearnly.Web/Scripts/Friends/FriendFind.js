@@ -12,6 +12,7 @@ function FriendModel() {
     var self = this;
     self.searchText = ko.observable('');
     self.searchResults = ko.observableArray();
+    self.noResults = ko.observable(false);
 
     self.searchFriends = ko.computed(function () {
         self.searchResults.removeAll();
@@ -23,6 +24,11 @@ function FriendModel() {
                 success: function (data) {
                     var mappedResults = $.map(data, function (searchResult) { return new SearchResult(searchResult) });
                     self.searchResults(mappedResults);
+                    if ($.isEmptyObject(data)) {
+                        self.noResults(true);
+                    } else {
+                        self.noResults(false);
+                    }
                 }
             });
         }

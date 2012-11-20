@@ -2,12 +2,16 @@
     <section class="wrap group">
         <a id="logo" href="/">Yearnly</a>
         <div class="notifications-container group">
-            <a class="notifications-link" href="#" data-bind="text: numberOfNotifications"></a> <!-- number of notifications -->
-            <ul class="notifications" data-bind="foreach: friendRequests">
-                <li class="group notification notification-type-friend-request">
-                    <a data-bind="text: userName, attr: { href: userName }"></a> sent you a friend request.
+            <a class="notifications-link activate-panel" href="#notification_panel" data-bind="text: numberOfNotifications"></a> <!-- number of notifications -->
+            <ul class="notifications panel" id="notification_panel">
+                <span data-bind="foreach: friendRequests">
+                    <li class="group notification notification-type-friend-request">
+                        <a data-bind="text: userName, attr: { href: userName }"></a>sent you a friend request.
                     <div class="group"><a href="#" class="button accept-friend-request" data-bind="click: $parent.acceptFriendRequest">accept</a> or <a class="button decline-friend-request" data-bind="click: $parent.declineFriendRequest" href="#">decline</a>.</div>
-                </li>
+                    </li>
+                </span>
+                <!-- this is for when there are no notifications -->
+                <li class="group notification" data-bind="visible: friendRequests().length == 0">No new notifications</li>
             </ul>
         </div>
         <script src="~/Scripts/Friends/FriendNotification.js"></script>

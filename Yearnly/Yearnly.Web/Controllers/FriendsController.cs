@@ -45,7 +45,7 @@ namespace Yearnly.Web.Controllers
                                                           UserName = u.UserName,
                                                           FirstName = u.FirstName,
                                                           LastName = u.LastName,
-                                                          RequestHasBeenSent = db.FriendRequests.Where(fr => fr.ToUserId == u.UserId).FirstOrDefault() == null ? false : true,
+                                                          RequestHasBeenSent = db.FriendRequests.Where(fr => fr.ToUserId == u.UserId && fr.FromUserId == loggedInUser.UserId).FirstOrDefault() == null ? false : true,
                                                           AreFriends = loggedInUser.Friends.Where(fid => fid.FriendProfile.UserId == u.UserId).FirstOrDefault() == null ? false : true
                                                       };
 
