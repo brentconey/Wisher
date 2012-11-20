@@ -2,23 +2,24 @@
     ViewBag.Title = "Home";
     ViewBag.Section = "Home";
     String welcomeName = String.Empty;
-    if(String.IsNullOrEmpty(WebSecurity.CurrentUserName))
+    if (String.IsNullOrEmpty(WebSecurity.CurrentUserName))
     {
         welcomeName = "Stranger";
     }
     else
     {
         welcomeName = WebSecurity.CurrentUserName;
-           
+
     }
 }
-    <div class="main group">
-        <div id="activity_feed" class="group">
-            <div class="header-with-tools group">
-                <h2>What you've missed&hellip;</h2>
-                <div class="header-tools group">
-                    <label class="tool-label" for="">showing <a class="tool-select-trigger" href="#">everything</a></label>
-                    <ul class="tool-select hidden">
+<div class="main group">
+    <div id="activity_feed" class="group">
+        <div class="header-with-tools group">
+            <h2>What you've missed&hellip;</h2>
+            <div class="header-tools group">
+                <label class="tool-label" for="">showing: <a class="activate-panel" href="#activity_tools">everything</a></label>
+                <div class="panel" id="activity_tools">
+                    <ul class="menu">
                         <li><a class="all-activity-types" href="#">everything</a></li>
                         <li><a class="activity-type-item" href="#">items</a></li>
                         <li><a class="activity-type-list" href="#">lists</a></li>
@@ -27,39 +28,53 @@
                     </ul>
                 </div>
             </div>
-            <ul id="the_feed" class="group">
-                <li class="group activity activity-type-item" id="#_1">
-                    <a href="/brent"><img src="~/Content/css/i/big_profile_pic.jpg" alt="" class="profile-pic" /> <span class="feed-name">Brent Coney</span></a> added <a class="activity-item-link" href="#TO_ITEM">iPhone 5</a> to <a class="activity-list-link" href="#TO_LIST">Christmas 2012</a>
-                </li>
-                <li class="group activity activity-type-dib" id="#_1">
-                    <a href="/brent"><img src="~/Content/css/i/big_profile_pic.jpg" alt="" class="profile-pic" /> <span class="feed-name">Jordan Little</span></a> called dibs on <a class="activity-item-link" href="#TO_ITEM">Toy Car</a>
-                </li>
-                <li class="group activity activity-type-list" id="#_1">
-                    <a href="/brent"><img src="~/Content/css/i/big_profile_pic.jpg" alt="" class="profile-pic" /> <span class="feed-name">Reuben Canada</span></a> created the list <a class="activity-item-link" href="#TO_ITEM">Office Party 2012</a>
-                </li>
-                <li class="group activity activity-type-item" id="#_1">
-                    <a href="/brent"><img src="~/Content/css/i/big_profile_pic.jpg" alt="" class="profile-pic" /> <span class="feed-name">Rachel Coney</span></a> added <a class="activity-item-link" href="#TO_ITEM">Sewing Machine</a> to <a class="activity-list-link" href="#TO_LIST">Christmas 2012</a>
-                </li>
-                <li class="group activity activity-type-friend" id="#_1">
-                    <a href="/brent"><img src="~/Content/css/i/big_profile_pic.jpg" alt="" class="profile-pic" /> <span class="feed-name">Jordan Little</span></a> is now friends with <a class="activity-item-link" href="#TO_ITEM">Brent Coney</a>
-                </li>
-            </ul>
-        </div>        
-    </div><!-- /.main -->
+        </div>
+        <ul id="the_feed" class="group">
+            <li class="group activity activity-type-item" id="#_1">
+                <a href="/brent">
+                    <img src="~/Content/css/i/big_profile_pic.jpg" alt="" class="profile-pic" />
+                    <span class="feed-name">Brent Coney</span></a> added <a class="activity-item-link" href="#TO_ITEM">iPhone 5</a> to <a class="activity-list-link" href="#TO_LIST">Christmas 2012</a>
+            </li>
+            <li class="group activity activity-type-dib" id="#_1">
+                <a href="/brent">
+                    <img src="~/Content/css/i/big_profile_pic.jpg" alt="" class="profile-pic" />
+                    <span class="feed-name">Jordan Little</span></a> called dibs on <a class="activity-item-link" href="#TO_ITEM">Toy Car</a>
+            </li>
+            <li class="group activity activity-type-list" id="#_1">
+                <a href="/brent">
+                    <img src="~/Content/css/i/big_profile_pic.jpg" alt="" class="profile-pic" />
+                    <span class="feed-name">Reuben Canada</span></a> created the list <a class="activity-item-link" href="#TO_ITEM">Office Party 2012</a>
+            </li>
+            <li class="group activity activity-type-item" id="#_1">
+                <a href="/brent">
+                    <img src="~/Content/css/i/big_profile_pic.jpg" alt="" class="profile-pic" />
+                    <span class="feed-name">Rachel Coney</span></a> added <a class="activity-item-link" href="#TO_ITEM">Sewing Machine</a> to <a class="activity-list-link" href="#TO_LIST">Christmas 2012</a>
+            </li>
+            <li class="group activity activity-type-friend" id="#_1">
+                <a href="/brent">
+                    <img src="~/Content/css/i/big_profile_pic.jpg" alt="" class="profile-pic" />
+                    <span class="feed-name">Jordan Little</span></a> is now friends with <a class="activity-item-link" href="#TO_ITEM">Brent Coney</a>
+            </li>
+        </ul>
+    </div>
+</div>
+<!-- /.main -->
 
-    <div class="secondary group">
-        <div class="node" id="dash_stats">
-            <hgroup class="stat">
-                <h2>27</h2>
-                <h4>items added</h4>
-            </hgroup>
-            <hgroup class="stat">
-                <h2>2</h2>
-                <h4>lists created</h4>
-            </hgroup>
-            <hgroup class="stat">
-                <h2>15</h2>
-                <h4>dibs called</h4>
-            </hgroup>
-        </div><!-- /#dash_stats -->
-    </div><!-- /.secondary -->
+<div class="secondary group">
+    <div class="node" id="dash_stats">
+        <hgroup class="stat">
+            <h2>27</h2>
+            <h4>items added</h4>
+        </hgroup>
+        <hgroup class="stat">
+            <h2>2</h2>
+            <h4>lists created</h4>
+        </hgroup>
+        <hgroup class="stat">
+            <h2>15</h2>
+            <h4>dibs called</h4>
+        </hgroup>
+    </div>
+    <!-- /#dash_stats -->
+</div>
+<!-- /.secondary -->

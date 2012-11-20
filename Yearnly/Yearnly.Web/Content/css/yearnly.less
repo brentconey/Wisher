@@ -1,5 +1,5 @@
 ﻿html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{box-sizing:border-box;border:0;font-size:100%;font:inherit;vertical-align:baseline;margin:0;padding:0}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:none}table{border-collapse:collapse;border-spacing:0}.group:before,.group:after{content:"";display:table}.group:after{clear:both}.group{zoom:1}strong{font-weight:700}em{font-style:italic}.left{float:left}.right{float:right}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section,html{display:block}
-.panel{display:none;}
+
 /*
 --------------------------------
 MASTHEAD - VARIABLE DECLARATIONS
@@ -75,36 +75,42 @@ textarea { color:@textbox-color;display:block;padding:6px;font-size:14px;outline
 	.button:focus {text-decoration:none;background:lighten(@main-link-color,7%);}
 	.button:active {background:@text;}
 
-.hidden {display:none;}
+.hidden,
+.panel {display:none;}
+
+.panel {background:#fff;box-shadow:0 2px 3px rgba(0,0,0,.3);padding:8px;border-radius:4px;border:1px solid #999;z-index:999;}
+	.panel .menu {min-width:120px;}
+		.panel .menu li a {display:block;padding:9px;width:100%;height:100%;font-size:14px;color:@text;font-family:@sans;font-weight:bold;text-transform:capitalize;} 
 
 /*
 	HEADER	
 */
-header {background:#fff;font-family:@serif;}
-    header a:link,
-    header a:visited {.subtle-drop-shadow;}
-	#account_link,
-	#sign_out_link,
-	#login_link,
-	#register_link { font-size:13px;font-family:@sans;text-transform:capitalize;}
-    header .wrap {position:relative;height:120px;}
-    header #logo { position: absolute; font-size:40px; top: 36px; left: 0; .subtle-drop-shadow;font-weight:bold;letter-spacing:-2px;}
-	header h2 { font-size:20px;font-weight:bold;text-transform:capitalize;padding:0 0 5px 0; }
-    #global_search { position:absolute;top:45px;left:265px; }
+header {background:#fff;font-family:@serif;box-shadow:0 1px 2px rgba(0,0,0,.25);border-bottom:1px solid #fff;margin:0 0 40px 0;}
+    header .wrap {position:relative;height:60px;}
+    header #logo { position: absolute; font-size:30px; top: 13px; left: 0; .subtle-drop-shadow;font-weight:bold;letter-spacing:-2px;}
+    #global_search { position:absolute;top:13px;left:285px;}
 		#global_search legend {display:none;}
         #global_search input[type="submit"] { visibility:hidden; }
-        #global_search input[type="text"] { border-radius:15px;padding-left:10px;font-weight:bold;width:300px;opacity:.6; }
+        #global_search input[type="text"] { border-radius:0 15px 15px 0;padding-left:10px;font-weight:bold;width:300px;opacity:.6; }
         #global_search input[type="text"]:focus,
 		#global_search input[type="text"]:hover { opacity:1.0;-webkit-transition:all .25s ease-in-out; }
-	#user_header { position: absolute; top: 45px; right: 0; width:300px;text-align:right;}
-		#user_header img { float:right;margin-left:20px;position:relative;width:40px;height:40px;border:none; }
-	.notifications-container {position:absolute;top:49px;left:230px;}
-		.notifications-link {width:24px;height:24px;display:block;background:@main-color;color:#fff !important;font-size:15px;font-weight:bold;text-align:center;line-height:24px;}
-		.notifications {display:none;background:#fff;position:absolute;top:24px;left:0;border:1px solid @main-color;width:320px;z-index:9999;padding:10px;box-shadow:0 1px 2px rgba(0,0,0,.24);}
-			.notification {font-size:12px;font-family:@sans;line-height:1.2em;padding-bottom:8px;margin-bottom:8px;border-bottom:1px solid #ddd;}
+	#user_header { position: absolute; top: 11px; right: 0; text-align:right;}
+		#user_header > a {display:block;font-weight:bold;color:@text;text-shadow:none;}
+		#user_header img { float:right;margin-left:15px;position:relative;width:40px;height:40px;border:none;}
+		#user_header .user-header-name {line-height:40px;}
+	.user-action {display:block;width:24px;height:24px;width:24px;height:24px;display:block;background:@main-color;color:#fff !important;font-size:15px;font-weight:bold;text-align:center;line-height:24px;}
+	.north-star {background:@main-color;position:absolute;top:18px;left:230px;}
+		.north-star.current {background:#999;}
+	.notifications-container {position:absolute;top:18px;left:255px;}
+		.notifications-link {}
+		.notifications {position:absolute;top:24px;left:0;z-index:9999;width:320px;padding:15px;}
+			.notification {font-size:13px;font-family:@sans;padding-bottom:10px;margin-bottom:10px;border-bottom:1px solid #eee;}
+				.notification:last-child {padding-bottom:none;margin-bottom:none;border-bottom:none;}
+				.notification .group {padding-top:5px;}
 				.notification:last-child {padding-bottom:0;margin-bottom:0;border-bottom:none;}
+		.no-notifications {padding:10px!important;font-size:16px;font-style:italic;color:#999;}
 
-#global_nav { border-right:1px solid #eee;font-family:@sans; }
+#global_nav { border-right:1px solid #eee;font-family:@sans;}
 	#quick_actions { padding-bottom: 30px; }
 	#global_nav li a:link,
 	#global_nav li a:visited { color: @text-lite;font-weight:bold;font-size:15px;display:block;width:100%;padding:15px 0 14px 13px;border:1px solid transparent;-webkit-transition:color .1s linear; font-family:@serif;}
@@ -128,17 +134,20 @@ header {background:#fff;font-family:@serif;}
 #authentication_form_group h2 {padding:0 0 30px 0;}
 
 
+.thing {border:1px solid #ddd;position:relative;border-radius:8px;-webkit-transition:all ease-in-out .2s;cursor:pointer;}
+	.thing:hover {box-shadow:0 2px 6px rgba(0,0,0,.3);border-color:#a8a8a8;position:relative;top:-2px;}
+	.thing:active {position:relative;top:0;border-color:#999;box-shadow:none;-webkit-transition:none;}
+
 .header-with-tools {position:relative;margin:0 0 30px 0;}
 	.header-tools {float:right;position:relative;top:6px;left:0;}
 	.header-with-tools h2 {float:left;}
 	.tool-label {color:@text-lite;}
-	.tool-select-trigger:link,
-	.tool-select-trigger:visited {color:@text;padding-right:15px;}
-		.tool-select-trigger:after {content:"▼";font-weight:bold;}
-	.tool-select {position:absolute;top:-40px;right:0;z-index:99;background:#fff;box-shadow:0 2px 3px rgba(0,0,0,.3);padding:8px;border-radius:4px;border:1px solid #999;}
-		.tool-select a {display:block;padding:9px;width:100%;height:100%;font-size:14px;color:@text;font-family:@sans;font-weight:bold;}
+	.header-with-tools .activate-panel:link,
+	.header-with-tools .activate-panel:visited {color:@text;padding:9px 15px 9px 9px;}
+		.header-with-tools .activate-panel:after {content:"▼";font-weight:bold;}
+	.header-with-tools .panel {position:absolute;top:-40px;right:0;z-index:99;.panel;}
 
-.activity {position:relative;margin-bottom:20px;}
+.activity {position:relative;margin-bottom:20px;font-size:13px;}
 	.activity img {vertical-align:middle;margin-right:15px;width:40px;height:40px;}
 
 .stat {padding:0 0 20px 0;margin:0 0 20px 0;}
@@ -146,16 +155,15 @@ header {background:#fff;font-family:@serif;}
 	.stat h2 {font-size:32px;}
 	.stat h4 {font-size:14px;color:lighten(@text,20%);}
 
-.thing {cursor:pointer;}
 .profile-pic {border-radius:100px;box-shadow:inset 0 3px 0 rgba(255,255,255,.9);}
 
 .items {padding-top:20px;margin:0 0 30px 0;}
-.item {float:left;width:45%;padding:0;background:#fff;border:1px solid #ddd;border-radius:8px;margin:0 0 50px 0;position:relative;}
+.item {float:left;width:48%;padding:0;margin:0 0 25px 0;}
 	.item:nth-child(even) {float:right;}
 	.item-guts {padding:18px;}
 	.item-edit-link {position:absolute;top:-10px;left:-10px;font-size:11px;opacity:.05;-webkit-transition:opacity .4s ease-in-out;}
 		.item:hover .item-edit-link {opacity:1;}
-	.item-title {padding:0 0 1px 0;font-size:18px;}
+	.item-title {padding:0 0 1px 0;font-size:14px;font-family:@sans;}
 	.item-link {font-size:11px;font-weight:bold;display:block;padding:2px 2px 2px 0;margin:0 0 14px 0;white-space:no-wrap;overflow:hidden;text-overflow:ellipsis;width:60%;}
 	.item-description {font-size:12px;font-family:@sans;padding:0;overflow:hidden;height:20px;white-space:no-wrap;text-overflow:ellipsis;width:100%;}
 	.item-meta {background:#eee;border-top:1px solid #ddd;border-radius:0 0 8px 8px;}
@@ -187,10 +195,10 @@ header {background:#fff;font-family:@serif;}
 	.list-title {font-size:24px;font-weight:bold;float:left;width:290px;line-height:1.2em;position:relative;top:3px;}
 	.list-edit-link {position:absolute;top:10px;right:10px;font-size:11px;}
 
+
 .friends {padding-top:20px;margin:0 0 30px 0;}
-.friend {float:left;width:25%;border:1px solid #ddd;margin-right:5%;position:relative;border-radius:8px;-webkit-transition:all ease-in-out .2s;cursor:pointer;padding:10px 0;}
-	.friend:hover {box-shadow:0 2px 6px rgba(0,0,0,.3);border-color:#aaa;position:relative;top:-2px;}
-	.friend:active {position:relative;top:0;border-color:#999;box-shadow:none;-webkit-transition:none;}
+.friend {float:left;width:25%;margin-right:5%;padding:10px 0;}
+	
 	.friend-guts {padding:18px 20px;text-align:center;}
 	.friend img {display:block;margin:0 auto 20px;width:120px;height:120px;}
 	.friend h2 a {color:@text;text-decoration:none;font-size:14px;}
@@ -212,7 +220,7 @@ header {background:#fff;font-family:@serif;}
 	.profile-head {margin:0 0 30px 0;position:relative;}
 		.profile-head img {width:120px;height:120px;margin:0 20px 0 0;}
 		.profile-head h1 {line-height:120px;}
-		.profile-head .button {position:absolute;top:45px;right:0;padding:15px 20px;}
+		.profile-head .button {float:right;position:relative;top:60px;left:0;padding:15px 20px;}
 	.profile-nav {margin:0 0 20px 0;}
 	.profile-nav ul {background:@text;height:45px;}
 		.profile-nav li {float:left;padding:10px;height:100%;}

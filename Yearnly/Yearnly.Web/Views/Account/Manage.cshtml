@@ -1,15 +1,30 @@
 ﻿@model Yearnly.Web.Models.LocalPasswordModel
 @{
-    ViewBag.Title = "Manage Account";
+    ViewBag.Title = "Settings";
+    ViewBag.Section = "Settings";
 }
 
-<hgroup class="title">
-    <h1>@ViewBag.Title.</h1>
-</hgroup>
 
-<p class="message-success">@ViewBag.StatusMessage</p>
+<h1>@ViewBag.Title</h1>
 
-<p>You're logged in as <strong>@User.Identity.Name</strong>.</p>
+<div class="settings-panel group pd">
+    <h3>About Me</h3>
+    <fieldset>
+        <input type="text" name="first_name" id="first_name" placeholder="first name" />
+        <input type="text" name="last_name" id="last_name" placeholder="last name" />
+        <input type="submit" value="Save Password" />
+    </fieldset>
+</div>
+
+<div class="settings-panel group pd">
+    <h3>Change Password</h3>
+    <fieldset>
+        <input type="password" name="old_password" id="old_password" placeholder="old password" />
+        <input type="password" name="new_password" id="new_password" placeholder="new password" />
+        <input type="password" name="new_password" id="new_password_confirm" placeholder="new password again" />
+        <input type="submit" value="Save Password" />
+    </fieldset>
+</div>
 
 
 @*@if (ViewBag.HasLocalPassword)
