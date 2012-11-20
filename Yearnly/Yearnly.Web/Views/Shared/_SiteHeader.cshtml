@@ -6,14 +6,14 @@
             <a class="notifications-link activate-panel user-action" href="#notification_panel" data-bind="text: numberOfNotifications"></a>
             <!-- number of notifications -->
             <ul class="notifications panel" id="notification_panel">
-                <span data-bind="foreach: friendRequests">
-                    <li class="group notification notification-type-friend-request">
-                        <a data-bind="text: userName, attr: { href: userName }"></a>sent you a friend request.
+                <!-- ko foreach: friendRequests -->
+                <li class="group notification notification-type-friend-request">
+                    <a data-bind="text: userName, attr: { href: userName }"></a>sent you a friend request.
                     <div class="group">
                         <a href="#" class="button accept-friend-request" data-bind="click: $parent.acceptFriendRequest">accept</a> or <a class="button decline-friend-request" data-bind="click: $parent.declineFriendRequest" href="#">decline</a>
                     </div>
-                    </li>
-                </span>
+                </li>
+                <!-- /ko -->
                 <!-- this is for when there are no notifications -->
                 <li class="group notification no-notifications" data-bind="visible: friendRequests().length == 0">No new notifications</li>
             </ul>
