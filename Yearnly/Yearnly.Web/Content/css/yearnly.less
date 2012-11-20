@@ -98,6 +98,7 @@ header {background:#fff;font-family:@serif;box-shadow:0 1px 2px rgba(0,0,0,.25);
 		#user_header > a {display:block;font-weight:bold;color:@text;text-shadow:none;}
 		#user_header img { float:right;margin-left:15px;position:relative;width:40px;height:40px;border:none;}
 		#user_header .user-header-name {line-height:40px;}
+	#not_logged_in_user_header a {float:right;margin-left:5px;position:relative;top:17px;}
 	.user-action {display:block;width:24px;height:24px;width:24px;height:24px;display:block;background:@main-color;color:#fff !important;font-size:15px;font-weight:bold;text-align:center;line-height:24px;}
 	.north-star {background:@main-color;position:absolute;top:18px;left:230px;}
 		.north-star.current {background:#999;}
@@ -241,6 +242,12 @@ header {background:#fff;font-family:@serif;box-shadow:0 1px 2px rgba(0,0,0,.25);
 			.public-list-people a {display:block;width:100%;height:100%;line-height:60px;border-bottom:1px solid #ddd;padding-left:60px;font-size:16px;}
 				.public-list-people li.active a {color:@text;position:relative;top:0;left:1px;background:#fff;z-index:1;border-top:1px solid #ddd;}
 .public-list .main {float:right;}
+
+.settings-panel {padding:10px;border:1px solid #ddd;}
+	.settings-panel h3 {height:30px;line-height:30px;}
+		.settings-panel h3 a {line-height:1em;position:relative;top:3px;}
+			.settings-panel h3 a.toggled {color:#fff;background-color:@text;}
+	.settings-panel .panel {box-shadow:none;border:none;padding:20px;}
 
 /*
 -------------------------------

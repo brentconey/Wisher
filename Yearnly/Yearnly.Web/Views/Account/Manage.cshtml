@@ -8,17 +8,26 @@
 <h1>@ViewBag.Title</h1>
 
 <div class="settings-panel group pd">
-    <h3>About Me</h3>
-    <fieldset>
+    <h3 class="group">About Me <a href="#edit_about_me" class="activate-panel button right">edit</a></h3>
+    <fieldset class="panel" id="edit_about_me">
         <input type="text" name="first_name" id="first_name" placeholder="first name" />
         <input type="text" name="last_name" id="last_name" placeholder="last name" />
-        <input type="submit" value="Save Password" />
+        <input type="submit" value="Save" />
     </fieldset>
 </div>
 
 <div class="settings-panel group pd">
-    <h3>Change Password</h3>
-    <fieldset>
+    <h3 class="group">Change Email <a href="#edit_email" class="activate-panel button right">edit</a></h3>
+    <fieldset class="panel" id="edit_email">
+        <input type="text" name="new_email" id="new_email" placeholder="email address" />
+        <input type="text" name="new_email_confirm" id="new_email_confirm" placeholder="confirm new email address" />
+        <input type="submit" value="Save Email Address" />
+    </fieldset>
+</div>
+
+<div class="settings-panel group pd">
+    <h3 class="group">Change Password <a href="#edit_password" class="activate-panel button right">edit</a></h3>
+    <fieldset class="panel" id="edit_password">
         <input type="password" name="old_password" id="old_password" placeholder="old password" />
         <input type="password" name="new_password" id="new_password" placeholder="new password" />
         <input type="password" name="new_password" id="new_password_confirm" placeholder="new password again" />
@@ -36,10 +45,11 @@ else
     @Html.Partial("_SetPasswordPartial")
 }*@
 
-<section id="externalLogins">
-    @Html.Action("RemoveExternalLogins")
-
-    <h3>Add an external login</h3>
-    @Html.Action("ExternalLoginsList", new { ReturnUrl = ViewBag.ReturnUrl })
-</section>
+<div class="settings-panel group pd">
+    <h3 class="group">Manage accounts <a href="#manage_accounts" class="activate-panel button right">edit</a></h3>
+    <fieldset class="panel" id="manage_accounts">
+        @Html.Action("RemoveExternalLogins")
+        @Html.Action("ExternalLoginsList", new { ReturnUrl = ViewBag.ReturnUrl })
+    </fieldset>
+</div>
 
