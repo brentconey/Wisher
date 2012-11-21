@@ -6,22 +6,32 @@
 
 <p>All your items will be here. If you'd like, you can <a class="button" href="/items/add">add one</a>.</p>
 
+<div class="panel has-overlay" id="item_overlay">
+    <div class="has-overlay-guts">
+        <div class="group item-overlay-details">
+            <a class="item-link" href=#">http://apple.com/sjdoifis</a>
+            <h2>Colosseo Letterpress Print</h2>
+            <span class="item-price">$50</span>
+        </div>
+    </div>
+</div>
+
 <div class="items">
     @foreach (var row in Model)
     {
         <div class="item group thing">
+
             <div class="item-guts">
-                <h3 class="item-title">@row.Title</h3>
+                <h2 class="item-title">Colosseo Letterpress Print</h2>
                 <a class="item-link" href="@row.Link">@row.Link</a>
-                <p class="item-description">@row.Description</p>
-                <a class="button item-edit-link" href="/items/edit/@row.Id">edit</a>
+                <span class="item-price">$50</span>
+                <span class="dibs-called" title="Jordan called dibs">Jordan called dibs</span>
+                <a class="activate-panel item-comments" title="7 comments">7</a>
             </div>
-            <div class="item-meta group">
-                <ul>
-                    <li><a href="#" class="call-dibs">call dibs</a></li>
-                    <li><a href="#" class="open-comments">7 comments</a></li>
-                </ul>
-                <div class="comments-container">
+        </div>
+
+
+@*<div class="comments-container">
                     <div class="comments-guts">
                         <ol class="comments-list">
                             <li class="comment group">
@@ -49,8 +59,8 @@
                             </form>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
+                </div>*@
+
+
     }
 </div>
