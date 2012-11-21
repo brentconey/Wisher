@@ -44,6 +44,12 @@ namespace Yearnly.Web
                 );
 
             routes.MapRoute(
+                name: "MyDibsRoute",
+                url: "dibs/",
+                defaults: new { controller = "User", action = "Dibs" }
+                );
+
+            routes.MapRoute(
                 name: "AjaxFriendSearch",
                 url: "friends/ajaxsearch/",
                 defaults: new { controller = "Friends", action = "AjaxSearch" }

@@ -34,6 +34,11 @@ namespace Yearnly.Web.Controllers
             return View(loggedInUser.UserLists.ToList());
         }
 
+        public ActionResult Dibs()
+        {
+            return View();
+        }
+
         public ActionResult SpecificList(string listParseString)
         {
 

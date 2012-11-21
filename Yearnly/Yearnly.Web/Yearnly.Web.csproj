@@ -231,6 +231,7 @@
     <Content Include="Views\Shared\ListNotFound.cshtml" />
     <Content Include="Views\User\SpecificList.cshtml" />
     <Content Include="Views\Shared\_PublicProfileHeader.cshtml" />
+    <Content Include="Views\User\Dibs.cshtml" />
     <None Include="_AppStart.cshtml" />
   </ItemGroup>
   <ItemGroup>
