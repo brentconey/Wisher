@@ -14,17 +14,18 @@ namespace Yearnly.Web.Controllers
     public class HomeController : Controller
     {
 
-        public ActionResult Index()
+        public ActionResult Index(string returnUrl)
         {
-            ViewBag.Message = "Get Yearnin'";
-            //ViewBag.UserId = WebSecurity.CurrentUserId;
-            ViewBag.Test = "This is some testing of git hub";
             return View();
         }
 
         [AllowAnonymous]
         public ActionResult LandingPage(string returnUrl)
         {
+            if (WebSecurity.IsAuthenticated)
+            {
+                return RedirectToLocal(returnUrl);
+            }
             return View("LandingPage");
         }
 
@@ -51,7 +52,7 @@ namespace Yearnly.Web.Controllers
             }
             else
             {
-                return Redirect("/home");
+                return RedirectToAction("Index");
             }
         }
 

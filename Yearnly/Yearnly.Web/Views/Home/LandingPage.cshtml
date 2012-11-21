@@ -12,7 +12,7 @@
     <div class="half left group" id="yearnly_login">
         <h2 class="pd">Log in</h2>
 
-        @using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl }))
+        @using (Html.BeginForm(new { ReturnUrl = Request.QueryString["ReturnUrl"] }))
         {
             @Html.AntiForgeryToken()
             @Html.ValidationSummary(true)
