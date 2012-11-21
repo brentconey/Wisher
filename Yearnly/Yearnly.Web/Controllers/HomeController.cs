@@ -25,14 +25,22 @@ namespace Yearnly.Web.Controllers
         [AllowAnonymous]
         public ActionResult LandingPage(string returnUrl)
         {
-            //if (ModelState.IsValid && WebSecurity.Login(model.UserName, model.Password, persistCookie: model.RememberMe))
-            //{
-            //    return RedirectToLocal(returnUrl);
-            //}
+            return View("LandingPage");
+        }
 
-            //// If we got this far, something failed, redisplay form
-            //ModelState.AddModelError("", "The user name or password provided is incorrect.");
-            return View();
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public ActionResult LandingPage(LoginModel model, string returnUrl)
+        {
+            if (ModelState.IsValid && WebSecurity.Login(model.UserName, model.Password, persistCookie: model.RememberMe))
+            {
+                return RedirectToLocal(returnUrl);
+            }
+
+            // If we got this far, something failed, redisplay form
+            ModelState.AddModelError("", "The user name or password provided is incorrect.");
+            return View("LandingPage", model);
         }
 
         private ActionResult RedirectToLocal(string returnUrl)
@@ -43,7 +51,7 @@ namespace Yearnly.Web.Controllers
             }
             else
             {
-                return RedirectToAction("Index", "Home");
+                return Redirect("/home");
             }
         }
 
