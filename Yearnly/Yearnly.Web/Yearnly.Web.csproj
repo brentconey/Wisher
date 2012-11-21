@@ -221,7 +221,7 @@
     <Content Include="Views\Shared\_PrivateNav.cshtml" />
     <Content Include="Views\Shared\_Footer.cshtml" />
     <Content Include="Views\Shared\_SiteHeader.cshtml" />
-    <Content Include="Views\Shared\_LoginLayout.cshtml" />
+    <Content Include="Views\Shared\_HomePage.cshtml" />
     <Content Include="Views\Shared\_RegistrationLayout.cshtml" />
     <Content Include="Views\PublicView\Friends.cshtml" />
     <Content Include="Views\Site\About.cshtml" />
@@ -232,6 +232,7 @@
     <Content Include="Views\User\SpecificList.cshtml" />
     <Content Include="Views\Shared\_PublicProfileHeader.cshtml" />
     <Content Include="Views\User\Dibs.cshtml" />
+    <Content Include="Views\Home\LandingPage.cshtml" />
     <None Include="_AppStart.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -262,7 +263,7 @@
     <Content Include="Images\orderedList9.png" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Account\_ChangePasswordPartial.cshtml" />
-    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
+    <Content Include="Views\Home\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Account\_RemoveExternalLoginsPartial.cshtml" />
     <Content Include="Views\Account\_SetPasswordPartial.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
