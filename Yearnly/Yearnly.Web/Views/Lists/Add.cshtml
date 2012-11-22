@@ -9,7 +9,7 @@
     <fieldset class="group">
         <label for="listname">List Title</label>
         <input placeholder="ex: Christmas List 2012" type="text" name="listname" data-bind="value: listName, valueUpdate: 'afterkeydown'" />
-        <label data-bind="visible: listNameError">List name is required.</label>
+        <label data-bind="visible: listNameError" class="form-error">List name is required.</label>
     </fieldset>
     <fieldset class="group">
         <input type="submit" class="button" value="Add List" />
