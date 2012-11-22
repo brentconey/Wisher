@@ -14,10 +14,17 @@ namespace Yearnly.Web
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                name: "LoginRoute",
+                url: "home/login",
+                defaults: new { controller = "Home", action = "LogIn" }
+                );
+
+            routes.MapRoute(
                 name: "HomeRoute",
                 url: "home/",
                 defaults: new { controller = "Home", action = "Index" }
                 );
+
 
             routes.MapRoute(
                 name: "RegisterRoute",

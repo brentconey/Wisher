@@ -12,29 +12,30 @@
     <div class="half left group" id="yearnly_login">
         <h2 class="pd">Log in</h2>
 
-        @using (Html.BeginForm(new { ReturnUrl = Request.QueryString["ReturnUrl"] }))
-        {
+        <form data-bind="submit: logIn">
             @Html.AntiForgeryToken()
-            @Html.ValidationSummary(true)
             <h3>Log in using your Yearnly account</h3>
+            <label class="form-error" data-bind="visible: showAuthenticationError">Wrong username or password.</label>
             <fieldset>
                 <fieldset>
-                    @Html.LabelFor(m => m.UserName)
-                    @Html.TextBoxFor(m => m.UserName)
-                    @Html.ValidationMessageFor(m => m.UserName)
+                    <label for="user_name">User name</label>
+                    <input type="text" data-bind="value: userName, valueUpdate: 'afterkeydown'" />
+                    <label class="form-error" data-bind="visible: userNameError">Username is required.</label>
                 </fieldset>
                 <fieldset>
-                    @Html.LabelFor(m => m.Password)
-                    @Html.PasswordFor(m => m.Password)
-                    @Html.ValidationMessageFor(m => m.Password)
+                    <label for="password">Password</label>
+                    <input type="password" data-bind="value: passWord, valueUpdate: 'afterkeydown'" />
+                    <label class="form-error" data-bind="visible: passWordError">Password is required.</label>
                 </fieldset>
                 <fieldset>
                     @Html.CheckBoxFor(m => m.RememberMe)
                     @Html.LabelFor(m => m.RememberMe, new { @class = "checkbox" })
                 </fieldset>
+                    
                 <input type="submit" class="button right" value="Log in" />
             </fieldset>
-        }
+        </form>
+        <script src="~/Scripts/LandingPage/LogInModel.js"></script>
     </div>
 
     <div class="group half right" id="registration_form">
@@ -67,7 +68,8 @@
                 </fieldset>
                 <fieldset>
                     <input type="submit" id="registration_submit" value="Register" />
-                </fieldset>
+                </fieldset>
+
         }
     </div>
     <div class="group" id="login_with_social">

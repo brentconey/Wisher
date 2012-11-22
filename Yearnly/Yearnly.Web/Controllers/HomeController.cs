@@ -36,16 +36,16 @@ namespace Yearnly.Web.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public ActionResult LandingPage(Yearnly.Web.Models.LoginModel model, string returnUrl)
+        public bool LogIn(Yearnly.Web.Models.LoginModel model)
         {
             if (ModelState.IsValid && WebSecurity.Login(model.UserName, model.Password, persistCookie: model.RememberMe))
             {
-                return RedirectToLocal(returnUrl);
+                return true;
             }
-
-            // If we got this far, something failed, redisplay form
-            ModelState.AddModelError("", "The user name or password provided is incorrect.");
-            return View("LandingPage", model);
+            else
+            {
+                return false;
+            }
         }
 
 

@@ -1,16 +1,6 @@
 ﻿@{
     ViewBag.Title = "Home";
     ViewBag.Section = "Home";
-    String welcomeName = String.Empty;
-    if (String.IsNullOrEmpty(WebSecurity.CurrentUserName))
-    {
-        welcomeName = "Stranger";
-    }
-    else
-    {
-        welcomeName = WebSecurity.CurrentUserName;
-
-    }
 }
 <div class="main group">
     <div id="activity_feed" class="group">
