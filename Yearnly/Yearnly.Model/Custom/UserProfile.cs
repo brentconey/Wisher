@@ -41,7 +41,7 @@ namespace Yearnly.Model
 
         public static IEnumerable<UserProfile> SearchUsers(string searchText, YearnlyEntities db)
         {
-            return db.UserProfiles.Where(up => up.UserName.Contains(searchText)).ToList();
+            return db.UserProfiles.Where(up => up.UserName.Contains(searchText) || up.FirstName.Contains(searchText) || up.LastName.Contains(searchText)).ToList();
         }
     }
 }

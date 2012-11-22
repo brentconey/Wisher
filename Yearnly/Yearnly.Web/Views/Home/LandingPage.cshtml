@@ -40,17 +40,17 @@
     <div class="group half right" id="registration_form">
         <h2 class="pd">Register</h2>
 
-        @using (Html.BeginForm())
+        @using (Html.BeginForm("Register", "Home"))
         {
             @Html.AntiForgeryToken()
             @Html.ValidationSummary()
             <fieldset>
                     <label for="first_name">First name</label>
-                    <input data-val="true" data-val-required="The User name field is required." id="first_name" name="UserName" type="text" value="" />
+                    <input data-val="true" data-val-required="The First name field is required." id="first_name" name="FirstName" type="text" value="" />
                 </fieldset>
             <fieldset>
                     <label for="user_name">Last name</label>
-                    <input data-val="true" data-val-required="The User name field is required." id="last_name" name="UserName" type="text" value="" />
+                    <input data-val="true" data-val-required="The Last name field is required." id="last_name" name="LastName" type="text" value="" />
                 </fieldset>
 
             <fieldset>

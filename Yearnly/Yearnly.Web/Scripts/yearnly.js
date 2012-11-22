@@ -102,3 +102,11 @@ $(function () {
 
 	
 });
+//Helper function for checking inputs for values
+function HasValue(value) {
+    if (value) {
+        return false;
+    } else {
+        return true;
+    }
+}

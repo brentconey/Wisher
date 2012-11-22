@@ -9,11 +9,7 @@
     self.itemTitleError = ko.computed(function () {
         var hasError;
         if (self.hasSubmitted()) {
-            if (self.itemTitle()) {
-                hasError = false;
-            } else {
-                hasError = true;
-            }
+            hasError = HasValue(self.itemTitle());
         } else {
             hasError = false;
         }
@@ -23,11 +19,7 @@
     self.itemLinkError = ko.computed(function () {
         var hasError;
         if (self.hasSubmitted()) {
-            if (self.itemLink()) {
-                hasError = false;
-            } else {
-                hasError = true;
-            }
+            hasError = HasValue(self.itemLink());
         } else {
             hasError = false;
         }

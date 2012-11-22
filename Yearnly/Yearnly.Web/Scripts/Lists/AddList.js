@@ -7,11 +7,7 @@
     self.listNameError = ko.computed(function () {
         var hasError;
         if (self.hasSubmitted()) {
-            if (self.listName()) {
-                hasError = false;
-            } else {
-                hasError = true;
-            }
+            hasError = HasValue(self.listName());
         } else {
             hasError = false;
         }
