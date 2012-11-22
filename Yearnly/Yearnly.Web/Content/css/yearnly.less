@@ -90,7 +90,7 @@ label.form-error {background:@error;border:1px solid @error-hover;color:#fff;bor
 	.panel .menu {min-width:120px;}
 		.panel .menu li a {display:block;padding:9px;width:100%;height:100%;font-size:14px;color:@text;font-family:@sans;font-weight:bold;text-transform:capitalize;} 
 
-.overlay {position:absolute;top:15%;left:50%;margin-left:-300px;z-index:9999;width:600px;padding:40px;border:none;box-shadow:0 0 15px rgba(0,0,0,.9);}
+.overlay {position:absolute;top:15%;left:50%;margin-left:-400px;z-index:9999;width:600px;padding:40px;border:none;box-shadow:0 0 15px rgba(0,0,0,.9);}
 
 #ui_blocker {width:100%;height:100%;background:rgba(0,0,0,.5);position:absolute;top:0;left:0;z-index:9998;}
 
@@ -216,15 +216,15 @@ header {background:#fff;font-family:@serif;box-shadow:0 1px 2px rgba(0,0,0,.25);
 
 
 .friends {padding-top:20px;margin:0 0 30px 0;}
-.friend {float:left;width:30%;margin-right:3%;padding:10px 0;}
+.friend {float:left;width:30%;margin:0 3% 25px 0;padding:10px 0;}
 	.friend-guts {padding:18px 20px;text-align:center;}
 	.friend img {display:block;margin:0 auto 20px;width:120px;height:120px;}
 	.friend h2 a {color:@text;text-decoration:none;font-size:14px;}
 
-.friends-search-container {position:relative;width:100%;}
+.friends-search-container {position:relative;width:100%;z-index:1;}
 	.no-friends-found {padding:20px!important;font-size:13px;font-weight:bold;font-family:@sans;color:@text;font-style:italic;}
 	.friends-search {font-size:16px;}
-	.friends-search-list {width:100%;position:absolute;top:32px;left:0;background:#fff;z-index:9999;border:1px solid #aaa;border-top:none;}
+	.friends-search-list {width:100%;position:absolute;top:32px;left:0;background:#fff;z-index:1;border:1px solid #aaa;border-top:none;}
 		.mini-friend {width:100%;padding:15px 10px 0;background:#fff;border-top:1px solid #ddd;}
 			.mini-friend p {padding:0;margin:0;font-weight:bold;font-family:@sans;color:@text;float:right;color:#999;font-style:italic;position:relative;top:-25px;}
 			.mini-friend:first-child {border-top:none;}
@@ -234,6 +234,11 @@ header {background:#fff;font-family:@serif;box-shadow:0 1px 2px rgba(0,0,0,.25);
 				.mini-friend .friend-name {font-size:18px;font-weight:bold;color:@text;font-family:@serif;text-transform:capitalize;position:relative;top:4px;}
 			.mini-friend .friend-username {color:@text-lite;font-size:13px;font-family:@sans;display:block;padding-top:5px;}
 			.mini-friend .add-friend {font-size:11px;position:relative;top:-24px;}
+
+.dibs {}
+	.dib {padding:0 0 10px 0;margin:0 0 10px 0;border-bottom:1px dotted #ddd;}
+		.dib .mark-purchased {float:left;width:20px;height:20px;cursor:pointer;}
+		.dib .item-title {font-size:13px;}
 	
 .profile {}
 	.profile-head {margin:0 0 30px 0;position:relative;}

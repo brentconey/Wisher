@@ -12,6 +12,8 @@
         <div class="panel" id="user_header_panel">
             <ul class="menu">
                 <li><a href="/@User.Identity.Name">View Profile</a></li>
+                <li><a href="/items">My Items</a></li>
+                <li><a href="/lists">My Lists</a></li>
             <li>@Html.ActionLink("Settings", "manage", "account", routeValues: null, htmlAttributes: new { id = "account_link" })</li>
             <li><a id="sign_out_link" href="javascript:document.getElementById('logoutForm').submit()">sign out</a></li>
                 </ul>
