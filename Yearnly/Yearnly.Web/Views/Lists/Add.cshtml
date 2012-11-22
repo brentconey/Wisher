@@ -5,12 +5,14 @@
 
 <h1>Create a list</h1>
 
-<form action="/lists/create/" method="post">
+<form data-bind="submit: addList" id="add_list_form">
     <fieldset class="group">
         <label for="listname">List Title</label>
-        <input placeholder="ex: Christmas List 2012" type="text" name="listname" />
+        <input placeholder="ex: Christmas List 2012" type="text" name="listname" data-bind="value: listName, valueUpdate: 'afterkeydown'" />
+        <label data-bind="visible: listNameError">List name is required.</label>
     </fieldset>
     <fieldset class="group">
         <input type="submit" class="button" value="Add List" />
     </fieldset>
 </form>
+<script src="~/Scripts/Lists/AddList.js"></script>

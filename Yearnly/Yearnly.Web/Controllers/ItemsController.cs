@@ -15,7 +15,7 @@ namespace Yearnly.Web.Controllers
 
         public ItemsController()
         {
-            this.db = new YearnlyEntities();
+            db = new YearnlyEntities();
         }
         public ActionResult Add()
         {
@@ -64,25 +64,20 @@ namespace Yearnly.Web.Controllers
         }
 
         [HttpPost]
-        [AllowAnonymous]
         public bool AjaxCreate(UserItem input)
         {
             bool didCreateItem = false;
             input.UserId = WebSecurity.CurrentUserId;
             input.DateCreated = DateTime.UtcNow;
-            int numOfItemsAdded = 0;
-            //We only want to save it if a user is logged in.
-            if (input.UserId != -1)
+            try
             {
-                using (YearnlyEntities context = new YearnlyEntities())
-                {
-                    context.UserItems.Add(input);
-                    numOfItemsAdded = context.SaveChanges();
-                }
-                if (numOfItemsAdded > 0)
-                {
-                    didCreateItem = true;
-                }
+                db.UserItems.Add(input);
+                db.SaveChanges();
+                didCreateItem = true;
+            }
+            catch
+            {
+                didCreateItem = false;
             }
 
             return didCreateItem;

@@ -14,6 +14,10 @@ function FriendNotificationModel() {
         
     });
 
+    self.hasNotifications = ko.computed(function () {
+        return self.numberOfNotifications() > 0 ? "has-notifications" : "";
+    });
+
     self.declineFriendRequest = function (friendNotification) {
         $.ajax({
             type: "POST",

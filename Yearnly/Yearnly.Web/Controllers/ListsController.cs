@@ -54,15 +54,24 @@ namespace Yearnly.Web.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(String listname)
+        public bool AjaxCreate(String listname)
         {
+            bool didCreateList = false;
             UserList newList = new UserList();
             newList.Name = listname;
             newList.UserId = WebSecurity.CurrentUserId;
             newList.DateCreated = DateTime.UtcNow;
             db.UserLists.Add(newList);
-            db.SaveChanges();
-            return RedirectToAction("Lists", "Users");
+            try
+            {
+                db.SaveChanges();
+                didCreateList = true;
+            }
+            catch
+            {
+                didCreateList = false;
+            }
+            return didCreateList;
         }
     }
 }

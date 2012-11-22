@@ -4,11 +4,11 @@
     self.itemLink = ko.observable(null);
     self.itemDescription = ko.observable(null);
 
-    self.submissionCount = ko.observable(0);
+    self.hasSubmitted = ko.observable(false);
 
     self.itemTitleError = ko.computed(function () {
         var hasError;
-        if (self.submissionCount() != 0) {
+        if (self.hasSubmitted()) {
             if (self.itemTitle()) {
                 hasError = false;
             } else {
@@ -22,7 +22,7 @@
 
     self.itemLinkError = ko.computed(function () {
         var hasError;
-        if (self.submissionCount() != 0) {
+        if (self.hasSubmitted()) {
             if (self.itemLink()) {
                 hasError = false;
             } else {
@@ -39,9 +39,7 @@
     //}, this);
 
     self.addItem = function () {
-        var newSubmissionCount = self.submissionCount() + 1;
-        self.submissionCount(newSubmissionCount);
-        
+        self.hasSubmitted(true);
         //title error or link error stop submission
         if (!self.itemTitleError() && !self.itemLinkError()) {
             $.ajax({
@@ -56,10 +54,10 @@
                     if (result == "True") {
                         alert("Item created");
                         //reset everything
-                        self.itemTitle('');
-                        self.itemLink('');
-                        self.itemDescription('');
-                        self.submissionCount(0);
+                        self.itemTitle(null);
+                        self.itemLink(null);
+                        self.itemDescription(null);
+                        self.hasSubmitted(false);
                     } else {
                         alert("ERROR");
                     }
