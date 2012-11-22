@@ -3,21 +3,15 @@
     ViewBag.Section = "AddItem";
 }
 <h1>Add an item</h1>
-
 <form data-bind="submit: addItem" id="add_item_form">
     <label for="">Item Title</label>
     <input type="text" placeholder="Item title..." name="Title" data-bind="value: itemTitle, valueUpdate: 'keyup'" id="" />
     <input type="text" placeholder="Link to item..." name="Link" data-bind="value: itemLink, valueUpdate: 'keyup'" id="" />
     <textarea placeholder="Description" name="Description" id="" data-bind="value: itemDescription, valueUpdate: 'keyup'"></textarea>
-    <select name="" id="add_item_pick_list">
-        <option value="" selected>Christmas List 2012</option>
-    </select>
     <fieldset class="group">
         <input type="submit" class="button left" value="Submit" />
     </fieldset>
 </form>
 
-<h3>Item preview:</h3>
-<p data-bind="text: itemBuilder"></p>
 
 <script src="~/Scripts/Items/AddItem.js"></script>
