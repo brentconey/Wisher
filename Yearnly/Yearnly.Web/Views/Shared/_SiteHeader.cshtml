@@ -1,24 +1,37 @@
 ﻿<header class="full-width">
     <section class="wrap group">
+
         <a id="logo" href="/">Yearnly</a>
+
         <a class="@(ViewBag.Section == "Home" ? "current" : "") north-star user-action" href="/">H</a>
+
         <div class="notifications-container group">
             <a class="notifications-link activate-panel user-action" href="#notification_panel" data-bind="text: numberOfNotifications"></a>
             <!-- number of notifications -->
             <ul class="notifications panel" id="notification_panel">
+                <!-- this is for when there are no notifications -->
+                <li class="group notification no-notifications" data-bind="visible: friendRequests().length == 0">No new notifications</li>
+
                 <!-- ko foreach: friendRequests -->
                 <li class="group notification notification-type-friend-request">
-                    <a data-bind="text: userName, attr: { href: userName }"></a>sent you a friend request.
+                    <a href="#" data-bind="attr: { href: userName }"></a><img class="profile-pic" src="~/Content/css/i/big_profile_pic.jpg" alt="" />
+                    <a class="request-sender" data-bind="text: firstname, attr: { href: userName }"></a> sent you a friend request.
                     <div class="group">
-                        <a href="#" class="button accept-friend-request" data-bind="click: $parent.acceptFriendRequest">accept</a> or <a class="button decline-friend-request" data-bind="click: $parent.declineFriendRequest" href="#">decline</a>
+                        <a href="#" class="button accept-friend-request" data-bind="click: $parent.acceptFriendRequest">accept</a>
+                         or 
+                        <a href="#" class="button decline-friend-request" data-bind="click: $parent.declineFriendRequest">decline</a>
                     </div>
                 </li>
                 <!-- /ko -->
-                <!-- this is for when there are no notifications -->
-                <li class="group notification no-notifications" data-bind="visible: friendRequests().length == 0">No new notifications</li>
+                
             </ul>
         </div>
         <script src="~/Scripts/Friends/FriendNotification.js"></script>
+
+
+
+        <a class="user-action activate-search" href="#">search</a>
+
         <form method="post" action="#" id="global_search">
             <fieldset>
                 <legend>Search</legend>
@@ -26,6 +39,11 @@
                 <input type="submit" value="search" />
             </fieldset>
         </form>
+
+
         @Html.Partial("_LoginPartial")
+
+
+
     </section>
 </header>

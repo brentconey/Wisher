@@ -91,29 +91,38 @@ textarea { color:@textbox-color;display:block;padding:6px;font-size:14px;outline
 */
 header {background:#fff;font-family:@serif;box-shadow:0 1px 2px rgba(0,0,0,.25);border-bottom:1px solid #fff;margin:0 0 40px 0;}
     header .wrap {position:relative;height:60px;}
-    header #logo { position: absolute; font-size:30px; top: 13px; left: 0; .subtle-drop-shadow;font-weight:bold;letter-spacing:-2px;}
-    #global_search { position:absolute;top:13px;left:285px;}
+    header #logo {display:block;position:absolute;top:0;left:-5px;height:60px;width:140px;background:url(i/header_sprite.png) no-repeat 0 -120px;line-height:60px;color:@text;text-indent:-9999px;}
+    #global_search {}
 		#global_search legend {display:none;}
         #global_search input[type="submit"] { visibility:hidden; }
-        #global_search input[type="text"] { border-radius:0 15px 15px 0;padding-left:10px;font-weight:bold;width:300px;opacity:.6; }
+        #global_search input[type="text"] {position:absolute;top:10px;left:375px;height:40px;padding-left:15px;border-radius:50px;font-weight:bold;width:300px;opacity:0;-webkit-transition:opacity .25s ease-in-out;}
         #global_search input[type="text"]:focus,
-		#global_search input[type="text"]:hover { opacity:1.0;-webkit-transition:all .25s ease-in-out; }
+		#global_search input[type="text"]:hover { opacity:1.0;-webkit-transition:opacity .25s ease-in-out; }
 	#user_header { position: absolute; top: 11px; right: 0; text-align:right;}
 		#user_header > a {display:block;font-weight:bold;color:@text;text-shadow:none;}
 		#user_header img { float:right;margin-left:15px;position:relative;width:40px;height:40px;border:none;}
 		#user_header .user-header-name {line-height:40px;}
 	#not_logged_in_user_header a {float:right;margin-left:5px;position:relative;top:17px;}
-	.user-action {display:block;width:24px;height:24px;width:24px;height:24px;display:block;background:@main-color;color:#fff !important;font-size:15px;font-weight:bold;text-align:center;line-height:24px;}
-	.north-star {background:@main-color;position:absolute;top:18px;left:230px;}
-		.north-star.current {background:#999;}
-	.notifications-container {position:absolute;top:18px;left:255px;}
-		.notifications-link {}
-		.notifications {position:absolute;top:24px;left:0;z-index:9999;width:320px;padding:15px;}
-			.notification {font-size:13px;font-family:@sans;padding-bottom:10px;margin-bottom:10px;border-bottom:1px solid #eee;}
-				.notification:last-child {padding-bottom:none;margin-bottom:none;border-bottom:none;}
+	.user-action {width:40px;height:40px;display:block;background:transparent url(i/header_sprite.png) no-repeat 0 0;text-indent:-9999px;}
+		.user-action:hover {background-position-y:-40px;}
+	.north-star {position:absolute;top:10px;left:225px;}
+		.north-star:active,
+		.north-star.current {background-position-y:-80px;}
+	.notifications-container {position:absolute;top:10px;left:275px;}
+		.notifications-link {background-position-x:-40px;}
+			.notifications-link.toggled,
+			.notifications-link.has-notifications {background-position-y:-80px;text-indent: 0;text-align: center;font-size: 15px;font-weight: bold;line-height:36px;font-size: 9px;color:@main-color;}
+			.has-notifications:hover {text-decoration:none;font-weight:bold;color:@text;}
+		.notifications {position:absolute;top:40px;left:0;z-index:9999;width:350px;padding:15px;}
+			.notification {font-size:14px;font-family:@sans;padding-bottom:10px;margin-bottom:10px;border-bottom:1px solid #eee;}
+			.notification:last-child {padding-bottom:0;margin-bottom:0;border-bottom:0;}
 				.notification .group {padding-top:5px;}
-				.notification:last-child {padding-bottom:0;margin-bottom:0;border-bottom:none;}
+				.notification .profile-pic {float:left;width:40px;height:40px;margin-right:20px;}
+				.notification .request-sender {font-weight:bold;}
+				.notification .decline-friend-request {font-size:11px;background:#777;}
 		.no-notifications {padding:10px!important;font-size:16px;font-style:italic;color:#999;}
+	.activate-search {position:absolute;top:10px;left:325px;background-position-x:-80px;}
+		.activate-search.toggled {background-position-y:-80px;}
 
 #global_nav { border-right:1px solid #eee;font-family:@sans;}
 	#quick_actions { padding-bottom: 30px; }
@@ -152,8 +161,9 @@ header {background:#fff;font-family:@serif;box-shadow:0 1px 2px rgba(0,0,0,.25);
 		.header-with-tools .activate-panel:after {content:"▼";font-weight:bold;}
 	.header-with-tools .panel {position:absolute;top:-40px;right:0;z-index:99;.panel;}
 
-.activity {position:relative;margin-bottom:20px;font-size:13px;}
+.activity {position:relative;margin-bottom:20px;font-size:13px;font-family:@sans;}
 	.activity img {vertical-align:middle;margin-right:15px;width:40px;height:40px;}
+	.activity a {font-weight:bold;}
 
 .stat {padding:0 0 20px 0;margin:0 0 20px 0;}
 	.stat:last-child {padding-bottom:0;margin:0;}
@@ -163,14 +173,15 @@ header {background:#fff;font-family:@serif;box-shadow:0 1px 2px rgba(0,0,0,.25);
 .profile-pic {border-radius:100px;box-shadow:inset 0 3px 0 rgba(255,255,255,.9);}
 
 .items {padding-top:20px;margin:0 0 30px 0;}
-.item {float:left;width:30%;height:120px;margin:0 3.3% 20px 0;padding:0;position:relative;}
+.item {float:left;width:30%;height:108px;margin:0 3.3% 30px 0;padding:0;position:relative;font-family:@sans;}
 	.item:nth-child(3) {margin-right:none;float:right;}
 	.item-guts {padding:20px;}
-	.item .item-title {font-size:16px;padding:0;line-height:1.3em;}
-	.item .item-link {position:absolute;bottom:21px;left:60px;font-size:10px;color:@main-color;width:100px;overflow:hidden;}
-	.item .item-price {position:absolute;left:-5px;bottom:16px;height:20px;width:60px;background:@success;border:1px solid @success-hover;border-radius:3px;text-align:center;color:darken(@success-hover,20%);}
-	.item .item-comments {position:absolute;bottom:13px;right:5px;border:1px solid #ddd;text-align:center;color:@main-color;background:#eee;height:25px;width:25px;line-height:25px;font-weight:bold;font-family:@sans;}
-	.item .dibs-called {position:absolute;top:-5px;right:7px;width:20px;height:20px;text-indent:-9990px;background:@main-color;}
+	.item .item-title {font-size:16px;padding:0;line-height:1.3em;font-family:@sans;}
+	.item .item-link {position:absolute;bottom:21px;left:60px;font-size:10px;color:#aaa;width:100px;overflow:hidden;text-decoration:none;}
+	.item .item-price {position:absolute;left:-5px;bottom:16px;height:20px;line-height:20px;width:60px;background:@success;border:1px solid @success-hover;border-radius:3px;text-align:center;color:darken(@success-hover,20%);font-weight:bold;}
+	.item .item-comments {position:absolute;bottom:3px;right:5px;text-align:center;color:#fff;background:url(i/header_sprite.png) no-repeat 100% 100%;height:40px;width:40px;line-height:36px;font-size:12px;font-weight:bold;text-decoration:none;}
+	.item .dibs-called {position:absolute;top:-20px;right:5px;width:40px;height:40px;text-indent:-9999px;background:transparent url(i/header_sprite.png) 100% 80px;}
+		.item .who-dibbed {position:absolute;top:-40px;right:-20px;width:180px;height:53px;line-height:40px;font-weight:bold;text-align:center;color:#fff;.subtle-drop-shadow;font-size:14px;background:#eee;text-indent:0;background:url(i/header_sprite.png) no-repeat 100% 0;}
 
 .comments-container {position:absolute;border-radius:5px;top:100%;margin-top:-1px;width:110%;left:-16px;background:#fff;border:1px solid #999;z-index:9;display:none;padding:10px;box-shadow:0 3px 7px rgba(0,0,0,.2);}
 	.comments-guts {padding:10px;}

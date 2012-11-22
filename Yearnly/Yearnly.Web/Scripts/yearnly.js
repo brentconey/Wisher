@@ -1,5 +1,29 @@
 $(function () {
 
+// manages the header search effects and functionality
+    $('.activate-search').click(function (e) {
+        $(this).toggleClass('toggled');
+        $('#global_search input[type="text"]').focus();
+        e.preventDefault();
+    });
+    $('#global_search input[type="text"]').blur(function () {
+        $('.activate-search').removeClass('toggled');
+    });
+
+
+    $('.dibs-called').hover(function () {
+        var the_title = $(this).attr('title');
+        if (!$('.who-dibbed').length) { 
+            $('<span class="who-dibbed">' + the_title + '</span>').hide().appendTo(this).fadeIn(200);
+        }
+    }, function () {
+        $('.who-dibbed').fadeOut(200, function () {
+            $(this).remove();
+        });
+    });
+
+
+
     $('.activate-panel').click(function (e) {
         e.preventDefault();
         e.stopPropagation();

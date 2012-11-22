@@ -187,6 +187,7 @@
     <Content Include="Content\css\i\big_profile_pic.jpg" />
     <Content Include="Content\css\i\demo_profile_pic.jpg" />
     <Content Include="Content\css\i\favicon.ico" />
+    <Content Include="Content\css\i\header_sprite.png" />
     <Content Include="Content\css\i\site_nav_sprite.png" />
     <Content Include="Content\css\i\winter_wonderland.jpg" />
     <Content Include="Content\css\yearnly.less" />
