@@ -6,13 +6,42 @@
 
 <p>All your items will be here. If you'd like, you can <a class="button" href="/items/add">add one</a>.</p>
 
-<div class="panel has-overlay" id="item_overlay">
-    <div class="has-overlay-guts">
+<div class="panel overlay" id="item_overlay">
+    <div class="overlay-guts">
         <div class="group item-overlay-details">
-            <a class="item-link" href=#">http://apple.com/sjdoifis</a>
             <h2>Colosseo Letterpress Print</h2>
+            <a class="item-link" href="#">http://apple.com/sjdoifis</a>
             <span class="item-price">$50</span>
         </div>
+        <div class="comments-container">
+            <div class="comments-guts">
+                <ol class="comments-list">
+                    <li class="comment group">
+                        <span class="comment-author"><a href="/system">Brent Coney</a></span> <span class="comment-method">said:</span>
+                        <span class="comment-body">
+                            <p>This is a comment. Can you see it?</p>
+                        </span>
+                    </li>
+                    <li class="comment whisper group">
+                        <span class="comment-author"><a href="/system">Jordan Little</a></span> <span class="comment-method">whispered:</span>
+                        <span class="comment-body">
+                            <p>This is a whispered comment. Can you see it? It's going to be a long one, too, so watch your heights and widths.</p>
+                        </span>
+                    </li>
+                </ol>
+                <div class="add-comment">
+                    <form id="" method="" action="">
+                        <fieldset>
+                            <textarea class="add-comment-body" rows="" cols="" id="" name="" placeholder="add your comment&hellip;"></textarea>
+                        </fieldset>
+                        <fieldset class="group">
+                            <input type="submit" class="left button add-whisper-button" value="whisper" />
+                            <input type="submit" class="right button add-comment-button" value="post" />
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div><!-- /.comments-container -->
     </div>
 </div>
 
@@ -20,47 +49,14 @@
     @foreach (var row in Model)
     {
         <div class="item group thing">
-
+            <a class="activate-panel" href="#item_overlay">view details</a>
             <div class="item-guts">
                 <h2 class="item-title">@row.Title</h2>
                 <a class="item-link" href="@row.Link">@row.Link</a>
                 <span class="item-price">$50</span>
-                <span class="dibs-called" title="Jordan called dibs">Jordan called dibs</span>
-                <a class="activate-panel item-comments" title="7 comments">7</a>
+                <span class="dibs-called">Jordan called dibs</span>
+                <a class="item-comments" title="7 comments" href="#PERMALINK_TO_ITEM">7</a>
             </div>
         </div>
-
-
-@*<div class="comments-container">
-                    <div class="comments-guts">
-                        <ol class="comments-list">
-                            <li class="comment group">
-                                <span class="comment-author"><a href="/system">Brent Coney</a></span> <span class="comment-method">said:</span>
-                                <span class="comment-body">
-                                    <p>This is a comment. Can you see it?</p>
-                                </span>
-                            </li>
-                            <li class="comment whisper group">
-                                <span class="comment-author"><a href="/system">Jordan Little</a></span> <span class="comment-method">whispered:</span>
-                                <span class="comment-body">
-                                    <p>This is a whispered comment. Can you see it? It's going to be a long one, too, so watch your heights and widths.</p>
-                                </span>
-                            </li>
-                        </ol>
-                        <div class="add-comment">
-                            <form id="" method="" action="">
-                                <fieldset>
-                                    <textarea class="add-comment-body" rows="" cols="" id="" name="" placeholder="add your comment&hellip;"></textarea>
-                                </fieldset>
-                                <fieldset class="group">
-                                    <input type="submit" class="left button add-whisper-button" value="whisper" />
-                                    <input type="submit" class="right button add-comment-button" value="post" />
-                                </fieldset>
-                            </form>
-                        </div>
-                    </div>
-                </div>*@
-
-
     }
 </div>

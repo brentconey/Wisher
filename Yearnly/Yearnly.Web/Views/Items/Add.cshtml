@@ -4,12 +4,20 @@
 }
 <h1>Add an item</h1>
 <form data-bind="submit: addItem" id="add_item_form">
-    <label for="">Item Title</label>
-    <input type="text" placeholder="Item title..." name="Title" data-bind="value: itemTitle, valueUpdate: 'afterkeydown'" id="" />
-    <label data-bind="visible: itemTitleError">Title is required, bro.</label>
-    <input type="text" placeholder="Link to item..." name="Link" data-bind="value: itemLink, valueUpdate: 'afterkeydown'" id="" />
-    <label data-bind="visible: itemLinkError">How are you going to get it with no link, braj?</label>
-    <textarea placeholder="Description" name="Description" id="" data-bind="value: itemDescription"></textarea>
+    <fieldset class="group">
+        <label for="">Item Title</label>
+        <input type="text" placeholder="Item title..." name="Title" data-bind="value: itemTitle, valueUpdate: 'afterkeydown'" id="" />
+        <label class="form-error" data-bind="visible: itemTitleError">Title is required, bro.</label>
+    </fieldset>
+    <fieldset class="group">
+        <label for="">Item Link</label>
+        <input type="text" placeholder="Link to item..." name="Link" data-bind="value: itemLink, valueUpdate: 'afterkeydown'" id="" />
+        <label class="form-error" data-bind="visible: itemLinkError">How are you going to get it with no link, braj?</label>
+    </fieldset>
+    <fieldset class="group">
+        <label for="">Item Link</label>
+        <textarea placeholder="Description" name="Description" id="" data-bind="value: itemDescription"></textarea>
+    </fieldset>
     <fieldset class="group">
         <input type="submit" class="button left" value="Submit" />
     </fieldset>

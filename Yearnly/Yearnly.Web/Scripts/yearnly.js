@@ -10,9 +10,9 @@ $(function () {
         $('.activate-search').removeClass('toggled');
     });
 
-
+// handles the little bubble pop-over on the item dibs
     $('.dibs-called').hover(function () {
-        var the_title = $(this).attr('title');
+        var the_title = $(this).text();
         if (!$('.who-dibbed').length) { 
             $('<span class="who-dibbed">' + the_title + '</span>').hide().appendTo(this).fadeIn(200);
         }
@@ -28,12 +28,15 @@ $(function () {
         e.preventDefault();
         e.stopPropagation();
         var panelToOpen = $(this).attr('href');
+        if ($(panelToOpen).hasClass('overlay')) {
+            $('body').append('<div id="ui_blocker"></div>');
+        }
         $('.activate-panel').removeClass('toggled');
         if ($(panelToOpen).is(':visible')) {
             $(panelToOpen).hide();
         } else {
-            $('.panel').fadeOut(150);
-            $(panelToOpen).fadeIn(200);
+            $('.panel').fadeOut(100);
+            $(panelToOpen).fadeIn(300);
             $(this).addClass('toggled');
         }
     });
@@ -43,7 +46,7 @@ $(function () {
     });
 
     $(document).on("click", "html", function (e) {
-        $.each($('.panel'), function () {
+        $.each($('.panel,#ui_blocker'), function () {
             if ($(this).is(':visible')) {
                 $(this).hide();
                 $('.activate-panel').removeClass('toggled');

@@ -8,7 +8,7 @@
 <div class="friends-search-container">
     <input type="text" class="friends-search" placeholder="search for friends..." data-bind="value: searchText, submit: searchFriends" />
     <ul class="friends-search-list" data-bind="visible: noResults">
-        <li class="group mini-friend">No friends with that name 'round here.</li>
+        <li class="group mini-friend no-friends-found">No friends with that name 'round here.</li>
     </ul>
     <ul class="friends-search-list" data-bind="foreach: searchResults, visible: searchResults().length > 0">
         <li class="group mini-friend">
