@@ -30,6 +30,7 @@ namespace Yearnly.Web.Controllers
             {
                 return RedirectToLocal(returnUrl);
             }
+
             return View("LandingPage");
         }
 
