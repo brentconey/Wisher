@@ -49,7 +49,7 @@ else
     <h3 class="group">Manage accounts <a href="#manage_accounts" class="activate-panel button right">edit</a></h3>
     <fieldset class="panel" id="manage_accounts">
         @Html.Action("RemoveExternalLogins")
-        @Html.Action("ExternalLoginsList", new { ReturnUrl = ViewBag.ReturnUrl })
+        @Html.Action("ExternalLoginsList", "Home", new { ReturnUrl = ViewBag.ReturnUrl })
     </fieldset>
 </div>
 

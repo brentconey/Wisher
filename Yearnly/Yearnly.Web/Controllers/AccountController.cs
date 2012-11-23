@@ -297,13 +297,13 @@ namespace Yearnly.Web.Controllers
             return View();
         }
 
-        [AllowAnonymous]
-        [ChildActionOnly]
-        public ActionResult ExternalLoginsList(string returnUrl)
-        {
-            ViewBag.ReturnUrl = returnUrl;
-            return PartialView("_ExternalLoginsListPartial", OAuthWebSecurity.RegisteredClientData);
-        }
+        //[AllowAnonymous]
+        //[ChildActionOnly]
+        //public ActionResult ExternalLoginsList(string returnUrl)
+        //{
+        //    ViewBag.ReturnUrl = returnUrl;
+        //    return PartialView("_ExternalLoginsListPartial", OAuthWebSecurity.RegisteredClientData);
+        //}
 
         [ChildActionOnly]
         public ActionResult RemoveExternalLogins()
