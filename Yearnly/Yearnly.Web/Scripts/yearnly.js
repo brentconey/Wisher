@@ -46,8 +46,11 @@ $(function () {
     });
 
     $(document).on("click", "html", function (e) {
-        $.each($('.panel,#ui_blocker'), function () {
+        $.each($('.panel'), function () {
             if ($(this).is(':visible')) {
+                if ($(this).hasClass('overlay')) {
+                    $('#ui_blocker').remove();
+                }
                 $(this).hide();
                 $('.activate-panel').removeClass('toggled');
             }
