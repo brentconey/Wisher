@@ -4,12 +4,15 @@
     ViewBag.Title = "Log in";
     Layout = "~/Views/Shared/_HomePage.cshtml";
 }
+<div class="login group">
+    <h1><a id="logo" href="/">Yearnly</a></h1>
 
-<div id="promo" class="full-width group">
-    <h1>Yearnly</h1>
-    <h2 class="pd">What do you want?</h2>
+    <div class="group" id="login_with_social">
+        @Html.Action("ExternalLoginsList", new { ReturnUrl = ViewBag.ReturnUrl })
+    </div>
+</div>
 
-    <div class="half left group" id="yearnly_login">
+    @*<div class="half left group" id="yearnly_login">
         <h2 class="pd">Log in</h2>
 
         <form data-bind="submit: logIn">
@@ -36,9 +39,9 @@
             </fieldset>
         </form>
         <script src="~/Scripts/LandingPage/LogInModel.js"></script>
-    </div>
+    </div>*@
 
-    <div class="group half right" id="registration_form">
+    @*<div class="group half right" id="registration_form">
         <h2 class="pd">Register</h2>
 
         @using (Html.BeginForm("Register", "Home"))
@@ -71,10 +74,5 @@
                 </fieldset>
 
         }
-    </div>
-    <div class="group" id="login_with_social">
-        <h2>Log in with Facebook</h2>
-        @Html.Action("ExternalLoginsList", new { ReturnUrl = ViewBag.ReturnUrl })
-    </div>
-
-</div>
+    </div>*@
+    
