@@ -105,6 +105,12 @@ namespace Yearnly.Web
                 );
 
             routes.MapRoute(
+                name: "GetItemRoute",
+                url: "items/ajaxgetitem/{itemId}",
+                defaults: new { controller = "Items", action = "AjaxGetItem" }
+                );
+
+            routes.MapRoute(
                 name: "AddItemRoute",
                 url: "items/add",
                 defaults: new { controller = "Items", action = "Add" }

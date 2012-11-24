@@ -199,6 +199,7 @@
     <None Include="Properties\PublishProfiles\yearnly - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\yearnly - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
+    <Content Include="Scripts\Items\ItemOverlay.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
     <Content Include="Scripts\knockout-2.2.0.debug.js" />
     <Content Include="Scripts\knockout-2.2.0.js" />

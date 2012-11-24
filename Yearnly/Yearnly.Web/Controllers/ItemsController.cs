@@ -12,10 +12,12 @@ namespace Yearnly.Web.Controllers
     public class ItemsController : Controller
     {
         private YearnlyEntities db;
+        private UserProfile loggedInUser;
 
         public ItemsController()
         {
             db = new YearnlyEntities();
+            loggedInUser = UserProfile.LoadUserByUserName(WebSecurity.CurrentUserName, db);
         }
         public ActionResult Add()
         {
@@ -81,6 +83,26 @@ namespace Yearnly.Web.Controllers
             }
 
             return didCreateItem;
+        }
+        //Used for the ajaxgetitem method.
+        public class AjaxUserItem
+        {
+            public int Id { get; set; }
+            public string Link { get; set; }
+            public string Title { get; set; }
+            public string Description { get; set; }
+        }
+
+        public ActionResult AjaxGetItem(int itemId)
+        {
+            AjaxUserItem item = loggedInUser.UserItems.Where(ui => ui.Id == itemId).Select(ui => new AjaxUserItem
+            {
+                Id = ui.Id,
+                Link = ui.Link,
+                Title = ui.Title,
+                Description = ui.Description
+            }).FirstOrDefault();
+            return Json(item, JsonRequestBehavior.AllowGet);
         }
 
     }
