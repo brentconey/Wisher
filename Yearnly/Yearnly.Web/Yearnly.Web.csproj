@@ -204,6 +204,7 @@
     <Content Include="Scripts\knockout-2.2.0.js" />
     <Content Include="Scripts\LandingPage\LogInModel.js" />
     <Content Include="Scripts\Lists\AddList.js" />
+    <Content Include="Scripts\PublicView\SendPublicFriendRequest.js" />
     <Content Include="Scripts\yearnly.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Views\Items\Add.cshtml" />
@@ -234,7 +235,6 @@
     <Content Include="Views\PublicView\UsersList.cshtml" />
     <Content Include="Views\Shared\ListNotFound.cshtml" />
     <Content Include="Views\User\SpecificList.cshtml" />
-    <Content Include="Views\Shared\_PublicProfileHeader.cshtml" />
     <Content Include="Views\User\Dibs.cshtml" />
     <Content Include="Views\Home\LandingPage.cshtml" />
     <None Include="_AppStart.cshtml" />

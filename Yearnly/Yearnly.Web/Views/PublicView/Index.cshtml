@@ -1,9 +1,40 @@
 ﻿@{
     ViewBag.Title = "Index";
 }
+@model Yearnly.Model.UserProfile
 
 <div class="profile group">
-    @Html.Partial("_PublicProfileHeader")
+    <div class="profile-head group">
+    <div class="profile-card secondary left">
+        <div class="name-and-pic group">
+            <img src="@Model.LargeProfilePic" alt="" class="profile-pic" />
+            <h1>@Model.FirstName @Model.LastName</h1>
+        </div>
+        <div class="profile-info-item group">
+            <h3 class="profile-info-item-heading">address:</h3>
+            <div class="profile-info-item-content">
+                <p>
+                    920 Scott St, C<br />
+                    Little Rock, AR 72202
+                </p>
+            </div>
+        </div>
+        <div class="profile-info-item group">
+            <h3 class="profile-info-item-heading">interests:</h3>
+            <div class="profile-info-item-content">
+                <p>computers, electronics, scuba diving, cars, driving, soccer</p>
+            </div>
+        </div>
+
+        <input type="hidden" id="user_id_ajax" value="@Model.UserId" />
+        <a class="button" href="#" data-bind="click: sendFriendRequest, visible: notFriends">add friend</a>
+        <h4 data-bind="visible: friendRequestSent">request sent</h4>
+        <a class="button" href="#" data-bind="visible: weAreFriends">remove friend</a>
+    </div>
+
+        <script src="~/Scripts/PublicView/SendPublicFriendRequest.js"></script>    
+    
+</div>
     <div class="profile-info">
         
         

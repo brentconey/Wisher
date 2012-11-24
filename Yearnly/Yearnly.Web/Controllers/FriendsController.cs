@@ -8,6 +8,7 @@ using Yearnly.Model;
 
 namespace Yearnly.Web.Controllers
 {
+    [Authorize]
     public class FriendsController : Controller
     {
         
@@ -32,7 +33,7 @@ namespace Yearnly.Web.Controllers
             public string LastName { get; set; }
             public bool RequestHasBeenSent { get; set; }
             public bool AreFriends { get; set; }
-            public string LargeProfilePic { get; set; }
+            public string SmallProfilePic { get; set; }
         }
 
         public ActionResult AjaxSearch(string searchText)
@@ -48,10 +49,27 @@ namespace Yearnly.Web.Controllers
                                                           LastName = u.LastName,
                                                           RequestHasBeenSent = db.FriendRequests.Where(fr => fr.ToUserId == u.UserId && fr.FromUserId == loggedInUser.UserId).FirstOrDefault() == null ? false : true,
                                                           AreFriends = loggedInUser.Friends.Where(fid => fid.FriendProfile.UserId == u.UserId).FirstOrDefault() == null ? false : true,
-                                                          LargeProfilePic = u.LargeProfilePic
+                                                          SmallProfilePic = u.SmallProfilePic
                                                       };
 
             return Json(searchResults);
+        }
+
+        public string AjaxCheckFriendStatus(int friendId)
+        {
+            //Return after each check because no other checks are needed
+            bool friendCheck = loggedInUser.Friends.Where(f => f.FriendId == friendId).Any();
+            if (friendCheck)
+            {
+                return "friends";
+            }
+            bool friendRequestCheck = db.FriendRequests.Where(fr => fr.FromUserId == loggedInUser.UserId && fr.ToUserId == friendId).Any();
+            if (friendRequestCheck)
+            {
+                return "sent";
+            }
+
+            return "none";
         }
 
         public bool AjaxSendFriendRequest(int toUserId)
@@ -88,8 +106,8 @@ namespace Yearnly.Web.Controllers
                                                                  select new JSONFriendNotification
                                                                  {
                                                                      FriendId = fn.FromUserProfile.UserId,
-                                                                     //FirstName = fn.FromUserProfile.FirstName,
-                                                                     //LastName = fn.FromUserProfile.LastName,
+                                                                     FirstName = fn.FromUserProfile.FirstName,
+                                                                     LastName = fn.FromUserProfile.LastName,
                                                                      UserName = fn.FromUserProfile.UserName
                                                                  };
             return Json(friendRequests, JsonRequestBehavior.AllowGet);

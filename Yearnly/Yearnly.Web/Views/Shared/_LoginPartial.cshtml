@@ -1,17 +1,13 @@
 ﻿@if (Request.IsAuthenticated)
 {
-    
-    
-    
+    Yearnly.Model.UserProfile loggedInUser = Yearnly.Model.UserProfile.LoadUserByUserName(User.Identity.Name.ToString(), new Yearnly.Model.YearnlyEntities());
     <text>
-
-
     <div class="group" id="user_header">
         <a href="#user_header_panel" class="activate-panel">
-            <img class="profile-pic" src="~/Content/css/i/big_profile_pic.jpg" alt="profile pic" /><span class="user-header-name">@User.Identity.Name</span></a>
+            <img class="profile-pic" src="@loggedInUser.SmallProfilePic" alt="profile pic" /><span class="user-header-name">@loggedInUser.FirstName @loggedInUser.LastName</span></a>
         <div class="panel" id="user_header_panel">
             <ul class="menu">
-                <li><a href="/@User.Identity.Name">View Profile</a></li>
+                <li><a href="/@loggedInUser.UserName">View Profile</a></li>
                 <li><a href="/items">My Items</a></li>
                 <li><a href="/lists">My Lists</a></li>
             <li>@Html.ActionLink("Settings", "manage", "account", routeValues: null, htmlAttributes: new { id = "account_link" })</li>
@@ -25,8 +21,6 @@
     {
         @Html.AntiForgeryToken()
     }
-
-
     </text>
     
     

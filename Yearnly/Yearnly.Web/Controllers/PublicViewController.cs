@@ -22,7 +22,7 @@ namespace Yearnly.Web.Controllers
             if (!String.IsNullOrEmpty(user.UserName))
             {
                 ViewBag.UserName = user.UserName;
-                return View();
+                return View(user);
             }
             return View("UserNotFound");
         }

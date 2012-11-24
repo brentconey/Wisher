@@ -93,6 +93,12 @@ namespace Yearnly.Web
                 );
 
             routes.MapRoute(
+                name: "AjaxCheckFriendStatus",
+                url: "friends/ajaxcheckfriendstatus",
+                defaults: new { controller = "Friends", action = "AjaxCheckFriendStatus" }
+                );
+
+            routes.MapRoute(
                 name: "MyItemRoute",
                 url: "items/",
                 defaults: new { controller = "User", action = "Items" }

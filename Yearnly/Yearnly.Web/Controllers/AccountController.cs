@@ -243,7 +243,8 @@ namespace Yearnly.Web.Controllers
                 dynamic newUserFacebookData = fbClient.Get(result.ProviderUserId);
                 string firstName = newUserFacebookData.first_name;
                 string lastName = newUserFacebookData.last_name;
-                return View("ExternalLoginConfirmation", new RegisterExternalLoginModel { UserName = result.UserName, FirstName= firstName, LastName = lastName, ExternalLoginData = loginData });
+                string userName = newUserFacebookData.username;
+                return View("ExternalLoginConfirmation", new RegisterExternalLoginModel { UserName = userName, FirstName= firstName, LastName = lastName, ExternalLoginData = loginData });
             }
         }
 

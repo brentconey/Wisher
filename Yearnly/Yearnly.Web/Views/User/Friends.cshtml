@@ -12,7 +12,7 @@
     </ul>
     <ul class="friends-search-list" data-bind="foreach: searchResults, visible: searchResults().length > 0">
         <li class="group mini-friend">
-            <a href="#" data-bind="attr: { href: userName }"><img class="left profile-pic" data-bind="attr: { src: largeProfilePic }" alt="" /></a>
+            <a href="#" data-bind="attr: { href: userName }"><img class="left profile-pic" data-bind="attr: { src: smallProfilePic }" alt="" /></a>
             <a href="#" data-bind="attr: { href: userName }" class="profile-link"><span class="friend-name" data-bind="text: fullName"></span></a>
             <span class="friend-username" data-bind="text: userName"></span>
             <span data-bind="ifnot: requestSent() || areFriends()">
