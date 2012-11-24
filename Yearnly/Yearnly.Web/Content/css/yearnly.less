@@ -19,7 +19,7 @@ MASTHEAD - VARIABLE DECLARATIONS
 @text					:		#222;
 	@text-lite			:		#aaa;
 @textbox-color			:		#333;
-@textbox-border-color	:		#ddd;
+@textbox-border-color	:		#aaa;
 
 @border-radius			:		5px;
     @border-radius-small:		2px;
@@ -92,7 +92,7 @@ label.form-error {background:@error;border:1px solid @error-hover;color:#fff;bor
 	.panel .menu {min-width:120px;}
 		.panel .menu li a {display:block;padding:9px;width:100%;height:100%;font-size:14px;color:@text;font-family:@sans;font-weight:bold;text-transform:capitalize;} 
 
-.overlay {position:absolute;top:-55px;left:50%;margin-left:-400px;z-index:9999;width:600px;padding:40px;box-shadow:0 4px 9px rgba(0,0,0,.25);}
+.overlay {position:absolute;top:-55px;left:50%;margin-left:-500px;z-index:9999;width:800px;padding:40px;box-shadow:0 4px 9px rgba(0,0,0,.25);}
 	.close-overlay {position:absolute;top:0;right:0;width:40px;height:40px;text-indent:-9999px;background:url(i/sprite.png) no-repeat 0 -180px;}
 		.close-overlay:hover {background-position-y:-221px;cursor:pointer;}
 
@@ -112,7 +112,8 @@ label.form-error {background:@error;border:1px solid @error-hover;color:#fff;bor
 header {background:#fff;font-family:@serif;border-bottom:1px solid #fff;margin:0 0 40px 0;.yearnly-drop-shadow;}
     header .wrap {position:relative;height:60px;}
     header #logo,
-	h1 #logo {display:block;position:absolute;top:0;left:-5px;height:60px;width:140px;background:url(i/sprite.png) no-repeat 0 -120px;line-height:60px;color:@text;text-indent:-9999px;}
+	h1 #logo {display:block;position:absolute;top:0;left:-5px;height:60px;width:50px;background:url(i/sprite.png) no-repeat 0 -120px;line-height:63px;color:@text;text-indent:61px;text-transform:lowercase;font-size:20px;color:#999;}
+		#logo:hover {color:@text;text-decoration:none;}
     #global_search {}
 		#global_search legend {display:none;}
         #global_search input[type="submit"] { visibility:hidden; }
@@ -193,15 +194,14 @@ header {background:#fff;font-family:@serif;border-bottom:1px solid #fff;margin:0
 
 .profile-pic {border-radius:100px;box-shadow:inset 0 3px 0 rgba(255,255,255,.9);}
 
-.item-price {height:20px;line-height:20px;width:60px;background:@success;border:1px solid @success-hover;border-radius:3px;text-align:center;color:darken(@success-hover,20%);font-weight:bold;}
-
 .items {padding-top:20px;margin:0 0 30px 0;}
 .item {float:left;width:30%;height:108px;margin:0 3.3% 30px 0;padding:0;position:relative;font-family:@sans;}
 	.item .activate-panel {position:absolute;top:0;left:0;width:100%;height:100%;text-indent:-9999px;}
 	.item:nth-child(3) {margin-right:none;float:right;}
 	.item-guts {padding:20px;}
 	.item .item-title {font-size:16px;padding:0;line-height:1.3em;font-family:@sans;}
-	.item .item-link {position:absolute;bottom:21px;left:60px;font-size:10px;color:#aaa;width:100px;overflow:hidden;text-decoration:none;}
+	.item .item-link {position:absolute;bottom:21px;left:60px;font-size:10px;color:#aaa;width:100px;overflow:hidden;white-space:nowrap;text-decoration:none;}
+	.item-price {height:20px;line-height:20px;width:60px;background:@success;border:1px solid @success-hover;border-radius:3px;text-align:center;color:darken(@success-hover,20%);font-weight:bold;}
 	.item .item-price {position:absolute;left:-5px;bottom:16px;.yearnly-text-emboss;}
 		.item-price .item-currency-symbol {font-size:11px;font-weight:bold;position:relative;top:-2px;left:-8px;}
 	.item .item-comments {position:absolute;bottom:3px;right:5px;text-align:center;color:#fff;background:url(i/sprite.png) no-repeat 100% 100%;height:40px;width:40px;line-height:36px;font-size:12px;font-weight:bold;text-decoration:none;}
@@ -209,33 +209,33 @@ header {background:#fff;font-family:@serif;border-bottom:1px solid #fff;margin:0
 		.item .who-dibbed {position:absolute;top:-40px;right:-20px;width:180px;height:53px;line-height:40px;font-weight:bold;text-align:center;color:#fff;.yearnly-text-shadow;font-size:14px;background:#eee;text-indent:0;background:url(i/sprite.png) no-repeat 100% 0;}
 
 .edit-item-link {position:absolute;top:10px;left:10px;font-size:12px;}
-.item-overlay-details {padding:0 0 30px 50px;border-bottom:1px dotted #ddd;}
+.item-overlay-details {padding:90px 0 0 40px;width:60%;float:left;}
 	.item-overlay-details .item-title {font-family:@sans;font-size:28px;margin:0;}
 	.item-overlay-details .item-link {font-size:12px;display:inline-block;padding:4px 4px 4px 0;line-height:40px;}
 		.item-overlay-details .item-link-icon {float:left;width:40px;height:40px;background:url(i/sprite.png) no-repeat -40px -180px;margin-left:-50px;}
 		.item-overlay-details .item-link:hover .item-link-icon {background-position-y:-220px;}
-	.item-overlay-details .item-price {position:absolute;top:37px;left:-10px;width:80px;height:30px;line-height:27px;font-size:18px;.yearnly-text-emboss;}
-	.item-overlay-details .call-dibs {font-size:16px;font-weight:bold;font-family:@serif;line-height:40px;height:40px;display:block;}
+	.item-overlay-details .item-price {position:absolute;top:127px;left:-10px;width:80px;height:30px;line-height:27px;font-size:18px;.yearnly-text-emboss;}
+	.item-overlay-details .call-dibs {font-size:16px;font-weight:bold;font-family:@serif;line-height:40px;height:40px;display:inline-block;}
 		.item-overlay-details .call-dibs-icon {float:left;width:40px;height:40px;background:transparent url(i/sprite.png) 100% 80px;margin-left:-50px;}
 
-.comments-container {padding:20px 0 0 50px;}
+.comments-container {padding:20px 0 0 0;width:35%;float:right;}
 	.comments-guts {}
 		.comments-guts h3 {font-size:18px;padding:0 0 20px 0;}
 		.comments-list {padding:0;height:240px;}
 		.comment {padding:0 0 10px 0;margin:0 0 10px 0;position:relative;}
 			.comment:last-child {margin:0;}
-			.comment .profile-pic {position:absolute;top:0;left:-60px;width:40px;height:40px;}
+			.comment .profile-pic {float:left;margin:0 9px 0 0;width:40px;height:40px;}
 			.comment-author {font-size:12px;font-weight:bold;}
 			.comment-method {font-size:12px;font-style:italic;color:#999;}
 			.comment-description {padding:0;margin:0;font-size:14px;}
 			.comment-body * {padding:5px 0 0 0;margin:0;font-family:@sans;font-size:11px;color:@text;}
 		.whisper {background:#444;padding:10px;.yearnly-text-shadow;border-radius:4px;}
 			.whisper .comment-method {color:#fff;font-weight:bold;}
-			.whisper p {color:#fff;}
+			.whisper p {color:#fff;padding:0 0 0 49px;}
 			.whisper .commment-author {padding-bottom:3px;}
 			.whisper .profile-pic {}
 	.add-comment {border-top:3px solid #ddd;padding:10px 0 0 0;}
-		.add-comment textarea {font-size:12px;color:@text;font-family:@sans;height:65px;}
+		.add-comment textarea {font-size:12px;color:@text;font-family:@sans;height:65px;border-color:#999;}
 		.add-whisper-button {background:@whisper;color:darken(@whisper,70%);}
 			.add-whisper-button:hover,
 			.add-whisper-button:focus {background:darken(@whisper,5%);color:darken(@whisper,60%);}
@@ -270,8 +270,10 @@ header {background:#fff;font-family:@serif;border-bottom:1px solid #fff;margin:0
 
 .dibs {}
 	.dib {padding:0 0 10px 0;margin:0 0 10px 0;border-bottom:1px dotted #ddd;}
-		.dib .mark-purchased {float:left;width:20px;height:20px;cursor:pointer;}
-		.dib .item-title {font-size:13px;}
+		.dib .mark-purchased {float:left;cursor:pointer;display:block;width:40px;height:40px;border:1px solid #eee;}
+		.dib .item-title {font-size:13px;float:left;width:240px;position:relative;top:17px;}
+		.dib .item-link {float:left;font-size:12px;position:relative;top:17px;}
+		.dib .item-poster {float:right;font-size:12px;position:relative;top:9px;}
 	
 .profile {}
 	.profile-head {margin:0 0 30px 0;position:relative;}
