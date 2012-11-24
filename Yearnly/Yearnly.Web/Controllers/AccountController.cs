@@ -217,6 +217,7 @@ namespace Yearnly.Web.Controllers
         public ActionResult ExternalLoginCallback(string returnUrl)
         {
             AuthenticationResult result = OAuthWebSecurity.VerifyAuthentication(Url.Action("ExternalLoginCallback", new { ReturnUrl = returnUrl }));
+            
             if (!result.IsSuccessful)
             {
                 return RedirectToAction("ExternalLoginFailure");
@@ -239,7 +240,10 @@ namespace Yearnly.Web.Controllers
                 string loginData = OAuthWebSecurity.SerializeProviderUserId(result.Provider, result.ProviderUserId);
                 ViewBag.ProviderDisplayName = OAuthWebSecurity.GetOAuthClientData(result.Provider).DisplayName;
                 ViewBag.ReturnUrl = returnUrl;
-                var fbClient = new FacebookClient("409283862466954|HlXtXBEUCAimrwZ18KJR2tYPKSI");
+                //Extra data holds the accesstoken used to get the logged in user's access token.
+                IDictionary<string, string> userFacebookExtraData = result.ExtraData;
+                string userAccessToken = userFacebookExtraData["accesstoken"].ToString();
+                var fbClient = new FacebookClient(userAccessToken);
                 dynamic newUserFacebookData = fbClient.Get(result.ProviderUserId);
                 string firstName = newUserFacebookData.first_name;
                 string lastName = newUserFacebookData.last_name;

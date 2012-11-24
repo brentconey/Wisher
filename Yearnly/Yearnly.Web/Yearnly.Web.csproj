@@ -202,7 +202,6 @@
     <Content Include="Scripts\jquery-1.8.2.min.js" />
     <Content Include="Scripts\knockout-2.2.0.debug.js" />
     <Content Include="Scripts\knockout-2.2.0.js" />
-    <Content Include="Scripts\LandingPage\LogInModel.js" />
     <Content Include="Scripts\Lists\AddList.js" />
     <Content Include="Scripts\PublicView\SendPublicFriendRequest.js" />
     <Content Include="Scripts\yearnly.js" />
