@@ -181,14 +181,11 @@
     </Compile>
     <Compile Include="Models\AccountModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Content Include="Content\css\i\apple-touch-icon-114x114.png" />
-    <Content Include="Content\css\i\apple-touch-icon-72x72.png" />
-    <Content Include="Content\css\i\apple-touch-icon.png" />
     <Content Include="Content\css\i\big_profile_pic.jpg" />
-    <Content Include="Content\css\i\demo_profile_pic.jpg" />
+    <Content Include="Content\css\i\default_profile_pic.png" />
     <Content Include="Content\css\i\favicon.ico" />
-    <Content Include="Content\css\i\header_sprite.png" />
     <Content Include="Content\css\i\site_nav_sprite.png" />
+    <Content Include="Content\css\i\sprite.png" />
     <Content Include="Content\css\i\winter_wonderland.jpg" />
     <Content Include="Content\css\yearnly.less" />
     <Content Include="Scripts\Friends\FriendFind.js" />
