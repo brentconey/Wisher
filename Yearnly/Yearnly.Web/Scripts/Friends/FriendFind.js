@@ -6,6 +6,10 @@
     self.lastName = data.LastName;
     self.requestSent = ko.observable(data.RequestHasBeenSent);
     self.areFriends = ko.observable(data.AreFriends);
+    self.largeProfilePic = data.LargeProfilePic;
+    self.fullName = ko.computed(function () {
+        return self.firstName + " " + self.lastName;
+    }, this);
 }
 
 function FriendModel() {

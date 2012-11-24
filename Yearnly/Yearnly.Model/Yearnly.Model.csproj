@@ -71,6 +71,9 @@
     <Compile Include="UserProfile.cs">
       <DependentUpon>Yearnly.tt</DependentUpon>
     </Compile>
+    <Compile Include="webpages_OAuthMembership.cs">
+      <DependentUpon>Yearnly.tt</DependentUpon>
+    </Compile>
     <Compile Include="Yearnly.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

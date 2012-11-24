@@ -32,6 +32,7 @@ namespace Yearnly.Web.Controllers
             public string LastName { get; set; }
             public bool RequestHasBeenSent { get; set; }
             public bool AreFriends { get; set; }
+            public string LargeProfilePic { get; set; }
         }
 
         public ActionResult AjaxSearch(string searchText)
@@ -46,7 +47,8 @@ namespace Yearnly.Web.Controllers
                                                           FirstName = u.FirstName,
                                                           LastName = u.LastName,
                                                           RequestHasBeenSent = db.FriendRequests.Where(fr => fr.ToUserId == u.UserId && fr.FromUserId == loggedInUser.UserId).FirstOrDefault() == null ? false : true,
-                                                          AreFriends = loggedInUser.Friends.Where(fid => fid.FriendProfile.UserId == u.UserId).FirstOrDefault() == null ? false : true
+                                                          AreFriends = loggedInUser.Friends.Where(fid => fid.FriendProfile.UserId == u.UserId).FirstOrDefault() == null ? false : true,
+                                                          LargeProfilePic = u.LargeProfilePic
                                                       };
 
             return Json(searchResults);
@@ -86,8 +88,8 @@ namespace Yearnly.Web.Controllers
                                                                  select new JSONFriendNotification
                                                                  {
                                                                      FriendId = fn.FromUserProfile.UserId,
-                                                                     FirstName = fn.FromUserProfile.FirstName,
-                                                                     LastName = fn.FromUserProfile.LastName,
+                                                                     //FirstName = fn.FromUserProfile.FirstName,
+                                                                     //LastName = fn.FromUserProfile.LastName,
                                                                      UserName = fn.FromUserProfile.UserName
                                                                  };
             return Json(friendRequests, JsonRequestBehavior.AllowGet);

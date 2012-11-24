@@ -12,8 +12,8 @@
     </ul>
     <ul class="friends-search-list" data-bind="foreach: searchResults, visible: searchResults().length > 0">
         <li class="group mini-friend">
-            <a href="#" data-bind="attr: { href: userName }"><img class="left profile-pic" src="~/Content/css/i/big_profile_pic.jpg" alt="" /></a>
-            <a href="#" data-bind="attr: { href: userName }" class="profile-link"><span class="friend-name" data-bind="text: userName"></span></a>
+            <a href="#" data-bind="attr: { href: userName }"><img class="left profile-pic" data-bind="attr: { src: largeProfilePic }" alt="" /></a>
+            <a href="#" data-bind="attr: { href: userName }" class="profile-link"><span class="friend-name" data-bind="text: fullName"></span></a>
             <span class="friend-username" data-bind="text: userName"></span>
             <span data-bind="ifnot: requestSent() || areFriends()">
                 <a class="add-friend button right" href="#">send friend request</a>
@@ -29,7 +29,7 @@
     {
         <div class="friend thing">
             <div class="friend-guts">
-                <img class="profile-pic" src="~/Content/css/i/big_profile_pic.jpg" alt="" />
+                <img class="profile-pic" src="@row.FriendProfile.LargeProfilePic" alt="" />
                 <h2><a class="thing-link" href="/@row.FriendProfile.UserName">@row.FriendProfile.FirstName @row.FriendProfile.LastName </a></h2>
             </div>
         </div>

@@ -11,6 +11,7 @@
           <EntitySet Name="UserItem" EntityType="YearnlyModel.Store.UserItem" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="UserList" EntityType="YearnlyModel.Store.UserList" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="UserProfile" EntityType="YearnlyModel.Store.UserProfile" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="webpages_OAuthMembership" EntityType="YearnlyModel.Store.webpages_OAuthMembership" store:Type="Tables" Schema="dbo" />
           <AssociationSet Name="FK_Friend_ToUserProfile" Association="YearnlyModel.Store.FK_Friend_ToUserProfile">
             <End Role="UserProfile" EntitySet="UserProfile" />
             <End Role="Friend" EntitySet="Friend" />
@@ -34,6 +35,10 @@
           <AssociationSet Name="FK_User_ToUserProfile" Association="YearnlyModel.Store.FK_User_ToUserProfile">
             <End Role="UserProfile" EntitySet="UserProfile" />
             <End Role="Friend" EntitySet="Friend" />
+          </AssociationSet>
+          <AssociationSet Name="FK_webpages_OAuthMembership_UsersProfile" Association="YearnlyModel.Store.FK_webpages_OAuthMembership_UsersProfile">
+            <End Role="UserProfile" EntitySet="UserProfile" />
+            <End Role="webpages_OAuthMembership" EntitySet="webpages_OAuthMembership" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Friend">
@@ -82,9 +87,17 @@
           </Key>
           <Property Name="UserId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="UserName" Type="nvarchar" Nullable="false" MaxLength="56" />
-          <Property Name="Email" Type="nvarchar" MaxLength="250" />
           <Property Name="FirstName" Type="nvarchar" MaxLength="150" />
           <Property Name="LastName" Type="nvarchar" MaxLength="250" />
+          <Property Name="Email" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="webpages_OAuthMembership">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="Provider" Type="nvarchar" Nullable="false" MaxLength="30" />
+          <Property Name="ProviderUserId" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="UserId" Type="int" Nullable="false" />
         </EntityType>
         <Association Name="FK_Friend_ToUserProfile">
           <End Role="UserProfile" Type="YearnlyModel.Store.UserProfile" Multiplicity="1" />
@@ -158,6 +171,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_webpages_OAuthMembership_UsersProfile">
+          <End Role="UserProfile" Type="YearnlyModel.Store.UserProfile" Multiplicity="1" />
+          <End Role="webpages_OAuthMembership" Type="YearnlyModel.Store.webpages_OAuthMembership" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="UserProfile">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="webpages_OAuthMembership">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
@@ -191,6 +216,11 @@
           <AssociationSet Name="FK_ToFriendRequest_User" Association="YearnlyModel.FK_ToFriendRequest_User">
             <End Role="UserProfile" EntitySet="UserProfiles" />
             <End Role="FriendRequest" EntitySet="FriendRequests" />
+          </AssociationSet>
+          <EntitySet Name="webpages_OAuthMembership" EntityType="YearnlyModel.webpages_OAuthMembership" />
+          <AssociationSet Name="FK_webpages_OAuthMembership_UsersProfile" Association="YearnlyModel.FK_webpages_OAuthMembership_UsersProfile">
+            <End Role="UserProfile" EntitySet="UserProfiles" />
+            <End Role="webpages_OAuthMembership" EntitySet="webpages_OAuthMembership" />
           </AssociationSet>
           </EntityContainer>
         <EntityType Name="UserItem">
@@ -226,10 +256,11 @@
           <NavigationProperty Name="UserItems" Relationship="YearnlyModel.FK_ItemToUser" FromRole="UserProfile" ToRole="UserItem" />
           <NavigationProperty Name="UserLists" Relationship="YearnlyModel.FK_ListToUser" FromRole="UserProfile" ToRole="UserList" />
           <NavigationProperty Name="Friends" Relationship="YearnlyModel.FK_User_ToUserProfile" FromRole="UserProfile" ToRole="Friend" />
-          <Property Type="String" Name="Email" MaxLength="250" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="FriendRequests" Relationship="YearnlyModel.FK_ToFriendRequest_User" FromRole="UserProfile" ToRole="FriendRequest" />
+          <NavigationProperty Name="ExternalLoginData" Relationship="YearnlyModel.FK_webpages_OAuthMembership_UsersProfile" FromRole="UserProfile" ToRole="webpages_OAuthMembership" />
           <Property Type="String" Name="FirstName" MaxLength="150" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="LastName" MaxLength="250" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="FriendRequests" Relationship="YearnlyModel.FK_ToFriendRequest_User" FromRole="UserProfile" ToRole="FriendRequest" />
+          <Property Type="String" Name="Email" MaxLength="250" FixedLength="false" Unicode="true" />
           </EntityType>
         <Association Name="FK_ItemToUser">
           <End Role="UserProfile" Type="YearnlyModel.UserProfile" Multiplicity="1" />
@@ -323,6 +354,26 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="webpages_OAuthMembership">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Type="String" Name="Provider" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ProviderUserId" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="UserId" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_webpages_OAuthMembership_UsersProfile">
+          <End Type="YearnlyModel.UserProfile" Role="UserProfile" Multiplicity="1" />
+          <End Type="YearnlyModel.webpages_OAuthMembership" Role="webpages_OAuthMembership" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="UserProfile">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="webpages_OAuthMembership">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -356,9 +407,9 @@
           <EntitySetMapping Name="UserProfiles">
             <EntityTypeMapping TypeName="YearnlyModel.UserProfile">
               <MappingFragment StoreEntitySet="UserProfile">
+                <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="LastName" ColumnName="LastName" />
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
               </MappingFragment>
@@ -380,6 +431,15 @@
                 <ScalarProperty Name="ToUserId" ColumnName="ToUserId" />
                 <ScalarProperty Name="FromUserId" ColumnName="FromUserId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="webpages_OAuthMembership">
+            <EntityTypeMapping TypeName="YearnlyModel.webpages_OAuthMembership">
+              <MappingFragment StoreEntitySet="webpages_OAuthMembership">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ProviderUserId" ColumnName="ProviderUserId" />
+                <ScalarProperty Name="Provider" ColumnName="Provider" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

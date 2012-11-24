@@ -50,33 +50,33 @@ namespace Yearnly.Web.Controllers
         }
 
 
-        [HttpPost]
-        [AllowAnonymous]
-        [ValidateAntiForgeryToken]
-        public ActionResult Register(Yearnly.Web.Models.RegisterModel model)
-        {
-            if (ModelState.IsValid)
-            {
-                // Attempt to register the user
-                try
-                {
-                    WebSecurity.CreateUserAndAccount(model.UserName, model.Password);
-                    WebSecurity.Login(model.UserName, model.Password);
-                    UserProfile newUser = UserProfile.LoadUserByUserId(WebSecurity.GetUserId(model.UserName), db);
-                    newUser.FirstName = model.FirstName;
-                    newUser.LastName = model.Lastname;
-                    db.SaveChanges();
-                    return RedirectToAction("Index", "Home");
-                }
-                catch (MembershipCreateUserException e)
-                {
-                    ModelState.AddModelError("", ErrorCodeToString(e.StatusCode));
-                }
-            }
+        //[HttpPost]
+        //[AllowAnonymous]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult Register(Yearnly.Web.Models.RegisterModel model)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        // Attempt to register the user
+        //        try
+        //        {
+        //            WebSecurity.CreateUserAndAccount(model.UserName, model.Password);
+        //            WebSecurity.Login(model.UserName, model.Password);
+        //            UserProfile newUser = UserProfile.LoadUserByUserId(WebSecurity.GetUserId(model.UserName), db);
+        //            newUser.FirstName = model.FirstName;
+        //            newUser.LastName = model.Lastname;
+        //            db.SaveChanges();
+        //            return RedirectToAction("Index", "Home");
+        //        }
+        //        catch (MembershipCreateUserException e)
+        //        {
+        //            ModelState.AddModelError("", ErrorCodeToString(e.StatusCode));
+        //        }
+        //    }
 
-            // If we got this far, something failed, redisplay form
-            return View("LandingPage");
-        }
+        //    // If we got this far, something failed, redisplay form
+        //    return View("LandingPage");
+        //}
 
 
         private ActionResult RedirectToLocal(string returnUrl)

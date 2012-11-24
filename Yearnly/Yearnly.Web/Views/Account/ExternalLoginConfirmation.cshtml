@@ -28,6 +28,8 @@
             </li>
         </ol>
         @Html.HiddenFor(m => m.ExternalLoginData)
+        @Html.HiddenFor(m => m.FirstName)
+        @Html.HiddenFor(m => m.LastName)
         <input type="submit" value="Register" />
     </fieldset>
 }

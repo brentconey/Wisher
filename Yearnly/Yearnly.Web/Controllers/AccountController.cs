@@ -9,6 +9,7 @@ using DotNetOpenAuth.AspNet;
 using Microsoft.Web.WebPages.OAuth;
 using WebMatrix.WebData;
 using Yearnly.Web.Models;
+using Facebook;
 
 namespace Yearnly.Web.Controllers
 {
@@ -238,7 +239,11 @@ namespace Yearnly.Web.Controllers
                 string loginData = OAuthWebSecurity.SerializeProviderUserId(result.Provider, result.ProviderUserId);
                 ViewBag.ProviderDisplayName = OAuthWebSecurity.GetOAuthClientData(result.Provider).DisplayName;
                 ViewBag.ReturnUrl = returnUrl;
-                return View("ExternalLoginConfirmation", new RegisterExternalLoginModel { UserName = result.UserName, ExternalLoginData = loginData });
+                var fbClient = new FacebookClient("409283862466954|HlXtXBEUCAimrwZ18KJR2tYPKSI");
+                dynamic newUserFacebookData = fbClient.Get(result.ProviderUserId);
+                string firstName = newUserFacebookData.first_name;
+                string lastName = newUserFacebookData.last_name;
+                return View("ExternalLoginConfirmation", new RegisterExternalLoginModel { UserName = result.UserName, FirstName= firstName, LastName = lastName, ExternalLoginData = loginData });
             }
         }
 
@@ -261,14 +266,15 @@ namespace Yearnly.Web.Controllers
             if (ModelState.IsValid)
             {
                 // Insert a new user into the database
-                using (UsersContext db = new UsersContext())
+                
+                using (Yearnly.Model.YearnlyEntities db = new Yearnly.Model.YearnlyEntities())
                 {
-                    UserProfile user = db.UserProfiles.FirstOrDefault(u => u.UserName.ToLower() == model.UserName.ToLower());
+                    Yearnly.Model.UserProfile user = db.UserProfiles.FirstOrDefault(u => u.UserName.ToLower() == model.UserName.ToLower());
                     // Check if user already exists
                     if (user == null)
                     {
                         // Insert name into the profile table
-                        db.UserProfiles.Add(new UserProfile { UserName = model.UserName });
+                        db.UserProfiles.Add(new Yearnly.Model.UserProfile { UserName = model.UserName, FirstName = model.FirstName, LastName = model.LastName });
                         db.SaveChanges();
 
                         OAuthWebSecurity.CreateOrUpdateAccount(provider, providerUserId, model.UserName);

@@ -30,5 +30,6 @@ namespace Yearnly.Model
         public DbSet<UserProfile> UserProfiles { get; set; }
         public DbSet<Friend> Friends { get; set; }
         public DbSet<FriendRequest> FriendRequests { get; set; }
+        public DbSet<webpages_OAuthMembership> webpages_OAuthMembership { get; set; }
     }
 }

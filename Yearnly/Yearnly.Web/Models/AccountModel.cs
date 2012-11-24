@@ -33,6 +33,10 @@ namespace Yearnly.Web.Models
         [Display(Name = "User name")]
         public string UserName { get; set; }
 
+        public string FirstName { get; set; }
+
+        public string LastName { get; set; }
+
         public string ExternalLoginData { get; set; }
     }
 
