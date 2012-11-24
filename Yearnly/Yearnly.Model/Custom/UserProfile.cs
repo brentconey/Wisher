@@ -28,7 +28,7 @@ namespace Yearnly.Model
         {
             get
             {
-                return String.Format("https://graph.facebook.com/{0}/picture?type=small", this.FacebookId);
+                return String.Format("https://graph.facebook.com/{0}/picture?type=square", this.FacebookId);
             }
         }
 
