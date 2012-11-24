@@ -1,14 +1,31 @@
 ﻿<div class="profile-head group">
-    <img src="~/Content/css/i/big_profile_pic.jpg" alt="" class="profile-pic left" />
-    <h1 class="left">@ViewBag.UserName</h1>
-    <!-- THIS BUTTON SHOULD NOT BE HERE IF YOU ARE VIEWING YOUR OWN PROFILE - AND IT SHOULD SAY 'REMOVE FRIEND' IF THEY ARE A FRIEND ALREADY, FUCK YEA -->
-    <a class="button right" href="#">add friend</a>
+    <div class="profile-card secondary left">
+        <div class="name-and-pic group">
+            <img src="~/Content/css/i/big_profile_pic.jpg" alt="" class="profile-pic" />
+            <h1>@ViewBag.UserName</h1>
+        </div>
+        <div class="profile-info-item group">
+            <h3 class="profile-info-item-heading">address:</h3>
+            <div class="profile-info-item-content">
+                <p>
+                    920 Scott St, C<br />
+                    Little Rock, AR 72202
+                </p>
+            </div>
+        </div>
+        <div class="profile-info-item group">
+            <h3 class="profile-info-item-heading">interests:</h3>
+            <div class="profile-info-item-content">
+                <p>computers, electronics, scuba diving, cars, driving, soccer</p>
+            </div>
+        </div>
+
+        <!-- THIS BUTTON SHOULD NOT BE HERE IF YOU ARE VIEWING YOUR OWN PROFILE - AND IT SHOULD SAY 'REMOVE FRIEND' IF THEY ARE A FRIEND ALREADY, FUCK YEA -->
+        <a class="button" href="#">add friend</a>
+    </div>
+
+    
+    
 </div>
 
-<div class="profile-nav">
-    <ul>
-        <li><a href="">profile</a></li>
-        <li><a href="items">12 items</a></li>
-        <li><a href="lists">2 lists</a></li>
-    </ul>
-</div>
+

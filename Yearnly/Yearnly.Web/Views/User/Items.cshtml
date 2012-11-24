@@ -7,12 +7,15 @@
 <p>All your items will be here. If you'd like, you can <a class="button" href="/items/add">add one</a>.</p>
 
 <div class="panel overlay" id="item_overlay">
+    <del class="close-overlay">close</del>
+    <a href="/items/edit/1" class="edit-item-link button">edit</a>
     <div class="overlay-guts">
         <div class="group item-overlay-details">
-            <h2>Colosseo Letterpress Print</h2>
-            <a class="item-link" href="#">http://apple.com/sjdoifis</a>
-            <span class="item-price">$50</span>
+            <h2 class="item-title">Colosseo Letterpress Print</h2>
+            <a class="item-link" href="http://apple.com/iphone"><span class="item-link-icon"></span>http://apple.com/sjdoifis</a>
+            <span class="item-price"><span class="item-currency-symbol">$</span>50</span>
             <p class="item-description">I want the 16GB iPhone 5 in black. Get me a case along with it, if you'd like.</p>
+            <a class="call-dibs" href="#"><span class="call-dibs-icon"></span><span class="dibs-status">call dibs on this item</span></a>
         </div>
         <div class="comments-container">
             <div class="comments-guts">
@@ -57,7 +60,7 @@
             <div class="item-guts">
                 <h2 class="item-title">@row.Title</h2>
                 <a class="item-link" href="@row.Link">@row.Link</a>
-                <span class="item-price">$50</span>
+                <span class="item-price"><span class="item-currency-symbol">$</span>50</span>
                 <span class="dibs-called">Jordan called dibs</span>
                 <a class="item-comments" title="7 comments" href="#PERMALINK_TO_ITEM">7</a>
             </div>

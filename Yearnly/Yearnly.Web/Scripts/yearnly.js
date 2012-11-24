@@ -45,6 +45,12 @@ $(function () {
         e.stopPropagation();
     });
 
+    $('.close-overlay').click(function () {
+        $('.activate-panel').removeClass('toggled');
+        $('.panel').hide();
+        $('#ui_blocker').remove();
+    });
+
     $(document).on("click", "html", function (e) {
         $.each($('.panel'), function () {
             if ($(this).is(':visible')) {
