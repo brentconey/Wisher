@@ -28,7 +28,7 @@
 
         <input type="hidden" id="user_id_ajax" value="@Model.UserId" />
         <a class="button" href="#" data-bind="click: sendFriendRequest, visible: notFriends">add friend</a>
-        <h4 data-bind="visible: friendRequestSent">request sent</h4>
+        <h4 class="friend-request-sent" data-bind="visible: friendRequestSent">request sent</h4>
         <a class="button" href="#" data-bind="visible: weAreFriends">remove friend</a>
     </div>
 
