@@ -4,6 +4,10 @@
     self.Id = loadedItem.Id;
     self.link = loadedItem.Link;
     self.description = loadedItem.Description;
+
+    self.addComment = function () {
+        alert("Submit comment");
+    }
 }
 
 $(function () {

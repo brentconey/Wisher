@@ -12,22 +12,15 @@ namespace Yearnly.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class UserItem
+    public partial class ItemComment
     {
-        public UserItem()
-        {
-            this.ItemComments = new HashSet<ItemComment>();
-        }
-    
         public int Id { get; set; }
+        public int ItemId { get; set; }
         public int UserId { get; set; }
-        public string Title { get; set; }
-        public string Link { get; set; }
-        public string Description { get; set; }
-        public Nullable<System.DateTime> DateCreated { get; set; }
-        public Nullable<System.DateTime> DateUpdated { get; set; }
+        public string Comment { get; set; }
+        public System.DateTime DateAdded { get; set; }
     
-        public virtual UserProfile UserProfile { get; set; }
-        public virtual ICollection<ItemComment> ItemComments { get; set; }
+        public virtual UserItem UserItem { get; set; }
+        public virtual UserProfile CommenterProfile { get; set; }
     }
 }

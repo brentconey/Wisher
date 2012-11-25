@@ -68,6 +68,7 @@
     <Build Include="dbo\Tables\UserItem.sql" />
     <Build Include="dbo\Tables\Friend.sql" />
     <Build Include="dbo\Tables\FriendRequest.sql" />
+    <Build Include="dbo\Tables\ItemComment.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="Yearnly.Database.refactorlog" />

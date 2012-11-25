@@ -8,6 +8,7 @@
         <EntityContainer Name="YearnlyModelStoreContainer">
           <EntitySet Name="Friend" EntityType="YearnlyModel.Store.Friend" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="FriendRequest" EntityType="YearnlyModel.Store.FriendRequest" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ItemComment" EntityType="YearnlyModel.Store.ItemComment" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="UserItem" EntityType="YearnlyModel.Store.UserItem" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="UserList" EntityType="YearnlyModel.Store.UserList" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="UserProfile" EntityType="YearnlyModel.Store.UserProfile" store:Type="Tables" Schema="dbo" />
@@ -19,6 +20,14 @@
           <AssociationSet Name="FK_FromFriendRequest_User" Association="YearnlyModel.Store.FK_FromFriendRequest_User">
             <End Role="UserProfile" EntitySet="UserProfile" />
             <End Role="FriendRequest" EntitySet="FriendRequest" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemComment_ToItem" Association="YearnlyModel.Store.FK_ItemComment_ToItem">
+            <End Role="UserItem" EntitySet="UserItem" />
+            <End Role="ItemComment" EntitySet="ItemComment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemComment_ToUser" Association="YearnlyModel.Store.FK_ItemComment_ToUser">
+            <End Role="UserProfile" EntitySet="UserProfile" />
+            <End Role="ItemComment" EntitySet="ItemComment" />
           </AssociationSet>
           <AssociationSet Name="FK_ItemToUser" Association="YearnlyModel.Store.FK_ItemToUser">
             <End Role="UserProfile" EntitySet="UserProfile" />
@@ -57,6 +66,16 @@
           <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="FromUserId" Type="int" Nullable="false" />
           <Property Name="ToUserId" Type="int" Nullable="false" />
+          <Property Name="DateAdded" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ItemComment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ItemId" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="Comment" Type="nvarchar" Nullable="false" MaxLength="500" />
           <Property Name="DateAdded" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="UserItem">
@@ -120,6 +139,30 @@
             </Principal>
             <Dependent Role="FriendRequest">
               <PropertyRef Name="FromUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ItemComment_ToItem">
+          <End Role="UserItem" Type="YearnlyModel.Store.UserItem" Multiplicity="1" />
+          <End Role="ItemComment" Type="YearnlyModel.Store.ItemComment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserItem">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ItemComment">
+              <PropertyRef Name="ItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ItemComment_ToUser">
+          <End Role="UserProfile" Type="YearnlyModel.Store.UserProfile" Multiplicity="1" />
+          <End Role="ItemComment" Type="YearnlyModel.Store.ItemComment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserProfile">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="ItemComment">
+              <PropertyRef Name="UserId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -222,6 +265,15 @@
             <End Role="UserProfile" EntitySet="UserProfiles" />
             <End Role="webpages_OAuthMembership" EntitySet="webpages_OAuthMembership" />
           </AssociationSet>
+          <EntitySet Name="ItemComments" EntityType="YearnlyModel.ItemComment" />
+          <AssociationSet Name="FK_ItemComment_ToItem" Association="YearnlyModel.FK_ItemComment_ToItem">
+            <End Role="UserItem" EntitySet="UserItems" />
+            <End Role="ItemComment" EntitySet="ItemComments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemComment_ToUser" Association="YearnlyModel.FK_ItemComment_ToUser">
+            <End Role="UserProfile" EntitySet="UserProfiles" />
+            <End Role="ItemComment" EntitySet="ItemComments" />
+          </AssociationSet>
           </EntityContainer>
         <EntityType Name="UserItem">
           <Key>
@@ -235,6 +287,7 @@
           <Property Name="DateCreated" Type="DateTime" Precision="3" />
           <Property Name="DateUpdated" Type="DateTime" Precision="3" />
           <NavigationProperty Name="UserProfile" Relationship="YearnlyModel.FK_ItemToUser" FromRole="UserItem" ToRole="UserProfile" />
+          <NavigationProperty Name="ItemComments" Relationship="YearnlyModel.FK_ItemComment_ToItem" FromRole="UserItem" ToRole="ItemComment" />
         </EntityType>
         <EntityType Name="UserList">
           <Key>
@@ -374,6 +427,42 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="ItemComment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="ItemId" Nullable="false" />
+          <Property Type="Int32" Name="UserId" Nullable="false" />
+          <Property Type="String" Name="Comment" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="DateAdded" Nullable="false" Precision="3" />
+          <NavigationProperty Name="UserItem" Relationship="YearnlyModel.FK_ItemComment_ToItem" FromRole="ItemComment" ToRole="UserItem" />
+          <NavigationProperty Name="CommenterProfile" Relationship="YearnlyModel.FK_ItemComment_ToUser" FromRole="ItemComment" ToRole="UserProfile" />
+        </EntityType>
+        <Association Name="FK_ItemComment_ToItem">
+          <End Type="YearnlyModel.UserItem" Role="UserItem" Multiplicity="1" />
+          <End Type="YearnlyModel.ItemComment" Role="ItemComment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserItem">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ItemComment">
+              <PropertyRef Name="ItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ItemComment_ToUser">
+          <End Type="YearnlyModel.UserProfile" Role="UserProfile" Multiplicity="1" />
+          <End Type="YearnlyModel.ItemComment" Role="ItemComment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserProfile">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="ItemComment">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -440,6 +529,17 @@
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="ProviderUserId" ColumnName="ProviderUserId" />
                 <ScalarProperty Name="Provider" ColumnName="Provider" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ItemComments">
+            <EntityTypeMapping TypeName="YearnlyModel.ItemComment">
+              <MappingFragment StoreEntitySet="ItemComment">
+                <ScalarProperty Name="DateAdded" ColumnName="DateAdded" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

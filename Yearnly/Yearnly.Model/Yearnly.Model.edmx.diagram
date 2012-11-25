@@ -18,6 +18,9 @@
         <AssociationConnector Association="YearnlyModel.FK_ToFriendRequest_User" />
         <EntityTypeShape EntityType="YearnlyModel.webpages_OAuthMembership" Width="1.5" PointX="3.25" PointY="5.875" />
         <AssociationConnector Association="YearnlyModel.FK_webpages_OAuthMembership_UsersProfile" />
+        <EntityTypeShape EntityType="YearnlyModel.ItemComment" Width="1.5" PointX="6.375" PointY="6.75" />
+        <AssociationConnector Association="YearnlyModel.FK_ItemComment_ToItem" />
+        <AssociationConnector Association="YearnlyModel.FK_ItemComment_ToUser" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
