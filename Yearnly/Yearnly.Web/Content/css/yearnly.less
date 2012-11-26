@@ -92,7 +92,8 @@ label.form-error {background:@error;border:1px solid @error-hover;color:#fff;bor
 	.panel .menu {min-width:120px;}
 		.panel .menu li a {display:block;padding:9px;width:100%;height:100%;font-size:14px;color:@text;font-family:@sans;font-weight:bold;text-transform:capitalize;} 
 
-.overlay {position:absolute;top:-55px;left:50%;margin-left:-500px;z-index:9999;width:800px;padding:40px;box-shadow:0 4px 9px rgba(0,0,0,.25);}
+.overlay {position:absolute;top:-55px;left:50%;margin-left:-375px;z-index:9999;width:550px;box-shadow:0 4px 9px rgba(0,0,0,.25);}
+	.overlay-guts {padding:40px;}
 	.close-overlay {position:absolute;top:0;right:0;width:40px;height:40px;text-indent:-9999px;background:url(i/sprite.png) no-repeat 0 -180px;}
 		.close-overlay:hover {background-position-y:-221px;cursor:pointer;}
 
@@ -208,18 +209,19 @@ header {background:#fff;font-family:@serif;border-bottom:1px solid #fff;margin:0
 	.item .dibs-called {position:absolute;top:-20px;right:5px;width:40px;height:40px;text-indent:-9999px;background:transparent url(i/sprite.png) 100% 80px;}
 		.item .who-dibbed {position:absolute;top:-40px;right:-20px;width:180px;height:53px;line-height:40px;font-weight:bold;text-align:center;color:#fff;.yearnly-text-shadow;font-size:14px;background:#eee;text-indent:0;background:url(i/sprite.png) no-repeat 100% 0;}
 
-.edit-item-link {position:absolute;top:10px;left:10px;font-size:12px;}
-.item-overlay-details {padding:100px 0 0 40px;width:60%;float:left;}
+
+.item-overlay-details {padding:0 0 0 40px;}
+	.item-overlay-details .edit-item-link {position:absolute;top:10px;left:10px;font-size:12px;}
 	.item-overlay-details .item-title {font-family:@sans;font-size:28px;margin:0;}
 	.item-overlay-details .item-link {font-size:12px;display:inline-block;padding:4px 4px 4px 0;line-height:40px;}
 		.item-overlay-details .item-link-icon {float:left;width:40px;height:40px;background:url(i/sprite.png) no-repeat -40px -180px;margin-left:-50px;}
 		.item-overlay-details .item-link:hover .item-link-icon {background-position-y:-220px;}
-	.item-overlay-details .item-price {position:absolute;top:127px;left:-10px;width:80px;height:30px;line-height:27px;font-size:18px;.yearnly-text-emboss;}
+	.item-overlay-details .item-price {position:absolute;top:70px;left:-10px;width:80px;height:30px;line-height:27px;font-size:18px;.yearnly-text-emboss;}
 	.item-overlay-details .call-dibs {font-size:16px;font-weight:bold;font-family:@serif;line-height:40px;height:40px;display:inline-block;}
 		.item-overlay-details .call-dibs-icon {float:left;width:40px;height:40px;background:transparent url(i/sprite.png) 100% 80px;margin-left:-50px;}
 
-.comments-container {padding:20px 5px 5px 5px;background:#fafafa;width:35%;float:right;}
-	.comments-guts {}
+.comments-container {position:absolute;top:98%;left:50%;width:500px;margin-left:-250px;padding-top:30px;background:#fff;border:1px solid #999;border-top-size:3px;.yearnly-drop-shadow;}
+	.comments-guts {padding:40px;padding-top:0;}
 		.comments-guts h3 {font-size:18px;padding:0 0 20px 0;}
 		.comments-list {padding:0;height:240px;}
 		.comment {padding:0 0 10px 0;margin:0 0 10px 0;position:relative;}
