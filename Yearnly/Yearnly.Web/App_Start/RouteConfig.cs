@@ -111,6 +111,12 @@ namespace Yearnly.Web
                 );
 
             routes.MapRoute(
+                name: "ItemPostCommentRoute",
+                url: "items/ajaxpostitemcomment",
+                defaults: new { controller = "Items", action = "AjaxPostItemComment" }
+                );
+
+            routes.MapRoute(
                 name: "AddItemRoute",
                 url: "items/add",
                 defaults: new { controller = "Items", action = "Add" }

@@ -91,18 +91,65 @@ namespace Yearnly.Web.Controllers
             public string Link { get; set; }
             public string Title { get; set; }
             public string Description { get; set; }
+            public List<AjaxItemComment> ItemComments { get; set; }
+        }
+
+        public class AjaxItemComment
+        {
+            public string UserName { get; set; }
+            public string FirstName { get; set; }
+            public string LastName { get; set; }
+            public string Comment { get; set; }
         }
 
         public ActionResult AjaxGetItem(int itemId)
         {
+            List<AjaxItemComment> itemComments = db.ItemComments.Where(ic => ic.ItemId == itemId).Select(ic => new AjaxItemComment
+            {
+                UserName = ic.CommenterProfile.UserName,
+                FirstName = ic.CommenterProfile.FirstName,
+                LastName = ic.CommenterProfile.LastName,
+                Comment = ic.Comment,
+            }).ToList();
+
             AjaxUserItem item = loggedInUser.UserItems.Where(ui => ui.Id == itemId).Select(ui => new AjaxUserItem
             {
                 Id = ui.Id,
                 Link = ui.Link,
                 Title = ui.Title,
-                Description = ui.Description
+                Description = ui.Description,
+                ItemComments = itemComments
             }).FirstOrDefault();
+
             return Json(item, JsonRequestBehavior.AllowGet);
+        }
+        [HttpPost]
+        public ActionResult AjaxPostItemComment(int itemId, string comment)
+        {
+            //This method returns the added comment so we can add it to the screen
+            //In the jscript
+            AjaxItemComment addedComment = null;
+            ItemComment addingComment = new ItemComment();
+            addingComment.ItemId = itemId;
+            addingComment.UserId = loggedInUser.UserId;
+            addingComment.Comment = comment;
+            addingComment.DateAdded = DateTime.UtcNow;
+            try
+            {
+                db.ItemComments.Add(addingComment);
+                db.SaveChanges();
+                addedComment = new AjaxItemComment();
+                addedComment.UserName = loggedInUser.UserName;
+                addedComment.FirstName = loggedInUser.FirstName;
+                addedComment.LastName = loggedInUser.LastName;
+                addedComment.Comment = addingComment.Comment;
+            }
+            catch
+            {
+                addedComment = null;
+            }
+
+            return Json(addedComment, JsonRequestBehavior.DenyGet);
         }
 
     }

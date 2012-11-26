@@ -58,6 +58,7 @@ $(function () {
                     $('#ui_blocker').remove();
                 }
                 $(this).hide();
+
                 $('.activate-panel').removeClass('toggled');
             }
         });
