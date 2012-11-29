@@ -24,8 +24,8 @@
                 <ol class="comments-list">
                     <!-- ko foreach: itemComments -->
                     <li class="comment group">
-                        <img class="profile-pic" src="~/Content/css/i/big_profile_pic.jpg" alt="" />
-                        <span class="comment-author"><a data-bind="attr: { href: userName }, text: fullName"></a></span> <span class="comment-method">said:</span>
+                        <img class="profile-pic" data-bind="attr: { src: smallProfilePicLink }" alt="" />
+                        <span class="comment-author"><a data-bind="attr: { href: userName }, text: firstName"></a></span> <span class="comment-method">said:</span>
                         <span class="comment-body">
                             <p data-bind="text: comment"></p>
                         </span>

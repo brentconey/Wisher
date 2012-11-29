@@ -1,16 +1,26 @@
 ﻿function ItemComment(data) {
     var self = this;
     self.userName = data.UserName;
+    self.smallProfilePicLink = data.SmallProfilePicLink;
     self.firstName = data.FirstName;
     self.lastName = data.LastName;
     self.comment = data.Comment;
-    self.fullName = ko.computed(function () {
-        return self.firstName + " " + self.lastName;
+    self.daysAgo = ko.computed(function () {
+        var daysAgoString;
+        if (data.DaysAgo == 1) {
+            daysAgoString = data.DaysAgo + " day ago";
+        } else {
+            daysAgoString = data.DaysAgo + " days ago";
+        }
+        return daysAgoString;
     }, this);
+
+    console.log(self.daysAgo());
 }
 
 function ItemOverlayModel(itemId) {
     var self = this;
+    //I set the id from the json 
     self.Id = ko.observable(null);
     self.link = ko.observable(null);
     self.title = ko.observable(null);
@@ -33,7 +43,7 @@ function ItemOverlayModel(itemId) {
         $.ajax({
             type: "POST",
             url: "/items/ajaxpostitemcomment",
-            data: { itemId: self.Id, comment: self.newComment() },
+            data: { itemId: self.Id(), comment: self.newComment() },
             success: function (addedItemComment) {
                 if (!$.isEmptyObject(addedItemComment)) {
                     self.itemComments.push(new ItemComment(addedItemComment));
@@ -48,9 +58,6 @@ function ItemOverlayModel(itemId) {
         });
     }
     
-    //initial load
-    //var mappedItemComments = $.map(data.ItemComments, function (data) { return new ItemComment(data); });
-    //self.itemComments(mappedItemComments);
 }
 
 

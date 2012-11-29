@@ -97,19 +97,24 @@ namespace Yearnly.Web.Controllers
         public class AjaxItemComment
         {
             public string UserName { get; set; }
+            public string SmallProfilePicLink { get; set; }
             public string FirstName { get; set; }
             public string LastName { get; set; }
             public string Comment { get; set; }
+            public int DaysAgo { get; set; }
         }
 
         public ActionResult AjaxGetItem(int itemId)
         {
-            List<AjaxItemComment> itemComments = db.ItemComments.Where(ic => ic.ItemId == itemId).Select(ic => new AjaxItemComment
+            IEnumerable<ItemComment> dbComments = db.ItemComments.Where(ic => ic.ItemId == itemId).OrderBy(ic => ic.DateAdded).Take(3);
+            var itemComments = dbComments.Select(ic => new AjaxItemComment
             {
                 UserName = ic.CommenterProfile.UserName,
+                SmallProfilePicLink = ic.CommenterProfile.SmallProfilePic,
                 FirstName = ic.CommenterProfile.FirstName,
                 LastName = ic.CommenterProfile.LastName,
                 Comment = ic.Comment,
+                DaysAgo = (int)DateTime.Now.Subtract(ic.DateAdded).TotalDays
             }).ToList();
 
             AjaxUserItem item = loggedInUser.UserItems.Where(ui => ui.Id == itemId).Select(ui => new AjaxUserItem
@@ -140,6 +145,7 @@ namespace Yearnly.Web.Controllers
                 db.SaveChanges();
                 addedComment = new AjaxItemComment();
                 addedComment.UserName = loggedInUser.UserName;
+                addedComment.SmallProfilePicLink = loggedInUser.SmallProfilePic;
                 addedComment.FirstName = loggedInUser.FirstName;
                 addedComment.LastName = loggedInUser.LastName;
                 addedComment.Comment = addingComment.Comment;
