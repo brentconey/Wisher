@@ -91,11 +91,13 @@ namespace Yearnly.Web.Controllers
             public string Link { get; set; }
             public string Title { get; set; }
             public string Description { get; set; }
+            public bool IsMyItem { get; set; }
             public List<AjaxItemComment> ItemComments { get; set; }
         }
 
         public class AjaxItemComment
         {
+            public bool IsWhisper { get; set; }
             public string UserName { get; set; }
             public string SmallProfilePicLink { get; set; }
             public string FirstName { get; set; }
@@ -109,6 +111,7 @@ namespace Yearnly.Web.Controllers
             IEnumerable<ItemComment> dbComments = db.ItemComments.Where(ic => ic.ItemId == itemId).OrderBy(ic => ic.DateAdded).Take(3);
             var itemComments = dbComments.Select(ic => new AjaxItemComment
             {
+                IsWhisper = ic.IsWhisper,
                 UserName = ic.CommenterProfile.UserName,
                 SmallProfilePicLink = ic.CommenterProfile.SmallProfilePic,
                 FirstName = ic.CommenterProfile.FirstName,
@@ -117,28 +120,35 @@ namespace Yearnly.Web.Controllers
                 DaysAgo = (int)DateTime.Now.Subtract(ic.DateAdded).TotalDays
             }).ToList();
 
-            AjaxUserItem item = loggedInUser.UserItems.Where(ui => ui.Id == itemId).Select(ui => new AjaxUserItem
+            UserItem dbItem = db.UserItems.Where(ui => ui.Id == itemId).FirstOrDefault();
+            AjaxUserItem ajaxItem = null;
+            if (dbItem != null)
             {
-                Id = ui.Id,
-                Link = ui.Link,
-                Title = ui.Title,
-                Description = ui.Description,
-                ItemComments = itemComments
-            }).FirstOrDefault();
+                ajaxItem = new AjaxUserItem
+                {
+                    Id = dbItem.Id,
+                    Link = dbItem.Link,
+                    Title = dbItem.Title,
+                    Description = dbItem.Description,
+                    IsMyItem = dbItem.UserId == loggedInUser.UserId ? true : false,
+                    ItemComments = itemComments
+                };
+            }
 
-            return Json(item, JsonRequestBehavior.AllowGet);
+            return Json(ajaxItem, JsonRequestBehavior.AllowGet);
         }
         [HttpPost]
-        public ActionResult AjaxPostItemComment(int itemId, string comment)
+        public ActionResult AjaxPostItemComment(int itemId, string comment, bool isWhisper)
         {
             //This method returns the added comment so we can add it to the screen
             //In the jscript
-            AjaxItemComment addedComment = null;
             ItemComment addingComment = new ItemComment();
             addingComment.ItemId = itemId;
             addingComment.UserId = loggedInUser.UserId;
             addingComment.Comment = comment;
+            addingComment.IsWhisper = isWhisper;
             addingComment.DateAdded = DateTime.UtcNow;
+            AjaxItemComment addedComment = null;
             try
             {
                 db.ItemComments.Add(addingComment);

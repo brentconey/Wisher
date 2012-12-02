@@ -19,6 +19,7 @@ namespace Yearnly.Model
         public int UserId { get; set; }
         public string Comment { get; set; }
         public System.DateTime DateAdded { get; set; }
+        public bool IsWhisper { get; set; }
     
         public virtual UserItem UserItem { get; set; }
         public virtual UserProfile CommenterProfile { get; set; }

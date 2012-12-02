@@ -23,21 +23,28 @@
                 <h3>Comments</h3>
                 <ol class="comments-list">
                     <!-- ko foreach: itemComments -->
-                    <li class="comment group">
-                        <img class="profile-pic" data-bind="attr: { src: smallProfilePicLink }" alt="" />
-                        <span class="comment-author"><a data-bind="attr: { href: userName }, text: firstName"></a></span> <span class="comment-method">said:</span>
-                        <span class="comment-body">
-                            <p data-bind="text: comment"></p>
-                        </span>
-                    </li>
+                        <!-- ko ifnot: isWhisper -->
+                            <li class="comment group">
+                                <img class="profile-pic" data-bind="attr: { src: smallProfilePicLink }" alt="" />
+                                <span class="comment-author"><a data-bind="attr: { href: userName }, text: firstName"></a></span> <span class="comment-method">said:</span>
+                                <span class="comment-body">
+                                    <p data-bind="text: comment"></p>
+                                </span>
+                            </li>
+                        <!-- /ko -->
+                        <!-- ko if: isWhisper -->
+                            <!-- ko ifnot: $parent.isMyItem -->
+                                <li class="comment whisper group">
+                                    <img class="profile-pic" data-bind="attr: { src: smallProfilePicLink }" alt="" />
+                                    <span class="comment-author"><a data-bind="attr: { href: userName }, text: firstName"></a></span> <span class="comment-method">whispered:</span>
+                                    <span class="comment-body">
+                                        <p data-bind="text: comment"></p>
+                                    </span>
+                                </li>
+                            <!-- /ko -->
+                        <!-- /ko -->
                     <!-- /ko -->
-                    <li class="comment whisper group">
-                        <img class="profile-pic" src="~/Content/css/i/big_profile_pic.jpg" alt="" />
-                        <span class="comment-author"><a href="/system">Jordan Little</a></span> <span class="comment-method">whispered:</span>
-                        <span class="comment-body">
-                            <p>This is a whispered comment. Can you see it? It's going to be a long one, too, so watch your heights and widths.</p>
-                        </span>
-                    </li>
+                    
                 </ol>
                 <div class="add-comment">
                     <form>
@@ -45,7 +52,7 @@
                             <textarea class="add-comment-body" rows="" cols="" id="" name="" placeholder="add your comment&hellip;" data-bind="value: newComment"></textarea>
                         </fieldset>
                         <fieldset class="group">
-                            <input type="submit" class="left button add-whisper-button" value="whisper" />
+                            <input type="submit" class="left button add-whisper-button" value="whisper" data-bind="click: addWhisper" />
                             <input type="submit" class="right button add-comment-button" value="post" data-bind="click: addComment" />
                         </fieldset>
                     </form>

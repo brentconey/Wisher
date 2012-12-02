@@ -76,6 +76,7 @@
           <Property Name="ItemId" Type="int" Nullable="false" />
           <Property Name="UserId" Type="int" Nullable="false" />
           <Property Name="Comment" Type="nvarchar" Nullable="false" MaxLength="500" />
+          <Property Name="IsWhisper" Type="bit" Nullable="false" />
           <Property Name="DateAdded" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="UserItem">
@@ -438,6 +439,7 @@
           <Property Type="DateTime" Name="DateAdded" Nullable="false" Precision="3" />
           <NavigationProperty Name="UserItem" Relationship="YearnlyModel.FK_ItemComment_ToItem" FromRole="ItemComment" ToRole="UserItem" />
           <NavigationProperty Name="CommenterProfile" Relationship="YearnlyModel.FK_ItemComment_ToUser" FromRole="ItemComment" ToRole="UserProfile" />
+          <Property Type="Boolean" Name="IsWhisper" Nullable="false" />
         </EntityType>
         <Association Name="FK_ItemComment_ToItem">
           <End Type="YearnlyModel.UserItem" Role="UserItem" Multiplicity="1" />
@@ -535,6 +537,7 @@
           <EntitySetMapping Name="ItemComments">
             <EntityTypeMapping TypeName="YearnlyModel.ItemComment">
               <MappingFragment StoreEntitySet="ItemComment">
+                <ScalarProperty Name="IsWhisper" ColumnName="IsWhisper" />
                 <ScalarProperty Name="DateAdded" ColumnName="DateAdded" />
                 <ScalarProperty Name="Comment" ColumnName="Comment" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
