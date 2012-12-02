@@ -33,6 +33,7 @@ MASTHEAD - VARIABLE DECLARATIONS
 
 html, body {width:100%;height:100%;}
 body {font-family:@site-font;color:@text;font-size:100%;box-sizing:border-box;}
+	body#public_home {background:@list-color;}
 
 /*
 	LAYOUT
@@ -40,9 +41,12 @@ body {font-family:@site-font;color:@text;font-size:100%;box-sizing:border-box;}
 .full-width {width:100%;}
 .wrap {width:940px;margin:0 auto;}
 #page {position:relative;}
-#global_nav {width:160px;height:100%;float:left;margin-right:20px;padding:20px;}
-.main {width:540px;float:left;margin-right:20px;padding:20px;}
-.secondary {width:25%;float:right;border:1px solid #ddd;border-radius:@border-radius;padding:20px;}
+.main,
+.secondary,
+.tertiary {padding:20px;margin-right:20px;}
+.main {width:540px;float:left;}
+.secondary {width:200px;float:right;margin-right:0;}
+.tertiary {width:160px;height:100%;float:left;}
 .half {width:200px;}
 .node {padding:15px;margin-bottom:20px;}
 	.node:last-child {margin-bottom:0;}
@@ -98,42 +102,52 @@ label.form-error {background:@error;border:1px solid @error-hover;color:#fff;bor
 #ui_blocker {width:100%;height:100%;background:rgba(255,255,255,.8);position:absolute;top:0;left:0;z-index:9998;}
 
 /*
-	LOGIN
+	PUBLIC HOMEPAGE
 */
-.login {position:relative;top:40px;left:0;.thing;width:340px;margin:0 auto 0;padding:20px;}
-	.login h1 {margin:0 auto;}
-		.login h1 a#logo {position:relative;top:0;left:-50px;margin:0 auto 40px;}
-	.login .button {font-size:18px;display:block;width:80%;margin:0 auto 20px;padding:14px 20px 15px;}
+.promo {height:480px;background:url(i/yearnly_home_header_bg.png) no-repeat center;position:relative;}
+	.promo-guts {position:absolute;width:480px;top:300px;left:0;text-align:right;}
+	.promo h1 {color:#fff;font-size:30px;.yearnly-text-shadow;}
+	.promo h2 {color:darken(@list-color,30%);font-size:16px;font-family:@site-font;line-height:1.5em;padding:0 0 20px 0;}
+	.promo .button {padding:15px 25px;font-size:18px;}
+
 
 /*
 	HEADER	
 */
-header {background:#fff;font-family:@corp-font;border-bottom:1px solid #fff;margin:0 0 40px 0;.yearnly-drop-shadow;}
+header {background:@list-color;margin:0 0 20px;}
     header .wrap {position:relative;height:60px;}
-    header #logo,
-	h1 #logo {display:block;position:absolute;top:0;left:-5px;height:60px;width:50px;background:url(i/sprite.png) no-repeat 0 -120px;line-height:63px;color:@text;text-indent:61px;text-transform:lowercase;font-size:20px;color:#999;}
-		#logo:hover {color:@text;text-decoration:none;}
+	header .tertiary,
+	header .main,
+	header .secondary {padding-top:0;padding-bottom:0;}
+    header #logo {position:absolute;top:8px;left:0;height:40px;width:120px;background:url(i/sprite.png) no-repeat 100% top;text-indent:-9999px;}
+		#logo:hover,
+		#logo:focus {background-position-y:-40px;}
+
     #global_search {}
 		#global_search legend {display:none;}
         #global_search input[type="submit"] { visibility:hidden; }
         #global_search input[type="text"] {position:absolute;top:10px;left:375px;height:40px;padding-left:15px;border-radius:50px;font-weight:bold;width:300px;opacity:0;-webkit-transition:opacity .25s ease-in-out;}
         #global_search input[type="text"]:focus,
-		#global_search input[type="text"]:hover { opacity:1.0;-webkit-transition:opacity .25s ease-in-out; }
-	#user_header { position: absolute; z-index:99; top: 11px; right: 0; text-align:right;}
-		#user_header > a {display:block;font-weight:bold;color:@text;text-shadow:none;}
-		#user_header img { float:right;margin-left:15px;position:relative;width:40px;height:40px;border:none;}
+		#global_search input[type="text"]:hover { opacity:1.0;-webkit-transition:opacity .25s ease-in-out;}
+
+	#user_header {position:absolute;z-index:99;top:11px;right:0;text-align:right;}
+		#user_header > a {display:block;font-weight:bold;color:#fff;.yearnly-text-shadow;font-family:@corp-font;}
+		#user_header img { float:right;margin-left:20px;position:relative;width:40px;height:40px;border:none;}
 		#user_header .user-header-name {line-height:40px;}
-	#not_logged_in_user_header a {float:right;margin-left:5px;position:relative;top:17px;}
-	.user-action {width:40px;height:40px;display:block;background:transparent url(i/sprite.png) no-repeat 0 0;text-indent:-9999px;}
+
+.user-actions {width:165px;}
+	.user-actions li {display:inline;}
+	.user-action {width:40px;height:40px;float:left;background:transparent url(i/sprite.png) no-repeat -100px 0;text-indent:-9999px;}
 		.user-action:hover {background-position-y:-40px;}
-	.north-star {position:absolute;top:10px;left:225px;}
+	.north-star {}
 		.north-star:active,
-		.north-star.current {background-position-y:-80px;}
-	.notifications-container {position:absolute;top:10px;left:275px;}
-		.notifications-link {background-position-x:-40px;}
-			.notifications-link.toggled {background-position-y:-80px;}
-			.notifications-link.has-notifications {background-position-y:-80px;text-indent:0;text-align:center;font-weight:bold;line-height:39px;font-size:9px;color:#fff;.yearnly-text-shadow;}
-			.has-notifications:hover {text-decoration:none;color:@text;text-shadow:none;}
+		.north-star.current {background-position-y:-40px;}
+	.global-add-link {background-position-x:-140px;}
+		.global-add {position:absolute;top:40px;left:0;}
+	.notifications-link {background-position-x:-180px;}
+		.notifications-link.toggled {background-position-y:-40px;}
+		.notifications-link.has-notifications {background-position-y:-40px;text-indent:-9999px;}
+		.has-notifications:hover {text-decoration:none;color:@text;text-shadow:none;}
 		.notifications {position:absolute;top:40px;left:0;z-index:9999;width:350px;padding:15px;}
 			.notification {font-size:14px;padding-bottom:10px;margin-bottom:10px;border-bottom:1px solid #eee;}
 			.notification:last-child {padding-bottom:0;margin-bottom:0;border-bottom:0;}
@@ -142,8 +156,8 @@ header {background:#fff;font-family:@corp-font;border-bottom:1px solid #fff;marg
 				.notification .request-sender {font-weight:bold;}
 				.notification .decline-friend-request {font-size:11px;background:#777;}
 		.no-notifications {padding:10px!important;font-size:16px;font-style:italic;color:#999;}
-	.activate-search {position:absolute;top:10px;left:325px;background-position-x:-80px;}
-		.activate-search.toggled {background-position-y:-80px;}
+	.activate-search {background-position-x:-220px;}
+		.activate-search.toggled {background-position-y:-40px;}
 
 #global_nav { border-right:1px solid #eee;}
 	#quick_actions { padding-bottom: 30px; }
