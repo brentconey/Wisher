@@ -9,19 +9,9 @@ $(function () {
     $('#global_search input[type="text"]').blur(function () {
         $('.activate-search').removeClass('toggled');
     });
-
-// handles the little bubble pop-over on the item dibs
-    $('.dibs-called').hover(function () {
-        var the_title = $(this).text();
-        if (!$('.who-dibbed').length) { 
-            $('<span class="who-dibbed">' + the_title + '</span>').hide().appendTo(this).fadeIn(200);
-        }
-    }, function () {
-        $('.who-dibbed').fadeOut(200, function () {
-            $(this).remove();
-        });
+    $('#global_search input[type="text"]').focus(function () {
+        $('.activate-search').addClass('toggled');
     });
-
 
 
     $('.activate-panel').click(function (e) {
@@ -35,8 +25,8 @@ $(function () {
         if ($(panelToOpen).is(':visible')) {
             $(panelToOpen).hide();
         } else {
-            $('.panel').fadeOut(100);
-            $(panelToOpen).fadeIn(300);
+            $('.panel').fadeOut(300);
+            $(panelToOpen).show();
             $(this).addClass('toggled');
         }
     });
@@ -63,6 +53,20 @@ $(function () {
             }
         });
     });
+
+
+    $('.panel-tabs-container .panel-tab').hide();
+    $('.panel-tabs-container .panel-tab:first').show();
+    $('.panel-tabs li:first').addClass('toggled');
+    $('.panel-tabs li a').click(function (e) {
+        $('.panel-tabs li').removeClass('toggled');
+        $(this).parents('li').addClass('toggled');
+        var currentTab = $(this).attr('href');
+        $('.panel-tabs-container .panel-tab').hide();
+        $(currentTab).show();
+        e.preventDefault();
+    });
+
 
     $('.tabs .tab').hide();
     $('.tabs .tab:first').show();

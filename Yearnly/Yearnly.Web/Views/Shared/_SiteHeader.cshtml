@@ -8,18 +8,61 @@
                 <li><a class="@(ViewBag.Section == "Home" ? "current" : "") north-star user-action" href="/">Home</a></li>
                 <li>
                     <a class="user-action global-add-link activate-panel" href="#add_something_panel">add something</a>
-                    <div class="panel global-add" id="add_something_panel">
+                    <div class="add-container group">
+                        <div class="global-add panel panel-tabs-container" id="add_something_panel">
+                            <span class="panel-arrow north center hidden"></span>
+                            <ul class="panel-tabs">
+                                <li><a href="#add_an_item">Add an item</a></li>
+                                <li><a href="#create_a_list">Create a list</a></li>
+                            </ul>
+                            <div class="global-add-item group panel-tab" id="add_an_item">
+                                <fieldset>
+                                    <input type="text" placeholder="What is it?" id="item_title" name="item_title" class="item-title" />
+                                </fieldset>
+                                <fieldset>
+                                    <input type="text" placeholder="http://" id="item_link" name="item_link" class="item-link" />
+                                </fieldset>
+                                <fieldset>
+                                    <input type="text" placeholder="Notes (sizes, colors, special instructions)" id="item_notes" name="item_notes" class="item-notes" />
+                                </fieldset>
+                                <fieldset class="group">
+                                    <span class="add-item-price-icon">$</span>
+                                    <input type="text" placeholder="Price" id="item_price" name="item_price" class="item-price left" />
+                                    <a class="add-item-submit right button" href="#">Add Item</a>
+                                </fieldset>
+                            </div><!-- /#add_an_item -->
+                            <div class="global-add-list group panel-tab hidden" id="create_a_list">
+                                <fieldset>
+                                    <input type="text" placeholder="List title" id="list_title" name="list_title" class="list-title" />
+                                </fieldset>
+                                <fieldset>
+                                    <select id="list_type" name="list_type" class="list-type">
+                                        <option selected>List type&hellip;</option>
+                                    </select>
+                                </fieldset>
+                                <fieldset>
+                                    <select id="list_privacy" name="list_privacy" class="list-privacy">
+                                        <option selected>List privacy&hellip;</option>
+                                    </select>
+                                </fieldset>
+                                <fieldset class="group">
+                                    <span class="list-date-icon">date</span>
+                                    <input type="text" placeholder="Date" id="list_date" name="list_date" class="list-date left" />
+                                    <a class="create-list-submit right button" href="#">Create list</a>
+                                </fieldset>
+                            </div><!-- /#create_a_list -->
+                        </div>
                     </div>
                 </li>
                 <li>
                     <a class="notifications-link activate-panel user-action" href="#notification_panel" data-bind="text: numberOfNotifications, css: hasNotifications"></a>
                     <div class="notifications-container group">
-                        <script src="~/Scripts/Friends/FriendNotification.js"></script>
+
                         <!-- number of notifications -->
                         <ul class="notifications panel" id="notification_panel">
+                            <span class="panel-arrow north center hidden"></span>
                             <!-- this is for when there are no notifications -->
                             <li class="group notification no-notifications" data-bind="visible: friendRequests().length == 0">No new notifications</li>
-
                             <!-- ko foreach: friendRequests -->
                             <li class="group notification notification-type-friend-request">
                                 <a href="#" data-bind="attr: { href: userName }"></a>
@@ -34,6 +77,7 @@
                             <!-- /ko -->
                         </ul>
                     </div>
+                    <script src="~/Scripts/Friends/FriendNotification.js"></script>
                 </li>
                 <li>
                     <a class="user-action activate-search" href="#">search</a>

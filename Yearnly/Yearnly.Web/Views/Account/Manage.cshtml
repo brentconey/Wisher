@@ -3,52 +3,53 @@
     ViewBag.Title = "Settings";
     ViewBag.Section = "Settings";
 }
+<div class="main group">
 
 
-<h1>@ViewBag.Title</h1>
+    <h1>@ViewBag.Title</h1>
 
-<div class="settings-panel group pd">
-    <h3 class="group">About Me <a href="#edit_about_me" class="activate-panel button right">edit</a></h3>
-    <fieldset class="panel" id="edit_about_me">
-        <input type="text" name="first_name" id="first_name" placeholder="first name" />
-        <input type="text" name="last_name" id="last_name" placeholder="last name" />
-        <input type="submit" value="Save" />
-    </fieldset>
-</div>
+    <div class="settings-panel group pd">
+        <h3 class="group">About Me <a href="#edit_about_me" class="activate-panel button right">edit</a></h3>
+        <fieldset class="panel" id="edit_about_me">
+            <input type="text" name="first_name" id="first_name" placeholder="first name" />
+            <input type="text" name="last_name" id="last_name" placeholder="last name" />
+            <input type="submit" value="Save" />
+        </fieldset>
+    </div>
 
-<div class="settings-panel group pd">
-    <h3 class="group">Shipping Address <a href="#edit_shipping_address" class="activate-panel button right">edit</a></h3>
-    <fieldset class="panel" id="edit_shipping_address">
-        <input type="text" name="address" id="address" placeholder="address" />
-        <input type="text" name="city" id="city" placeholder="city" />
-        <input type="text" name="state" id="state" placeholder="state" />
-        <input type="text" name="zip" id="zip" placeholder="zip" />
-        <input type="submit" value="Save" />
-    </fieldset>
-</div>
+    <div class="settings-panel group pd">
+        <h3 class="group">Shipping Address <a href="#edit_shipping_address" class="activate-panel button right">edit</a></h3>
+        <fieldset class="panel" id="edit_shipping_address">
+            <input type="text" name="address" id="address" placeholder="address" />
+            <input type="text" name="city" id="city" placeholder="city" />
+            <input type="text" name="state" id="state" placeholder="state" />
+            <input type="text" name="zip" id="zip" placeholder="zip" />
+            <input type="submit" value="Save" />
+        </fieldset>
+    </div>
 
-<div class="settings-panel group pd">
-    <h3 class="group">Change Email <a href="#edit_email" class="activate-panel button right">edit</a></h3>
-    <fieldset class="panel" id="edit_email">
-        <p>Your current email address is iamjordanlittle@gmail.com</p>
-        <input type="text" name="new_email" id="new_email" placeholder="email address" />
-        <input type="text" name="new_email_confirm" id="new_email_confirm" placeholder="confirm new email address" />
-        <input type="submit" value="Save Email Address" />
-    </fieldset>
-</div>
+    <div class="settings-panel group pd">
+        <h3 class="group">Change Email <a href="#edit_email" class="activate-panel button right">edit</a></h3>
+        <fieldset class="panel" id="edit_email">
+            <p>Your current email address is iamjordanlittle@gmail.com</p>
+            <input type="text" name="new_email" id="new_email" placeholder="email address" />
+            <input type="text" name="new_email_confirm" id="new_email_confirm" placeholder="confirm new email address" />
+            <input type="submit" value="Save Email Address" />
+        </fieldset>
+    </div>
 
-<div class="settings-panel group pd">
-    <h3 class="group">Change Password <a href="#edit_password" class="activate-panel button right">edit</a></h3>
-    <fieldset class="panel" id="edit_password">
-        <input type="password" name="old_password" id="old_password" placeholder="old password" />
-        <input type="password" name="new_password" id="new_password" placeholder="new password" />
-        <input type="password" name="new_password" id="new_password_confirm" placeholder="new password again" />
-        <input type="submit" value="Save Password" />
-    </fieldset>
-</div>
+    <div class="settings-panel group pd">
+        <h3 class="group">Change Password <a href="#edit_password" class="activate-panel button right">edit</a></h3>
+        <fieldset class="panel" id="edit_password">
+            <input type="password" name="old_password" id="old_password" placeholder="old password" />
+            <input type="password" name="new_password" id="new_password" placeholder="new password" />
+            <input type="password" name="new_password" id="new_password_confirm" placeholder="new password again" />
+            <input type="submit" value="Save Password" />
+        </fieldset>
+    </div>
 
 
-@*@if (ViewBag.HasLocalPassword)
+    @*@if (ViewBag.HasLocalPassword)
 {
     @Html.Partial("_ChangePasswordPartial")
 }
@@ -57,11 +58,12 @@ else
     @Html.Partial("_SetPasswordPartial")
 }*@
 
-<div class="settings-panel group pd">
-    <h3 class="group">Manage accounts <a href="#manage_accounts" class="activate-panel button right">edit</a></h3>
-    <fieldset class="panel" id="manage_accounts">
-        @Html.Action("RemoveExternalLogins")
-        @Html.Action("ExternalLoginsList", "Home", new { ReturnUrl = ViewBag.ReturnUrl })
-    </fieldset>
-</div>
+    <div class="settings-panel group pd">
+        <h3 class="group">Manage accounts <a href="#manage_accounts" class="activate-panel button right">edit</a></h3>
+        <fieldset class="panel" id="manage_accounts">
+            @Html.Action("RemoveExternalLogins")
+            @Html.Action("ExternalLoginsList", "Home", new { ReturnUrl = ViewBag.ReturnUrl })
+        </fieldset>
+    </div>
 
+</div>

@@ -3,48 +3,62 @@
     ViewBag.Section = "Items";
     @model List<Yearnly.Model.UserItem>
 }
+<div class="main group">
 
-<p>All your items will be here. If you'd like, you can <a class="button" href="/items/add">add one</a>.</p>
+    <h1>Items</h1>
 
-<div class="panel overlay group item-overlay" id="item_overlay">
-    <del class="close-overlay">close</del>
-    <a href="/items/edit/1" class="edit-item-link button">edit</a>
-    <div class="overlay-guts">
-        <div class="group item-overlay-details">
-            <h2 class="item-title" data-bind="text: title"></h2>
-            <a class="item-link" data-bind="attr: {href: link }"><span class="item-link-icon"></span><span data-bind="text: link"></span></a>
-            <span class="item-price"><span class="item-currency-symbol">$</span>50</span>
-            <p class="item-description" data-bind="text: description"></p>
-            <a class="call-dibs" href="#"><span class="call-dibs-icon"></span><span class="dibs-status">call dibs on this item</span></a>
-        </div><!-- /.item-overlay-details -->
-    </div><!-- /.overlay-guts -->
-    <div class="comments-container">
+    <div class="panel overlay group item-overlay" id="item_overlay">
+        <del class="close-overlay">close</del>
+        <a href="/items/edit/1" class="edit-item-link">edit</a>
+        <div class="overlay-guts">
+            <div class="group item-overlay-details">
+
+                <!-- ## IF DIBS HAVE BEEN CALLED ## -->
+                <span class="dibs-called-icon"></span><span class="item-dibs">Jordan called dibs 1 hour ago</span>
+                <!-- ## ELSE ## -->
+                <a href="#" title="call dibs" class="call-dibs">call dibs</a>
+                <!-- ## -->
+
+                <h2 class="item-title" data-bind="text: title"></h2>
+                <h3 class="posted-meta">added 7 days ago by <strong><a href="#LINKTOPROFILE">Jordan Little</a></strong></h3>
+                <p class="item-description" data-bind="text: description"></p>
+                <ul class="item-meta group">
+                    <li class="item-link" title="item link"><span></span><a class="item-link" data-bind="attr: {href: link }, text: link"></a></li>
+                    <li class="item-price" title="item price"><span></span>400</li>
+                    <li class="item-views" title="27 views"><span></span>27</li>
+                </ul>
+            </div>
+            <!-- /.item-overlay-details -->
+        </div>
+        <!-- /.overlay-guts -->
+        <div class="comments-container">
             <div class="comments-guts">
-                <h3>Comments</h3>
                 <ol class="comments-list">
                     <!-- ko foreach: itemComments -->
-                        <!-- ko ifnot: isWhisper -->
-                            <li class="comment group">
-                                <img class="profile-pic" data-bind="attr: { src: smallProfilePicLink }" alt="" />
-                                <span class="comment-author"><a data-bind="attr: { href: userName }, text: firstName"></a></span> <span class="comment-method">said:</span>
-                                <span class="comment-body">
-                                    <p data-bind="text: comment"></p>
-                                </span>
-                            </li>
-                        <!-- /ko -->
-                        <!-- ko if: isWhisper -->
-                            <!-- ko ifnot: $parent.isMyItem -->
-                                <li class="comment whisper group">
-                                    <img class="profile-pic" data-bind="attr: { src: smallProfilePicLink }" alt="" />
-                                    <span class="comment-author"><a data-bind="attr: { href: userName }, text: firstName"></a></span> <span class="comment-method">whispered:</span>
-                                    <span class="comment-body">
-                                        <p data-bind="text: comment"></p>
-                                    </span>
-                                </li>
-                            <!-- /ko -->
-                        <!-- /ko -->
+                    <!-- ko ifnot: isWhisper -->
+                    <li class="comment group">
+                        <img class="profile-pic" data-bind="attr: { src: smallProfilePicLink }" alt="" />
+                        <span class="comment-author"><a data-bind="attr: { href: userName }, text: firstName"></a></span><span class="comment-method"> said:</span>
+                        <span class="comment-body">
+                            <p data-bind="text: comment"></p>
+                        </span>
+                    </li>
+                    <!-- /ko -->
+                    <!-- ko if: isWhisper -->
+                    <!-- ko ifnot: $parent.isMyItem -->
+                    <li class="comment whisper group">
+                        <img class="profile-pic" data-bind="attr: { src: smallProfilePicLink }" alt="" />
+                        <span class="comment-author"><a data-bind="attr: { href: userName }, text: firstName"></a></span><span class="comment-method"> whispered:</span>
+                        <span class="comment-body">
+                            <p data-bind="text: comment"></p>
+                        </span>
+                    </li>
+                    <!-- /ko -->
+                    <!-- /ko -->
                     <!-- /ko -->
                     
+                    <li><a class="load-more-comments" href="#">load more comments</a></li>
+
                 </ol>
                 <div class="add-comment">
                     <form>
@@ -58,21 +72,28 @@
                     </form>
                 </div>
             </div>
-        </div><!-- /.comments-container -->
-</div>
-<script src="~/Scripts/Items/ItemOverlay.js"></script>
-<div class="items">
-    @foreach (var row in Model)
-    {
-        <div class="item group thing">
-            <a class="activate-panel item_details_click" href="#item_overlay" data-itemid="@row.Id">view details</a>
-            <div class="item-guts">
-                <h2 class="item-title">@row.Title</h2>
-                <a class="item-link" href="@row.Link">@row.Link</a>
-                <span class="item-price"><span class="item-currency-symbol">$</span>50</span>
-                <span class="dibs-called">Jordan called dibs</span>
-                <a class="item-comments" title="7 comments" href="#PERMALINK_TO_ITEM">7</a>
-            </div>
         </div>
-    }
+        <!-- /.comments-container -->
+    </div>
+    <script src="~/Scripts/Items/ItemOverlay.js"></script>
+    <ul class="items">
+        @foreach (var row in Model)
+        {
+            <li class="item group thing">
+                <a class="activate-panel item_details_click" href="#item_overlay" data-itemid="@row.Id">view details</a>
+                <div class="item-guts">
+                    <h2 class="item-title">@row.Title</h2>
+                    <a class="item-link" href="@row.Link">@row.Link</a>
+                    <ul class="item-meta">
+                        <li><span class="comments" title="comments">comments</span>3</li>
+                        <li><span class="views" title="views">views</span>27</li>
+                        <li><span class="price" title="price">price</span>400</li>
+                    </ul>
+                    <span class="dibs-called">Jordan called dibs</span>
+                </div>
+            </li>
+        }
+    </ul>
+
 </div>
+<!-- /.main -->
