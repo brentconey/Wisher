@@ -1,12 +1,12 @@
 $(function () {
 
-    $('.call-dibs').click(function () {
+    $('.call-dibs').click(function (e) {
         $(this).animate({
             opacity: 0,
-            'background-position-x' : '-20px',
             width: 0
-        }, 200);
-
+        }, 500);
+        $(this).siblings('.item-dibs,.dibs-called-icon').fadeIn(500);
+        e.preventDefault();
     });
 
 // manages the header search effects and functionality

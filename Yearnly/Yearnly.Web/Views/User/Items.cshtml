@@ -12,9 +12,9 @@
         <a href="/items/edit/1" class="edit-item-link">edit</a>
         <div class="overlay-guts">
             <div class="group item-overlay-details">
-
                 <!-- ## IF DIBS HAVE BEEN CALLED ## -->
-                <span class="hidden dibs-called-icon"></span><span class="hidden item-dibs">Jordan called dibs 1 hour ago</span>
+                <!-- \v/ - change that depending on user -->
+                <span class="hidden dibs-called-icon"></span><span class="hidden item-dibs">You called dibs 1 hour ago</span>
                 <!-- ## ELSE ## -->
                 <a href="#" title="call dibs" class="call-dibs">call dibs</a>
                 <!-- ## -->
@@ -29,6 +29,25 @@
                 </ul>
             </div>
             <!-- /.item-overlay-details -->
+            <div class="group edit-item hidden">
+                <div class="global-add-item group" id="edit_an_item">
+                    <fieldset>
+                        <input type="text" placeholder="What is it?" id="edit_item_title" name="edit_item_title" class="edit-item-title" />
+                    </fieldset>
+                    <fieldset>
+                        <input type="text" placeholder="http://" id="edit_item_link" name="edit_item_link" class="edit-item-link" />
+                    </fieldset>
+                    <fieldset>
+                        <input type="text" placeholder="Notes (sizes, colors, special instructions)" id="edit_item_notes" name="item_notes" class="edit-item-notes" />
+                    </fieldset>
+                    <fieldset class="group">
+                        <span class="add-item-price-icon">$</span>
+                        <input type="text" placeholder="Price" id="edit_item_price" name="item_price" class="edit-item-price left" />
+                        <a class="edit-item-submit right button" href="#">Save</a>
+                    </fieldset>
+                </div>
+                <!-- /#add_an_item -->
+            </div>
         </div>
         <!-- /.overlay-guts -->
         <div class="comments-container">
@@ -37,8 +56,9 @@
                     <!-- ko foreach: itemComments -->
                     <!-- ko ifnot: isWhisper -->
                     <li class="comment group">
+                        <span class="comment-posted">2 days ago</span>
                         <img class="profile-pic" data-bind="attr: { src: smallProfilePicLink }" alt="" />
-                        <span class="comment-author"><a data-bind="attr: { href: userName }, text: firstName"></a></span><span class="comment-method"> said:</span>
+                        <span class="comment-author"><a data-bind="attr: { href: userName }, text: firstName"></a></span><span class="comment-method">said:</span>
                         <span class="comment-body">
                             <p data-bind="text: comment"></p>
                         </span>
@@ -47,8 +67,9 @@
                     <!-- ko if: isWhisper -->
                     <!-- ko ifnot: $parent.isMyItem -->
                     <li class="comment whisper group">
+                        <span class="comment-posted">2 days ago</span>
                         <img class="profile-pic" data-bind="attr: { src: smallProfilePicLink }" alt="" />
-                        <span class="comment-author"><a data-bind="attr: { href: userName }, text: firstName"></a></span><span class="comment-method"> whispered:</span>
+                        <span class="comment-author"><a data-bind="attr: { href: userName }, text: firstName"></a></span><span class="comment-method">whispered:</span>
                         <span class="comment-body">
                             <p data-bind="text: comment"></p>
                         </span>
@@ -56,7 +77,7 @@
                     <!-- /ko -->
                     <!-- /ko -->
                     <!-- /ko -->
-                    
+
                     <li><a class="load-more-comments" href="#">load more comments</a></li>
 
                 </ol>

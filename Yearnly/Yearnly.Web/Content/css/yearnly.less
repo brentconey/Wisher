@@ -12,9 +12,10 @@ MASTHEAD - VARIABLE DECLARATIONS
 	@success-hover		:		#7a9f4e;
 @alert					:		#F5E36C;
 	@alert-hover		:		#DBC84B;
-@error					:		#7a9f4e;
+@error					:		#f36060;
 	@error-hover		:		#d74e4e;
-@whisper				:		#abd5e9;
+@whisper				:		#eef9fb;
+	@whisper-border		:		#badee4;
 @text					:		#222;
 	@text-lite			:		#aaa;
 @textbox-color			:		#222;
@@ -154,7 +155,7 @@ header {background:@list-color;margin:0 0 20px;}
 
 	#user_header {position:absolute;z-index:99;top:20px;right:0;text-align:right;}
 		#user_header > a {display:block;font-weight:bold;color:#fff;.yearnly-text-shadow;font-family:@corp-font;}
-		#user_header img { float:right;margin-left:20px;position:relative;width:40px;height:40px;border:none;}
+		#user_header img { float:right;margin-left:20px;position:relative;width:40px;height:40px;}
 		#user_header .user-header-name {line-height:40px;}
 		#user_header_panel {position:absolute;top:50px;left:31px;}
 
@@ -233,7 +234,8 @@ header {background:@list-color;margin:0 0 20px;}
 	.stat h2 {font-size:32px;}
 	.stat h4 {font-size:14px;color:lighten(@text,20%);}
 
-.profile-pic {border-radius:100px;box-shadow:inset 0 3px 0 rgba(255,255,255,.9);}
+.profile-pic {border:3px solid #fff;border-radius:4px;box-shadow:inset 0 0 2px rgba(0,0,0,.75),0 2px 3px rgba(0,0,0,.2);}
+	.profile-pic:hover {box-shadow:inset 0 0 2px rgba(0,0,0,.75),0 3px 3px rgba(0,0,0,.3);-webkit-transition:box-shadow .2s linear;}
 
 .items {padding-top:20px;margin:0 0 30px 0;}
 .item {float:left;width:230px;height:80px;margin:0 20px 20px 0;padding:0;position:relative;}
@@ -275,21 +277,22 @@ header {background:@list-color;margin:0 0 20px;}
 .comments-container {}
 	.comments-guts {}
 		.comments-list {padding:0;height:240px;overflow-y:scroll;}
-		.comment {padding:0 0 8px 0;margin:0 0 8px 0;position:relative;font-size:11px;}
+		.comment {padding:9px 0;margin:0;position:relative;font-size:11px;}
 			.comment:last-child {margin:0;}
 			.comment .profile-pic {float:left;margin:0 9px 0 0;width:30px;height:30px;border-radius:4px;border:1px solid #737373;}
-			.comment-author {font-weight:bold;}
+			.comment-author {font-weight:bold;display:inline-block;padding-right:3px;}
 			.comment-method {font-style:italic;color:#999;}
 			.comment-description {padding:0;margin:0;}
-			.comment-body p {padding:0 0 0 39px;margin:0;font-size:11px;color:@text;}
-		.whisper {background:#444;padding:10px;.yearnly-text-shadow;border-radius:4px;}
-			.whisper .comment-method {color:#fff;font-weight:bold;}
-			.whisper p {color:#fff;padding:0 0 0 49px;}
+			.comment-posted {font-size:10px;color:#ccc;position:absolute;top:8px;right:10px;}
+			.comment-body p {padding:0 0 0 40px;margin:0;font-size:11px;color:@text;}
+		.whisper {background:@whisper;border:1px solid @whisper-border;border-left:none;border-right:none;}
+			.whisper .comment-method {color:darken(@whisper-border,70%);font-weight:bold;}
+			.whisper p {color:darken(@whisper-border,70%);}
 			.whisper .commment-author {padding-bottom:3px;}
 			.whisper .profile-pic {}
 	.add-comment {border-top:3px solid #ddd;padding:10px 0 0 0;}
 		.add-comment textarea {font-size:12px;color:@text;height:65px;border-color:#999;}
-		.add-whisper-button {background:@whisper;color:darken(@whisper,70%);}
+		.add-whisper-button {background:@whisper;border:1px solid @whisper-border;color:darken(@whisper,70%);}
 			.add-whisper-button:hover,
 			.add-whisper-button:focus {background:darken(@whisper,5%);color:darken(@whisper,60%);}
 	.load-more-comments {border:1px solid #eee;border-left:none;border-right:none;padding:10px 0;color:@text;font-size:12px;text-align:center;display:block;}
