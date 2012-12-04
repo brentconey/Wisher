@@ -1,5 +1,14 @@
 $(function () {
 
+    $('.call-dibs').click(function () {
+        $(this).animate({
+            opacity: 0,
+            'background-position-x' : '-20px',
+            width: 0
+        }, 200);
+
+    });
+
 // manages the header search effects and functionality
     $('.activate-search').click(function (e) {
         $(this).toggleClass('toggled');

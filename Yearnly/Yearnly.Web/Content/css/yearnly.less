@@ -131,7 +131,7 @@ label.form-error {background:@error;border:1px solid @error-hover;color:#fff;bor
 	.promo-guts {position:absolute;width:480px;top:300px;left:0;text-align:right;}
 	.promo h1 {color:#fff;font-size:30px;.yearnly-text-shadow;}
 	.promo h2 {color:darken(@list-color,30%);font-size:16px;font-family:@site-font;line-height:1.5em;padding:0 0 20px 0;}
-	.promo .button {padding:15px 25px;font-size:18px;}
+	.promo .button {padding:15px 25px;font-size:18px;margin-right:-5px;}
 
 
 /*
@@ -156,6 +156,7 @@ header {background:@list-color;margin:0 0 20px;}
 		#user_header > a {display:block;font-weight:bold;color:#fff;.yearnly-text-shadow;font-family:@corp-font;}
 		#user_header img { float:right;margin-left:20px;position:relative;width:40px;height:40px;border:none;}
 		#user_header .user-header-name {line-height:40px;}
+		#user_header_panel {position:absolute;top:50px;left:31px;}
 
 .user-actions {width:auto;position:relative;top:20px;left:-5px;}
 	.user-actions > li {width:40px;height:40px;margin-right:10px;float:left;}
@@ -165,11 +166,11 @@ header {background:@list-color;margin:0 0 20px;}
 		.north-star:active,
 		.north-star.current {background-position-y:-40px;}
 	.global-add-link {background-position-x:-140px;}
-		.create-list-submit {background-color:@list-color!important;}
+		.create-list-submit {background-color:@list-color!important;border-color:darken(@list-color,30%) !important;box-shadow:inset 0 1px 0 rgba(255,255,255,.5);}
 		.global-add {position:absolute;top:50px;left:-110px;}
 			.global-add .item-price,
 			.global-add .list-date {width:40%;}
-			.global-add .button {width:40%;height:40px;line-height:31px;border-radius:4px;}
+			.global-add .button {width:40%;height:40px;line-height:31px;border-radius:4px;border:1px solid darken(@item-color,30%);box-shadow:inset 0 1px 0px rgba(255,255,255,.5);}
 		.add-item-price-icon {display:block;float:left;height:30px;width:40px;line-height:38px;text-align:center;font-weight:bold;font-size:18px;color:@text;}
 		.list-date-icon {display:block;float:left;height:20px;width:20px;margin:0 10px 0 0;background:url(i/sprite.png) no-repeat -220px -180px;text-indent:-9999px;position:relative;top:9px;left:0;}
 	.notifications-link {background-position-x:-180px;}
@@ -267,6 +268,9 @@ header {background:@list-color;margin:0 0 20px;}
 	.item-overlay .item-dibs {position:absolute;top:10px;right:50px;color:#939393;font-family:@corp-font;font-size:11px;}
 		.item-overlay .dibs-called-icon {position:absolute;top:-10px;right:10px;width:40px;height:40px;background:url(i/sprite.png) no-repeat -40px -180px;}
 	.call-dibs {position:absolute;width:80px;height:40px;top:0;right:5px;background:url(i/sprite.png) no-repeat -80px -180px;text-indent:-9999px;}
+		.call-dibs:hover,
+		.call-dibs:focus {background-position-y:-182px;}
+		.call-dibs:active {background-position-y:-180px;}
 
 .comments-container {}
 	.comments-guts {}
