@@ -42,41 +42,45 @@ function ItemOverlayModel(itemId) {
     });
 
     self.addComment = function () {
-        $.ajax({
-            type: "POST",
-            url: "/items/ajaxpostitemcomment",
-            data: { itemId: self.Id(), comment: self.newComment(), isWhisper: false },
-            success: function (addedItemComment) {
-                if (!$.isEmptyObject(addedItemComment)) {
-                    self.itemComments.push(new ItemComment(addedItemComment));
-                    self.newComment(null);
-                } else {
-                    alert("error");
+        if (self.newComment()) {
+            $.ajax({
+                type: "POST",
+                url: "/items/ajaxpostitemcomment",
+                data: { itemId: self.Id(), comment: self.newComment(), isWhisper: false },
+                success: function (addedItemComment) {
+                    if (!$.isEmptyObject(addedItemComment)) {
+                        self.itemComments.push(new ItemComment(addedItemComment));
+                        self.newComment(null);
+                    } else {
+                        alert("error");
+                    }
+                },
+                error: function () {
+                    alert("BIG OLE ERROR");
                 }
-            },
-            error: function () {
-                alert("BIG OLE ERROR");
-            }
-        });
+            });
+        }
     }
 
     self.addWhisper = function () {
-        $.ajax({
-            type: "POST",
-            url: "/items/ajaxpostitemcomment",
-            data: { itemId: self.Id(), comment: self.newComment(), isWhisper: true },
-            success: function (addedItemComment) {
-                if (!$.isEmptyObject(addedItemComment)) {
-                    self.itemComments.push(new ItemComment(addedItemComment));
-                    self.newComment(null);
-                } else {
-                    alert("error");
+        if (self.newComment()) {
+            $.ajax({
+                type: "POST",
+                url: "/items/ajaxpostitemcomment",
+                data: { itemId: self.Id(), comment: self.newComment(), isWhisper: true },
+                success: function (addedItemComment) {
+                    if (!$.isEmptyObject(addedItemComment)) {
+                        self.itemComments.push(new ItemComment(addedItemComment));
+                        self.newComment(null);
+                    } else {
+                        alert("error");
+                    }
+                },
+                error: function () {
+                    alert("BIG OLE ERROR");
                 }
-            },
-            error: function () {
-                alert("BIG OLE ERROR");
-            }
-        });
+            });
+        }
     }
     
 }

@@ -4,6 +4,7 @@
     [Title]       NVARCHAR (250) NOT NULL,
     [Link]        NVARCHAR (250) NULL,
     [Description] NVARCHAR (250) NULL,
+	[Price]		  DECIMAL  (10,2) NULL,
     [DateCreated] DATETIME       CONSTRAINT [DF_UserItem_DateCreated] DEFAULT (getdate()) NULL,
     [DateUpdated] DATETIME       NULL,
     CONSTRAINT [PK_UserItem] PRIMARY KEY CLUSTERED ([Id] ASC),

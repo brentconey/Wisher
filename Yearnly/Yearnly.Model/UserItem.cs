@@ -26,6 +26,7 @@ namespace Yearnly.Model
         public string Description { get; set; }
         public Nullable<System.DateTime> DateCreated { get; set; }
         public Nullable<System.DateTime> DateUpdated { get; set; }
+        public Nullable<decimal> Price { get; set; }
     
         public virtual UserProfile UserProfile { get; set; }
         public virtual ICollection<ItemComment> ItemComments { get; set; }

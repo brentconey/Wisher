@@ -88,6 +88,7 @@
           <Property Name="Title" Type="nvarchar" Nullable="false" MaxLength="250" />
           <Property Name="Link" Type="nvarchar" MaxLength="250" />
           <Property Name="Description" Type="nvarchar" MaxLength="250" />
+          <Property Name="Price" Type="decimal" Precision="10" Scale="2" />
           <Property Name="DateCreated" Type="datetime" />
           <Property Name="DateUpdated" Type="datetime" />
         </EntityType>
@@ -289,6 +290,7 @@
           <Property Name="DateUpdated" Type="DateTime" Precision="3" />
           <NavigationProperty Name="UserProfile" Relationship="YearnlyModel.FK_ItemToUser" FromRole="UserItem" ToRole="UserProfile" />
           <NavigationProperty Name="ItemComments" Relationship="YearnlyModel.FK_ItemComment_ToItem" FromRole="UserItem" ToRole="ItemComment" />
+          <Property Type="Decimal" Name="Price" Precision="10" Scale="2" />
         </EntityType>
         <EntityType Name="UserList">
           <Key>
@@ -474,6 +476,7 @@
           <EntitySetMapping Name="UserItems">
             <EntityTypeMapping TypeName="YearnlyModel.UserItem">
               <MappingFragment StoreEntitySet="UserItem">
+                <ScalarProperty Name="Price" ColumnName="Price" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
