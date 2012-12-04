@@ -117,6 +117,12 @@ namespace Yearnly.Web
                 );
 
             routes.MapRoute(
+                name: "AjaxCreateItem",
+                url: "items/ajaxcreate",
+                defaults: new { controller = "Items", action = "AjaxCreate" }
+                );
+
+            routes.MapRoute(
                 name: "AddItemRoute",
                 url: "items/add",
                 defaults: new { controller = "Items", action = "Add" }

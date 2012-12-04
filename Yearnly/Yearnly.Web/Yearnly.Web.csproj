@@ -204,6 +204,7 @@
     <Content Include="Scripts\knockout-2.2.0.js" />
     <Content Include="Scripts\Lists\AddList.js" />
     <Content Include="Scripts\PublicView\SendPublicFriendRequest.js" />
+    <Content Include="Scripts\Shared\GlobalAddItem.js" />
     <Content Include="Scripts\yearnly.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Views\Items\Add.cshtml" />

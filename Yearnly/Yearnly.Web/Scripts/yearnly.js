@@ -34,7 +34,7 @@ $(function () {
         if ($(panelToOpen).is(':visible')) {
             $(panelToOpen).hide();
         } else {
-            $('.panel').fadeOut(300);
+            $('.panel').fadeOut(100);
             $(panelToOpen).show();
             $(this).addClass('toggled');
         }

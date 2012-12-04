@@ -6,7 +6,7 @@
         <div class="main group">
             <ul class="user-actions group">
                 <li><a class="@(ViewBag.Section == "Home" ? "current" : "") north-star user-action" href="/">Home</a></li>
-                <li>
+                <li id="item_add">
                     <a class="user-action global-add-link activate-panel" href="#add_something_panel">add something</a>
                     <div class="add-container group">
                         <div class="global-add panel panel-tabs-container" id="add_something_panel">
@@ -17,20 +17,27 @@
                             </ul>
                             <div class="global-add-item group panel-tab" id="add_an_item">
                                 <fieldset>
-                                    <input type="text" placeholder="What is it?" id="item_title" name="item_title" class="item-title" />
+                                    <input type="text" placeholder="What is it?" id="item_title" name="item_title" class="item-title" data-bind="value: title" />
+                                    <label class="form-error" data-bind="visible: titleError">Title is required, bro.</label>
                                 </fieldset>
                                 <fieldset>
-                                    <input type="text" placeholder="http://" id="item_link" name="item_link" class="item-link" />
+                                    <input type="text" placeholder="http://" id="item_link" name="item_link" class="item-link" data-bind="value: link" />
+                                    <label class="form-error" data-bind="visible: linkError">How are you going to get it with no link, braj?</label>
                                 </fieldset>
                                 <fieldset>
-                                    <input type="text" placeholder="Notes (sizes, colors, special instructions)" id="item_notes" name="item_notes" class="item-notes" />
+                                    <input type="text" placeholder="Notes (sizes, colors, special instructions)" id="item_notes" name="item_notes" class="item-notes" data-bind="value: description" />
                                 </fieldset>
                                 <fieldset class="group">
                                     <span class="add-item-price-icon">$</span>
-                                    <input type="text" placeholder="Price" id="item_price" name="item_price" class="item-price left" />
-                                    <a class="add-item-submit right button" href="#">Add Item</a>
+                                    <input type="text" placeholder="Price" id="item_price" name="item_price" class="item-price left" data-bind="value: price" />
+                                    <label class="form-error" data-bind="visible: priceError">Price??</label>
+                                    <a class="add-item-submit right button" href="#" data-bind="click: addItem">Add Item</a>
                                 </fieldset>
+                                <div id="item_add_success">
+                                    <p>Item Added</p>
+                                </div>
                             </div><!-- /#add_an_item -->
+                            <script src="~/Scripts/Shared/GlobalAddItem.js"></script>
                             <div class="global-add-list group panel-tab hidden" id="create_a_list">
                                 <fieldset>
                                     <input type="text" placeholder="List title" id="list_title" name="list_title" class="list-title" />
@@ -54,7 +61,7 @@
                         </div>
                     </div>
                 </li>
-                <li>
+                <li id="friend_requests">
                     <a class="notifications-link activate-panel user-action" href="#notification_panel" data-bind="text: numberOfNotifications, css: hasNotifications"></a>
                     <div class="notifications-container group">
 

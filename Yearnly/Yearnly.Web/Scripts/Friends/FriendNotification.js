@@ -51,4 +51,4 @@ function FriendNotificationModel() {
     });
 }
 
-ko.applyBindings(new FriendNotificationModel(), $(".notifications-container")[0]);
+ko.applyBindings(new FriendNotificationModel(), $("#friend_requests")[0]);
